@@ -1,0 +1,404 @@
+:root {
+  color-scheme: dark;
+  --page-bg: #101716;
+  --ink: #f5ecd6;
+  --soft-ink: rgba(245, 236, 214, 0.78);
+  --gold: #d9b66f;
+  --response-x: 50%;
+  --response-y: 48%;
+  --drift-x: 0;
+  --drift-y: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: ui-serif, "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", Georgia, serif;
+  background:
+    radial-gradient(circle at 50% 5%, rgba(219, 190, 127, 0.16), transparent 34rem),
+    linear-gradient(180deg, #0c1212, var(--page-bg));
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.storybook {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: max(18px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+}
+
+.storybook__page {
+  width: min(100%, 980px);
+  height: min(calc(100svh - 28px), 760px);
+  min-height: 620px;
+  border: 1px solid rgba(233, 223, 198, 0.2);
+  border-radius: clamp(24px, 5vw, 42px);
+  padding: clamp(10px, 2vw, 18px);
+  background:
+    linear-gradient(135deg, rgba(233, 223, 198, 0.16), rgba(233, 223, 198, 0.04)),
+    rgba(10, 18, 17, 0.72);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(233, 223, 198, 0.05);
+}
+
+.world {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: clamp(18px, 4vw, 32px);
+  isolation: isolate;
+  background: #111b1a;
+  cursor: crosshair;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.world::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at var(--response-x) var(--response-y), rgba(247, 217, 142, 0.12), transparent 8rem),
+    radial-gradient(circle at 50% 105%, rgba(8, 11, 10, 0.8), transparent 48%),
+    linear-gradient(180deg, rgba(5, 8, 9, 0.1), rgba(5, 8, 9, 0.28));
+  transition: background 900ms ease;
+}
+
+.world__painting,
+.world__layer {
+  position: absolute;
+  inset: 0;
+}
+
+.world__layer--sky {
+  background:
+    radial-gradient(circle at 72% 22%, rgba(251, 229, 169, 0.22), transparent 11rem),
+    radial-gradient(circle at 18% 34%, rgba(145, 189, 180, 0.18), transparent 15rem),
+    linear-gradient(180deg, #182927 0%, #1d3433 44%, #254242 100%);
+}
+
+.world__layer--moon {
+  width: 96px;
+  height: 96px;
+  left: 66%;
+  top: 13%;
+  inset: auto;
+  border-radius: 50%;
+  background: radial-gradient(circle at 42% 38%, #fff7d8, #d6bd79 58%, rgba(214, 189, 121, 0) 62%);
+  filter: blur(0.2px);
+  opacity: 0.82;
+  animation: light-breathe 7s ease-in-out infinite;
+  transition: filter 1200ms ease, opacity 1200ms ease;
+}
+
+.world__layer--distant {
+  top: 24%;
+  background:
+    linear-gradient(155deg, transparent 42%, rgba(20, 44, 41, 0.95) 43% 56%, transparent 57%) 10% 100% / 48% 58% no-repeat,
+    linear-gradient(25deg, transparent 44%, rgba(30, 64, 59, 0.95) 45% 58%, transparent 59%) 92% 100% / 56% 62% no-repeat,
+    radial-gradient(ellipse at 50% 78%, rgba(232, 214, 163, 0.18), transparent 42%);
+  transform: translate3d(calc(var(--drift-x) * -0.25px), calc(var(--drift-y) * -0.18px), 0);
+  transition: transform 900ms ease-out;
+}
+
+.world__layer--threshold {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.threshold__arch,
+.threshold__light,
+.threshold__path {
+  position: absolute;
+  left: 50%;
+  display: block;
+  transform: translateX(-50%);
+}
+
+.threshold__arch {
+  top: 31%;
+  width: clamp(42px, 7vw, 68px);
+  height: clamp(74px, 12vw, 118px);
+  border: clamp(7px, 1vw, 11px) solid rgba(21, 45, 40, 0.96);
+  border-bottom: 0;
+  border-radius: 50% 50% 8px 8px / 34% 34% 8px 8px;
+  background: linear-gradient(180deg, rgba(13, 29, 27, 0.92), rgba(28, 52, 45, 0.98));
+  box-shadow: 0 10px 35px rgba(6, 15, 13, 0.55);
+}
+
+.threshold__light {
+  top: 34%;
+  width: clamp(20px, 3.2vw, 32px);
+  height: clamp(42px, 6.7vw, 66px);
+  border-radius: 50% 50% 8px 8px / 35% 35% 8px 8px;
+  background: linear-gradient(180deg, #fff4c6, #d9ae5b 68%, rgba(186, 126, 42, 0.42));
+  box-shadow:
+    0 0 18px 5px rgba(255, 218, 134, 0.2),
+    0 0 58px 16px rgba(255, 211, 113, 0.12);
+  opacity: 0.82;
+  animation: threshold-breathe 6.8s ease-in-out infinite;
+  transition: box-shadow 1000ms ease, opacity 1000ms ease;
+}
+
+.threshold__path {
+  top: 43%;
+  width: clamp(82px, 13vw, 132px);
+  height: 38%;
+  clip-path: polygon(43% 0, 57% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, rgba(232, 204, 137, 0.2), rgba(207, 176, 112, 0.08) 48%, transparent 95%);
+  filter: blur(1.5px);
+  opacity: 0.48;
+  transition: opacity 1200ms ease, filter 1200ms ease;
+}
+
+.world__layer--water {
+  top: 54%;
+  background:
+    repeating-linear-gradient(175deg, rgba(238, 219, 163, 0.13) 0 1px, transparent 1px 18px),
+    radial-gradient(ellipse at 50% 34%, rgba(232, 215, 162, 0.2), transparent 32%),
+    linear-gradient(180deg, rgba(36, 75, 74, 0.42), rgba(13, 32, 32, 0.96));
+  clip-path: ellipse(85% 45% at 50% 56%);
+  animation: water-breathe 8s ease-in-out infinite;
+}
+
+.world__layer--mist {
+  z-index: 3;
+  opacity: 0.62;
+  background:
+    radial-gradient(circle at var(--response-x) var(--response-y), rgba(255, 236, 191, 0.08), transparent 8rem),
+    radial-gradient(ellipse at 20% 64%, rgba(232, 223, 202, 0.2), transparent 22%),
+    radial-gradient(ellipse at 72% 58%, rgba(232, 223, 202, 0.16), transparent 30%),
+    linear-gradient(90deg, transparent, rgba(232, 223, 202, 0.08), transparent);
+  filter: blur(11px);
+  animation: mist-drift 14s ease-in-out infinite alternate;
+  transition: opacity 1000ms ease;
+}
+
+.world__layer--lanterns span {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #ffe3a0;
+  box-shadow: 0 0 18px 6px rgba(255, 207, 116, 0.35);
+  animation: light-breathe 5.8s ease-in-out infinite;
+  transition: box-shadow 1000ms ease, opacity 1000ms ease;
+}
+
+.world__layer--lanterns span:nth-child(1) { left: 22%; top: 36%; animation-delay: -1s; }
+.world__layer--lanterns span:nth-child(2) { left: 39%; top: 48%; animation-delay: -2.4s; }
+.world__layer--lanterns span:nth-child(3) { left: 63%; top: 42%; animation-delay: -3.3s; }
+.world__layer--lanterns span:nth-child(4) { left: 78%; top: 55%; animation-delay: -4.1s; }
+
+.world__layer--foreground {
+  z-index: 4;
+  top: 58%;
+  background:
+    radial-gradient(ellipse at 50% 94%, #0b1210 0 42%, transparent 43%),
+    linear-gradient(120deg, transparent 0 28%, rgba(15, 28, 24, 0.96) 29% 34%, transparent 35%) 0 100% / 38% 80% no-repeat,
+    linear-gradient(65deg, transparent 0 48%, rgba(14, 26, 23, 0.95) 49% 54%, transparent 55%) 100% 100% / 36% 88% no-repeat;
+  transform: translate3d(calc(var(--drift-x) * 0.32px), calc(var(--drift-y) * 0.22px), 0);
+  transition: transform 900ms ease-out;
+}
+
+.world__response {
+  position: absolute;
+  z-index: 4;
+  left: var(--response-x);
+  top: var(--response-y);
+  width: clamp(92px, 16vw, 152px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 231, 171, 0.56);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.2);
+  box-shadow: 0 0 34px rgba(255, 215, 127, 0.12);
+}
+
+.world__layer--grain {
+  z-index: 7;
+  opacity: 0.13;
+  mix-blend-mode: soft-light;
+  background-image:
+    linear-gradient(115deg, transparent 0 48%, rgba(255,255,255,0.5) 50%, transparent 52%),
+    repeating-radial-gradient(circle at 15% 20%, rgba(255,255,255,0.5) 0 1px, transparent 1px 4px);
+}
+
+.world__copy {
+  position: relative;
+  z-index: 8;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(26px, 6vw, 68px);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+}
+
+.eyebrow {
+  margin: 0 0 0.7rem;
+  color: var(--gold);
+  font: 600 0.7rem/1.4 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.2em;
+}
+
+h1 {
+  max-width: 8ch;
+  margin: 0;
+  font-size: clamp(2.5rem, 9vw, 6.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+}
+
+.lead {
+  max-width: 28rem;
+  margin: 1.25rem 0 0;
+  color: var(--soft-ink);
+  font-size: clamp(1rem, 3.7vw, 1.28rem);
+  line-height: 1.9;
+}
+
+.world__touch-surface {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: inherit;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.world__touch-surface:focus {
+  outline: none;
+}
+
+.world__touch-surface:focus-visible {
+  outline: 2px solid rgba(255, 227, 160, 0.9);
+  outline-offset: -8px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.world.is-aware::before {
+  background:
+    radial-gradient(circle at var(--response-x) var(--response-y), rgba(247, 217, 142, 0.18), transparent 10rem),
+    radial-gradient(circle at 50% 105%, rgba(8, 11, 10, 0.8), transparent 48%),
+    linear-gradient(180deg, rgba(5, 8, 9, 0.1), rgba(5, 8, 9, 0.28));
+}
+
+.world.is-responding::before {
+  background:
+    radial-gradient(circle at var(--response-x) var(--response-y), rgba(255, 230, 164, 0.34), transparent 13rem),
+    radial-gradient(circle at 50% 105%, rgba(8, 11, 10, 0.8), transparent 48%),
+    linear-gradient(180deg, rgba(5, 8, 9, 0.08), rgba(5, 8, 9, 0.24));
+}
+
+.world.is-responding .world__response {
+  animation: world-response 1300ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
+}
+
+.world.is-responding .threshold__light {
+  opacity: 1;
+  box-shadow:
+    0 0 24px 8px rgba(255, 226, 157, 0.34),
+    0 0 76px 24px rgba(255, 211, 113, 0.18);
+}
+
+.world.is-responding .threshold__path {
+  filter: blur(1px);
+  opacity: 0.78;
+}
+
+.world.is-responding .world__layer--moon {
+  filter: brightness(1.08);
+  opacity: 0.92;
+}
+
+.world.is-responding .world__layer--mist {
+  opacity: 0.76;
+}
+
+.world.is-responding .world__layer--lanterns span {
+  box-shadow: 0 0 24px 8px rgba(255, 216, 137, 0.46);
+}
+
+@keyframes water-breathe {
+  0%, 100% { transform: translateY(0) scaleX(1); }
+  50% { transform: translateY(3px) scaleX(1.012); }
+}
+
+@keyframes mist-drift {
+  from { transform: translateX(-1.2%); }
+  to { transform: translateX(1.6%); }
+}
+
+@keyframes light-breathe {
+  0%, 100% { opacity: 0.58; transform: scale(0.94); }
+  50% { opacity: 0.94; transform: scale(1.04); }
+}
+
+@keyframes threshold-breathe {
+  0%, 100% { opacity: 0.76; filter: brightness(0.96); }
+  50% { opacity: 0.92; filter: brightness(1.06); }
+}
+
+@keyframes world-response {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.18); }
+  24% { opacity: 0.58; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.45); }
+}
+
+@media (max-width: 720px) {
+  .storybook__page {
+    min-height: calc(100svh - 28px);
+  }
+
+  .world__copy {
+    justify-content: flex-start;
+    padding-top: max(38px, env(safe-area-inset-top));
+  }
+
+  .lead {
+    max-width: 16rem;
+  }
+
+  .world {
+    cursor: default;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
