@@ -67,7 +67,7 @@ This section holds one entry per actual review session, most recent first. Two r
   - The Reveal is text-centric (`revealText.textContent`); the implementation does not establish or verify any visual/motion change or sense of surprise on reveal — that remains unverified by this review, which only read source, not rendered motion.
   - No single continuous "one video" progression axis exists in the current structure; it is a branching setup, not a linear timeline.
 - Interpretation:
-  - The Visual / Motion / Reveal structure (clue set → choice → connected reveal) has continued verification value as a pattern.
+  - The Setup → question/choice → connected Reveal implementation structure (clue set → choice → connected reveal) has continued verification value as a pattern worth adapting to video. This is a structural judgment, not an evaluation of rendered Visual or Motion quality — this review did not view the rendered screen and does not claim to have assessed it.
   - The browser choice-branching format itself does not fit FARLENS's official production medium.
   - The pattern should be reconstructed for YouTube video rather than iterated further as a browser interaction.
 - Issues:
@@ -84,7 +84,7 @@ This section holds one entry per actual review session, most recent first. Two r
 - Reviewer: CEO
 - Review Type: Human / Device Review (the official route defined in `IPHONE_PREVIEW.md`)
 - Device: iPhone
-- URL: not separately captured in the handoff that produced this record. Per `IPHONE_PREVIEW.md`'s route definition, the official GitHub Pages URL for the PR that published this Prototype (PR #145) is `https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-145/research-two-beat-reveal/` — recorded here as the applicable route, not as an independently re-verified literal URL for this specific session.
+- URL: `https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-145/research-two-beat-reveal/`
 - Success Criteria: `README.md`'s "Success Criteria" / "Failure Criteria" sections (Setup → choice → Reveal completing without instruction, each choice producing a distinct connected reveal, no visible correct/incorrect state, ~30-60s loop, no console errors).
 - Observation:
   - The design was rated highly good.
