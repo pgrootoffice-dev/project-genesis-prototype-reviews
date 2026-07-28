@@ -29,7 +29,7 @@ The scene ("夜の森で、次に必要なものは？" — a night forest, thre
 
 ## What Was Built
 
-- A single static HTML page (`index.html`) with two screens: Setup (3 clues + 3-choice prompt) and Reveal (a short 1-2 sentence connection back to the chosen clue + a "もう一度試す" / try again button).
+- A single static HTML page (`index.html`) with two screens: Setup (3 clue shapes, shown with **no visible name/label** — only the shape — + 3-choice prompt) and Reveal (the connected clue's name + a short 1-2 sentence explanation + a "もう一度試す" / try again button). The clue names are visually-hidden on Setup (kept as screen-reader-only text for accessibility) so a reviewer must read the shapes themselves, not a text label, before choosing — this was a P1 fix from Codex review; the initial version incorrectly showed the names on Setup, which let a viewer read the answer as text instead of the shape.
 - All 3 choices lead to their own reveal text; none is marked correct or incorrect, no score, no counter, no timer.
 - All clue and reveal art is CSS/inline SVG only — no external images, fonts, or audio.
 - Portrait-first layout, minimum 56px-tall tap targets, no horizontal scroll, `prefers-reduced-motion` respected for the ambient grass-sway and light-pulse animations.
@@ -45,6 +45,7 @@ The scene ("夜の森で、次に必要なものは？" — a night forest, thre
 
 ## Observe (what a reviewer should watch for)
 
+- Before choosing: how did you read/name each of the 3 unlabeled shapes? Record what you guessed for each, so it can be compared against the clue name that appears on Reveal.
 - Does the reveal text for each of the 3 choices genuinely feel connected to that choice's clue, or does it feel arbitrary?
 - Does the absence of a "correct" answer read as calm and exploratory, or as unclear/pointless?
 - Does the whole loop (read scene → choose → read reveal → optionally retry) complete in roughly 30-60 seconds without feeling rushed or dragging?

@@ -19,7 +19,7 @@
           <ellipse cx="60" cy="42" rx="10" ry="14" />
           <ellipse cx="78" cy="24" rx="9" ry="12" />
         </svg>
-        <p class="clue-label">小さな足あと</p>
+        <span class="visually-hidden">小さな足あと</span>
       </div>
 
       <div class="clue" data-clue="grass">
@@ -34,7 +34,7 @@
             <rect x="62" y="34" width="10" height="56" rx="5" />
           </g>
         </svg>
-        <p class="clue-label">揺れている草</p>
+        <span class="visually-hidden">揺れている草</span>
       </div>
 
       <div class="clue" data-clue="light">
@@ -42,7 +42,7 @@
           <circle class="glow" cx="50" cy="50" r="34" />
           <circle class="glow-core" cx="50" cy="50" r="12" />
         </svg>
-        <p class="clue-label">遠くの弱い光</p>
+        <span class="visually-hidden">遠くの弱い光</span>
       </div>
     </div>
 
@@ -61,6 +61,7 @@
         <circle class="reveal-glow" cx="50" cy="50" r="40" />
       </svg>
     </div>
+    <p id="reveal-clue-name" class="reveal-clue-name"></p>
     <p id="reveal-text" class="reveal-text"></p>
     <button type="button" id="retry" class="retry">もう一度試す</button>
   </section>

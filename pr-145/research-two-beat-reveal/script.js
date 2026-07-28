@@ -7,9 +7,19 @@
     follow: "光に近づくと、それは森の奥にある小さな灯りだとわかる。誰かが、そこで待っているようだ。"
   };
 
+  // The clue each choice turns out to be connected to. Deliberately not shown
+  // on the Setup screen (see IPHONE_PREVIEW.md) — only disclosed here, after
+  // a choice is made, so the initial screen cannot be read for the "answer."
+  var CLUE_NAMES = {
+    listen: "揺れている草",
+    climb: "小さな足あと",
+    follow: "遠くの弱い光"
+  };
+
   var app = document.getElementById("app");
   var screenSetup = document.getElementById("screen-setup");
   var screenReveal = document.getElementById("screen-reveal");
+  var revealClueName = document.getElementById("reveal-clue-name");
   var revealText = document.getElementById("reveal-text");
   var retryButton = document.getElementById("retry");
   var choiceButtons = document.querySelectorAll(".choice");
@@ -32,6 +42,7 @@
     if (!text) {
       return;
     }
+    revealClueName.textContent = CLUE_NAMES[choice] || "";
     revealText.textContent = text;
     showScreen("reveal");
   }
