@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>FARLENS Prototype B — Question-led Choice</title>
+<link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+<div class="stage-wrap">
+  <div class="phone-frame" id="player-root">
+    <div class="stage">
+
+      <section class="scene" data-id="b1-declare" data-start="0" data-end="2.5" data-tone="440,120">
+        <div class="ai-core"><span class="ai-mark">AI</span></div>
+        <div class="speech-bubble">これは100％正しいです。</div>
+      </section>
+
+      <section class="scene" data-id="b2-question" data-start="2.5" data-end="5" data-tone="330,100">
+        <p class="caption">自信があることと、<br />正しいことは同じ？</p>
+      </section>
+
+      <!-- animation-delay below is ABSOLUTE from page load (CSS animation
+           semantics for a class present in the static markup), unlike the
+           transition-delay values on these same pills, which are RELATIVE
+           to this scene's own activation (CSS transition semantics, since
+           .is-active is toggled dynamically). 7.9s = this scene's own
+           data-start (5s) + the intended 2.9s in-scene pause before the
+           emphasis lands -- verified by direct screenshot at multiple
+           timestamps, see README.md. -->
+      <section class="scene" data-id="b3-choice" data-start="5" data-end="9.6">
+        <div class="choice-row">
+          <div class="choice-pill" style="transition-delay:.1s">すぐ信じる</div>
+          <div class="choice-pill will-emphasize" style="transition-delay:.6s; animation-delay:7.9s">確かめる</div>
+        </div>
+        <p class="caption small" style="transition-delay:3.2s">確かめる人が、未来をつくる。</p>
+      </section>
+
+      <section class="scene" data-id="b4-ending" data-start="9.6" data-end="13.4" data-tone="523,200">
+        <div class="child-figure" aria-hidden="true">
+          <div class="head"></div>
+          <div class="body"></div>
+        </div>
+        <p class="caption">未来をつくるのは、<br />答えを知る人ではなく、<br />確かめられる人。</p>
+      </section>
+
+    </div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+  </div>
+
+  <div class="controls">
+    <button class="control-btn" data-action="play">▶ 再生する</button>
+    <button class="control-btn secondary" data-action="mute">🔇 音: オフ</button>
+  </div>
+  <p class="label-row">B — Question-led Choice（問いかけ主導・約13.4秒・一瞬の判断の間を挟む）</p>
+</div>
+
+<script src="scene-engine.js"></script>
+<script>
+  var player = new window.FarlensShortPlayer(document.getElementById("player-root"));
+  player.restart();
+</script>
+</body>
+</html>

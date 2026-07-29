@@ -1,0 +1,429 @@
+/*
+  FARLENS Prototype-only Color Set (working hypothesis, NOT Canonical Palette).
+  Meaning-coded roles per FARLENS_VISUAL_DESIGN_RULEBOOK.md Section 3 (Color
+  Rules): Background / Subject / Accent / Signal / Alert are distinct roles,
+  not decoration. No red+black "danger" pairing. Not Kurzgesagt's palette
+  (their reported set: deep blues/purples + bright reds/oranges/yellow) --
+  this set uses a muted teal-navy base with warm cream subjects, amber for
+  "confident assertion", teal-green for "verify/evidence", and a muted
+  coral (never a saturated alarm red) for "uncertainty", each used sparingly
+  and only for its own meaning.
+*/
+:root {
+  --color-bg: #17262c;          /* Background: calm, dark, non-alarming */
+  --color-bg-soft: #1f343c;     /* Background, one step lighter (cards) */
+  --color-subject: #f5efe3;     /* Subject: AI core, child silhouette */
+  --color-accent: #e8a33d;      /* Accent: AI's confident assertion */
+  --color-signal: #4fb0a5;      /* Signal: evidence / verification */
+  --color-caution: #d97a4e;     /* Caution: uncertainty, never full alarm */
+  --color-caption: #f5efe3;
+  --color-caption-dim: #b9c4c6;
+
+  --font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", system-ui,
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #0d1417;
+  color: var(--color-caption);
+  font-family: var(--font-family);
+}
+
+.stage-wrap {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 0.75rem;
+}
+
+/* Phone frame: 9:16, capped so it never exceeds a comfortable iPhone width */
+.phone-frame {
+  position: relative;
+  width: min(92vw, 380px);
+  aspect-ratio: 9 / 16;
+  background: var(--color-bg);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(245, 239, 227, 0.08);
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+}
+
+/* Each "scene" is pre-authored in the HTML and toggled by the engine --
+   nothing is built dynamically, so the full script/timing is readable
+   directly from this file's source.
+
+   Transition model (deliberate, tested against a real timing bug -- see
+   README.md "What was fixed after visual self-review"): the OUTGOING scene
+   must finish disappearing before the INCOMING one starts appearing, so two
+   captions are never legible on screen at once. This is done by giving the
+   "leaving" state (the plain `.scene` rule) a fast, undelayed fade-out, and
+   giving the "entering" state (`.scene.is-active`) a transition-delay long
+   enough that it only starts once the previous scene's fade-out is done. */
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: 8% 9%;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+
+.scene.is-active {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+  transition-delay: 0.2s;
+}
+
+/* ---- Semantic Geometry: shared abstract shapes, no external assets ---- */
+
+.ai-core {
+  position: relative;
+  width: 30%;
+  aspect-ratio: 1 / 1;
+  border-radius: 26%;
+  background: var(--color-subject);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.85);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.scene.is-active .ai-core {
+  transform: scale(1);
+  opacity: 1;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.26s,
+    opacity 0.5s ease 0.26s;
+}
+
+.ai-core::after {
+  content: "";
+  position: absolute;
+  inset: -14%;
+  border-radius: 32%;
+  border: 2px solid var(--color-accent);
+  opacity: 0.55;
+  animation: ai-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes ai-pulse {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.55;
+  }
+}
+
+.ai-mark {
+  font-weight: 800;
+  font-size: clamp(1.1rem, 6vw, 1.6rem);
+  color: var(--color-bg);
+  letter-spacing: 0.02em;
+}
+
+.speech-bubble {
+  position: relative;
+  max-width: 82%;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-weight: 700;
+  font-size: clamp(1rem, 5.4vw, 1.35rem);
+  line-height: 1.35;
+  padding: 0.8em 1em;
+  border-radius: 18px;
+  transform: translateY(8px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.scene.is-active .speech-bubble {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  transition: transform 0.4s ease 0.34s, opacity 0.4s ease 0.34s;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  width: 18px;
+  height: 18px;
+  background: var(--color-accent);
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 4px;
+}
+
+.caption {
+  max-width: 88%;
+  font-weight: 600;
+  font-size: clamp(1rem, 5vw, 1.3rem);
+  line-height: 1.45;
+  color: var(--color-caption);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.caption.small {
+  font-size: clamp(0.85rem, 4vw, 1.05rem);
+  color: var(--color-caption-dim);
+  font-weight: 500;
+}
+
+.scene.is-active .caption {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease 0.38s, transform 0.4s ease 0.38s;
+}
+
+.caution-mark {
+  width: 14%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.scene.is-active .caution-mark {
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 0.35s ease 0.3s, opacity 0.35s ease 0.3s;
+}
+
+.caution-mark svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.evidence-card {
+  width: 46%;
+  aspect-ratio: 4 / 3;
+  background: var(--color-bg-soft);
+  border: 2px solid var(--color-signal);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.scene.is-active .evidence-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease 0.26s, transform 0.4s ease 0.26s;
+}
+
+.evidence-card svg {
+  width: 46%;
+  height: 46%;
+}
+
+.evidence-card .check-path {
+  fill: none;
+  stroke: var(--color-signal);
+  stroke-width: 9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+}
+
+.scene.is-active .evidence-card .check-path {
+  animation: draw-check 0.6s ease-out 0.35s forwards;
+}
+
+@keyframes draw-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Child silhouette: a single-tone abstract minimal figure -- circle head +
+   rounded body, deliberately not any bird/creature form. */
+.child-figure {
+  width: 24%;
+  aspect-ratio: 0.62 / 1;
+  position: relative;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.scene.is-active .child-figure {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease 0.26s, transform 0.4s ease 0.26s;
+}
+
+.child-figure .head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 46%;
+  aspect-ratio: 1 / 1;
+  background: var(--color-subject);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.child-figure .body {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 78%;
+  height: 62%;
+  background: var(--color-subject);
+  border-radius: 40% 40% 30% 30%;
+  transform: translateX(-50%);
+}
+
+/* Two candidate-judgment shapes (Section B), shown without a "correct/
+   incorrect" label -- only a later, gentle glow marks the one the ending
+   line lands on, per the task's "no score/正解演出" instruction. */
+.choice-row {
+  display: flex;
+  gap: 6%;
+  width: 100%;
+  justify-content: center;
+}
+
+.choice-pill {
+  flex: 0 1 42%;
+  padding: 0.85em 0.4em;
+  border-radius: 999px;
+  background: var(--color-bg-soft);
+  border: 2px solid rgba(245, 239, 227, 0.25);
+  color: var(--color-caption);
+  font-weight: 600;
+  font-size: clamp(0.85rem, 4.2vw, 1.05rem);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Each pill's own `style="transition-delay:..."` (set per-element in the
+   HTML) staggers the two pills' entrance relative to this rule's base
+   duration -- see b.html. */
+.scene.is-active .choice-pill {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* B-only: the second choice quietly gains the same emphasis a fixed delay
+   after the scene starts -- a held, silent judgment beat first, then the
+   meaning lands. No "correct" label and no score/正解 sound is ever used;
+   the first choice is never marked wrong. */
+.choice-pill.will-emphasize {
+  animation: pill-emphasize 0.6s ease-out forwards;
+}
+
+@keyframes pill-emphasize {
+  to {
+    border-color: var(--color-signal);
+    box-shadow: 0 0 0 3px rgba(79, 176, 165, 0.25);
+  }
+}
+
+.progress-track {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 6%;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(245, 239, 227, 0.16);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--color-accent);
+  transition: width 0.08s linear;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.control-btn {
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  padding: 0.6em 1.3em;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: var(--color-subject);
+  color: var(--color-bg);
+  cursor: pointer;
+}
+
+.control-btn.secondary {
+  background: transparent;
+  color: var(--color-caption);
+  border: 1px solid rgba(245, 239, 227, 0.35);
+}
+
+.label-row {
+  color: var(--color-caption-dim);
+  font-size: 0.8rem;
+  text-align: center;
+  max-width: 380px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-core::after {
+    animation: none;
+    opacity: 0.35;
+  }
+  .scene,
+  .ai-core,
+  .speech-bubble,
+  .caption,
+  .evidence-card,
+  .child-figure,
+  .choice-pill,
+  .caution-mark {
+    transition-duration: 0.01ms !important;
+  }
+  .choice-pill.will-emphasize {
+    animation-duration: 0.01ms !important;
+  }
+}

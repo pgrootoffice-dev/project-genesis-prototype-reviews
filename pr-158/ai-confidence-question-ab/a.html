@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>FARLENS Prototype A — Explanation-led</title>
+<link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+<div class="stage-wrap">
+  <div class="phone-frame" id="player-root">
+    <div class="stage">
+
+      <section class="scene" data-id="a1-declare" data-start="0" data-end="3" data-tone="440,120">
+        <div class="ai-core"><span class="ai-mark">AI</span></div>
+        <div class="speech-bubble">これは100％正しいです。</div>
+      </section>
+
+      <section class="scene" data-id="a2-caution" data-start="3" data-end="6.5" data-tone="330,120">
+        <div class="ai-core"><span class="ai-mark">AI</span></div>
+        <div class="caution-mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <path d="M50 8 L94 88 L6 88 Z" fill="none" stroke="#d97a4e" stroke-width="8" stroke-linejoin="round" />
+            <rect x="46" y="38" width="8" height="26" rx="4" fill="#d97a4e" />
+            <circle cx="50" cy="74" r="5" fill="#d97a4e" />
+          </svg>
+        </div>
+        <p class="caption">自信があっても、まちがうことがある。</p>
+      </section>
+
+      <section class="scene" data-id="a3-verify" data-start="6.5" data-end="10.5" data-tone="392,150">
+        <div class="evidence-card" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <path class="check-path" d="M22 52 L42 72 L80 28" />
+          </svg>
+        </div>
+        <p class="caption">だから、根拠を確かめよう。</p>
+      </section>
+
+      <section class="scene" data-id="a4-ending" data-start="10.5" data-end="14.3" data-tone="523,200">
+        <div class="child-figure" aria-hidden="true">
+          <div class="head"></div>
+          <div class="body"></div>
+        </div>
+        <p class="caption">未来をつくるのは、<br />答えを知る人ではなく、<br />確かめられる人。</p>
+      </section>
+
+    </div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+  </div>
+
+  <div class="controls">
+    <button class="control-btn" data-action="play">▶ 再生する</button>
+    <button class="control-btn secondary" data-action="mute">🔇 音: オフ</button>
+  </div>
+  <p class="label-row">A — Explanation-led（説明主導・約14秒・受動視聴で完結）</p>
+</div>
+
+<script src="scene-engine.js"></script>
+<script>
+  var player = new window.FarlensShortPlayer(document.getElementById("player-root"));
+  player.restart();
+</script>
+</body>
+</html>
