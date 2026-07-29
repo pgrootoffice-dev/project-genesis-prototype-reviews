@@ -62,6 +62,19 @@
           tone: el.dataset.tone ? el.dataset.tone.split(",").map(Number) : null,
         };
       });
+    // Elements that should quietly gain an ".is-revealed" class once the
+    // playhead passes their own `data-reveal-at` (absolute seconds from
+    // play start). This is JS-driven and uses a CSS *transition* (relative
+    // to the moment the class is toggled), not a CSS *animation* on a
+    // statically-present class -- a real bug in an earlier revision used
+    // `animation-delay`, which counts from page load, not scene playhead
+    // time, so the reveal fired before its scene was even visible. See
+    // README.md "What Was Fixed" for the full account.
+    this.revealables = Array.prototype.slice
+      .call(this.stage.querySelectorAll("[data-reveal-at]"))
+      .map(function (el) {
+        return { el: el, at: parseFloat(el.dataset.revealAt) };
+      });
     this.totalSeconds = Math.max.apply(
       null,
       this.scenes.map(function (s) {
@@ -118,6 +131,10 @@
         this.tones.blip(scene.tone[0], scene.tone[1]);
       }
     }, this);
+
+    this.revealables.forEach(function (item) {
+      item.el.classList.toggle("is-revealed", t >= item.at);
+    });
 
     if (this.progressFill) {
       this.progressFill.style.width =

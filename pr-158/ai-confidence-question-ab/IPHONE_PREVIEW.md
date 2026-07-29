@@ -23,11 +23,11 @@ Review Steps:
 
 1. Open the exact HTTPS URL in the `Prototype Review` section of the PR handoff.
 2. Confirm the comparison page shows the shared question — 「AIが『100％正しい』と言ったら、信じる？」 — above two phone-shaped frames labeled A and B.
-3. Watch A (Explanation-led) play through once, start to finish (~14 seconds), without tapping anything.
-4. Tap A's "▶ 再生する" to replay it if you want a second look.
-5. Watch B (Question-led Choice) play through once, start to finish (~13.4 seconds), without tapping anything.
-6. Notice the moment in B where two candidate judgments appear side by side ("すぐ信じる" / "確かめる") with neither highlighted, held for a couple of seconds, before one quietly gains a soft outline and the closing line lands.
-7. Confirm both A and B end on the exact same line: 「未来をつくるのは、答えを知る人ではなく、確かめられる人。」
+3. Confirm both A and B open with the exact same first beat: an AI shape declaring 「これは100％正しいです。」
+4. Watch A (Question-led Short) play through once, start to finish (~13.7 seconds), without tapping anything. Confirm it never shows a choice, never states a resolved answer, and ends on a quiet visual with no closing statement — the question is left open on purpose.
+5. Tap A's "▶ 再生する" to replay it if you want a second look.
+6. Watch B (Quiz-led Short) play through once, start to finish (~13 seconds), without tapping anything.
+7. Notice the moment in B where two candidate judgments appear side by side ("すぐ信じる" / "根拠を確かめる") with neither highlighted, held for a genuine pause of a few seconds, before "根拠を確かめる" quietly gains a soft outline and a closing line lands: 「自信と正しさは、同じとは限らない。」
 8. Optionally tap each 🔇 button once to confirm an unmute control exists — sound is muted by default and entirely optional (a few short, synthesized tones only, no music/SE file of any kind).
 
 Review Points:

@@ -320,17 +320,18 @@ body {
 }
 
 .choice-pill {
-  flex: 0 1 42%;
-  padding: 0.85em 0.4em;
+  flex: 0 1 46%;
+  padding: 0.85em 0.3em;
   border-radius: 999px;
   background: var(--color-bg-soft);
   border: 2px solid rgba(245, 239, 227, 0.25);
   color: var(--color-caption);
   font-weight: 600;
-  font-size: clamp(0.85rem, 4.2vw, 1.05rem);
+  font-size: clamp(0.78rem, 3.9vw, 1rem);
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 /* Each pill's own `style="transition-delay:..."` (set per-element in the
@@ -339,23 +340,21 @@ body {
 .scene.is-active .choice-pill {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.4s ease,
-    box-shadow 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-/* B-only: the second choice quietly gains the same emphasis a fixed delay
-   after the scene starts -- a held, silent judgment beat first, then the
-   meaning lands. No "correct" label and no score/正解 sound is ever used;
-   the first choice is never marked wrong. */
-.choice-pill.will-emphasize {
-  animation: pill-emphasize 0.6s ease-out forwards;
-}
-
-@keyframes pill-emphasize {
-  to {
-    border-color: var(--color-signal);
-    box-shadow: 0 0 0 3px rgba(79, 176, 165, 0.25);
-  }
+/* B-only: the "根拠を確かめる" choice quietly gains this outline once the
+   Scene Engine toggles `.is-revealed` on it (JS-driven, at its own
+   `data-reveal-at` absolute time -- see scene-engine.js). This is a CSS
+   *transition*, triggered by a dynamic class change, not a CSS *animation*
+   on a class present from page load -- an earlier revision used the
+   latter and the reveal fired before its scene was even visible (see
+   README.md "What Was Fixed"). No "correct" label and no score/正解 sound
+   is ever used; the first choice is never marked wrong. */
+.choice-pill.is-revealed {
+  border-color: var(--color-signal);
+  box-shadow: 0 0 0 3px rgba(79, 176, 165, 0.25);
 }
 
 .progress-track {
@@ -422,8 +421,5 @@ body {
   .choice-pill,
   .caution-mark {
     transition-duration: 0.01ms !important;
-  }
-  .choice-pill.will-emphasize {
-    animation-duration: 0.01ms !important;
   }
 }
