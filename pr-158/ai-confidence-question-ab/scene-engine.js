@@ -5,6 +5,27 @@
   `.is-active` at the current playhead time, drives the progress bar, and
   (optionally, muted by default) plays short, fully-synthesized tones via
   the Web Audio API -- no external audio file of any kind.
+
+  Two declarative, JS-driven class-toggle mechanisms on top of that, both
+  using the same principle (a CSS transition or animation fires because a
+  class was toggled at a specific playhead time, never a CSS
+  `animation-delay` counted from page load -- see README.md "What Was
+  Fixed" for the real bug that principle exists to prevent):
+
+  - `data-reveal-at="<seconds>"` -- element gains `.is-revealed` once the
+    playhead passes that time, and keeps it (one-directional). Used for the
+    quiz Reveal highlight, the causal-line draw-in, and the 5-beat time
+    dial's ticks. Optionally paired with `data-tone="freq,durationMs"` on
+    the same element to play a short chime the instant that one item's own
+    reveal fires (used only for the quiz's Reveal moment) -- distinct from
+    the per-scene `data-tone`/`data-sweep` above, which fire once at a
+    scene's own start.
+  - `data-hide-from="<seconds>"` + `data-hide-until="<seconds>"` -- element
+    gains `.is-hidden-now` for exactly that window, then loses it again.
+    Used for the O2 particles (vanish, then return) and the flame
+    (weakens while O2 is gone, relights once it returns) -- cause and
+    effect share one timing source instead of two separately-authored
+    animations that could drift apart.
 */
 (function () {
   "use strict";
@@ -42,6 +63,33 @@
         osc.start();
         osc.stop(audioCtx.currentTime + durationMs / 1000 + 0.02);
       },
+      // A short descending sweep -- used only for the O2-vanish moment, to
+      // give "disappearing" its own distinct, still fully self-synthesized
+      // sound (no sample, no external file). freqFrom/freqTo in Hz.
+      sweep: function (freqFrom, freqTo, durationMs) {
+        var audioCtx = ensureCtx();
+        if (!audioCtx) return;
+        var osc = audioCtx.createOscillator();
+        var gain = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freqFrom, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(
+          freqTo,
+          audioCtx.currentTime + durationMs / 1000
+        );
+        gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(
+          0.16,
+          audioCtx.currentTime + 0.04
+        );
+        gain.gain.exponentialRampToValueAtTime(
+          0.0001,
+          audioCtx.currentTime + durationMs / 1000
+        );
+        osc.connect(gain).connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + durationMs / 1000 + 0.02);
+      },
       resume: function () {
         var audioCtx = ensureCtx();
         if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
@@ -55,25 +103,36 @@
     this.scenes = Array.prototype.slice
       .call(this.stage.querySelectorAll(".scene"))
       .map(function (el) {
+        var tone = null;
+        var sweep = null;
+        if (el.dataset.tone) {
+          tone = el.dataset.tone.split(",").map(Number);
+        }
+        if (el.dataset.sweep) {
+          sweep = el.dataset.sweep.split(",").map(Number);
+        }
         return {
           el: el,
           start: parseFloat(el.dataset.start),
           end: parseFloat(el.dataset.end),
-          tone: el.dataset.tone ? el.dataset.tone.split(",").map(Number) : null,
+          tone: tone,
+          sweep: sweep,
         };
       });
-    // Elements that should quietly gain an ".is-revealed" class once the
-    // playhead passes their own `data-reveal-at` (absolute seconds from
-    // play start). This is JS-driven and uses a CSS *transition* (relative
-    // to the moment the class is toggled), not a CSS *animation* on a
-    // statically-present class -- a real bug in an earlier revision used
-    // `animation-delay`, which counts from page load, not scene playhead
-    // time, so the reveal fired before its scene was even visible. See
-    // README.md "What Was Fixed" for the full account.
     this.revealables = Array.prototype.slice
       .call(this.stage.querySelectorAll("[data-reveal-at]"))
       .map(function (el) {
-        return { el: el, at: parseFloat(el.dataset.revealAt) };
+        var tone = el.dataset.tone ? el.dataset.tone.split(",").map(Number) : null;
+        return { el: el, at: parseFloat(el.dataset.revealAt), tone: tone, played: false };
+      });
+    this.hideables = Array.prototype.slice
+      .call(this.stage.querySelectorAll("[data-hide-from]"))
+      .map(function (el) {
+        return {
+          el: el,
+          from: parseFloat(el.dataset.hideFrom),
+          until: parseFloat(el.dataset.hideUntil),
+        };
       });
     this.totalSeconds = Math.max.apply(
       null,
@@ -109,6 +168,9 @@
   ShortPlayer.prototype.restart = function () {
     if (this.rafId) cancelAnimationFrame(this.rafId);
     this.playedTones = {};
+    this.revealables.forEach(function (item) {
+      item.played = false;
+    });
     this.startedAt = performance.now();
     this.tick();
   };
@@ -121,19 +183,32 @@
       var active = t >= scene.start && t < scene.end;
       scene.el.classList.toggle("is-active", active);
       if (active) this.onScene(scene.el.dataset.id || "");
-      if (
-        active &&
-        scene.tone &&
-        !this.muted &&
-        !this.playedTones[scene.start]
-      ) {
-        this.playedTones[scene.start] = true;
-        this.tones.blip(scene.tone[0], scene.tone[1]);
+      if (active && !this.muted && !this.playedTones[scene.start]) {
+        if (scene.tone) {
+          this.playedTones[scene.start] = true;
+          this.tones.blip(scene.tone[0], scene.tone[1]);
+        } else if (scene.sweep) {
+          this.playedTones[scene.start] = true;
+          this.tones.sweep(scene.sweep[0], scene.sweep[1], scene.sweep[2]);
+        }
       }
     }, this);
 
     this.revealables.forEach(function (item) {
-      item.el.classList.toggle("is-revealed", t >= item.at);
+      var revealed = t >= item.at;
+      item.el.classList.toggle("is-revealed", revealed);
+      // Fires once, the instant this item's own reveal threshold is
+      // crossed -- e.g. the quiz's quiet Reveal chime. Same one-directional,
+      // played-once-per-item principle as the per-scene tone above, just
+      // keyed to a sub-scene threshold instead of the scene's own start.
+      if (revealed && !item.played && !this.muted && item.tone) {
+        item.played = true;
+        this.tones.blip(item.tone[0], item.tone[1]);
+      }
+    }, this);
+
+    this.hideables.forEach(function (item) {
+      item.el.classList.toggle("is-hidden-now", t >= item.from && t < item.until);
     });
 
     if (this.progressFill) {

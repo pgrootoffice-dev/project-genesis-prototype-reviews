@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>FARLENS Prototype — AI Confidence Short: A/B比較</title>
+<title>FARLENS Prototype — Oxygen Short: A/B比較</title>
 <link rel="stylesheet" href="shared.css" />
 <style>
   body { background: #0d1417; }
@@ -28,7 +28,7 @@
   }
   .question-line {
     text-align: center;
-    color: var(--color-accent);
+    color: var(--color-oxygen);
     font-weight: 700;
     font-size: 1.05rem;
     margin: 0.6rem 0 1.6rem;
@@ -67,7 +67,7 @@
     background: #17262c;
   }
   .variant a {
-    color: var(--color-signal);
+    color: var(--color-oxygen);
     font-size: 0.85rem;
   }
   .grammar-note {
@@ -82,36 +82,64 @@
   .grammar-note strong {
     color: var(--color-caption);
   }
+  .review-questions {
+    margin-top: 1.8rem;
+    padding: 1rem 1.1rem;
+    background: rgba(95, 214, 200, 0.08);
+    border: 1px solid rgba(95, 214, 200, 0.25);
+    border-radius: 14px;
+  }
+  .review-questions h3 {
+    margin: 0 0 0.6rem;
+    font-size: 0.9rem;
+    color: var(--color-caption);
+  }
+  .review-questions ol {
+    margin: 0;
+    padding-left: 1.3rem;
+    color: var(--color-caption);
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
 </style>
 </head>
 <body>
 <div class="review-wrap">
   <div class="review-header">
-    <h1>AI Confidence Short — A/B比較（各10〜15秒・FARLENS独自Visual）</h1>
-    <p>Kurzgesagt Creator Intelligence研究（<code>FRL-R-0004</code>）で観察したProduction Grammar仮説を検証するための、完成商品ではない小型Visual Testです。</p>
+    <h1>Oxygen Short — A/B比較（各15秒前後・FARLENS独自Visual）</h1>
+    <p>「もし、空気中の酸素が5秒だけ消えたら？」という一つの題材・一つの科学的事実を土台に、教育構造だけを変えたA/B比較です。完成商品ではない、Visual密度と教育構造を検証するためのPrototypeです。研究出典と採用/不採用の判断は <code>README.md</code> を参照してください。</p>
   </div>
 
-  <p class="question-line">「AIが『100％正しい』と言ったら、信じる？」</p>
+  <p class="question-line">「もし、空気中の酸素が5秒だけ消えたら？」</p>
 
   <div class="pair">
     <div class="variant">
       <h2>A — Question-led Short</h2>
       <iframe src="a.html" title="Prototype A" loading="lazy"></iframe>
-      <p class="diff">選択肢も結論も示さず、問いと余韻だけで終わる構成。「自信があることと、正しいことは同じ？」「君なら、どう確かめる？」と問いかけたまま、答えを断定せずに終わる。見た後も考えが続くことを狙う。</p>
+      <p class="diff">選択肢を出さず、街の一場面で酸素が消えて戻るまでを進行だけで見せる構成。最後は答えを示さず、「他には、何が変わると思う？」という開いた問いで終わる。</p>
       <a href="a.html">Aを単独で開く →</a>
     </div>
     <div class="variant">
       <h2>B — Quiz-led Short</h2>
       <iframe src="b.html" title="Prototype B" loading="lazy"></iframe>
-      <p class="diff">同じ導入のあと「どうする？」と問い、2つの判断候補（すぐ信じる／根拠を確かめる）を一瞬保留した状態で見せてから、意味が静かにRevealされる構成。得点演出・正解音・派手な報酬演出はなし。</p>
+      <p class="diff">同じ導入のあと「先に起きるのはどっち？」と問い、3つの科学的根拠のある選択肢を判断の間を置いて見せてから、色だけで静かにRevealされる構成。得点演出・正解音はなし。最後は短い因果関係の一文で終える。</p>
       <a href="b.html">Bを単独で開く →</a>
     </div>
   </div>
 
+  <div class="review-questions">
+    <h3>レビューの観点（この4点のみ）</h3>
+    <ol>
+      <li>問い先行（A）とクイズ先行（B）、どちらが構成として強いか</li>
+      <li>続きを見たいと思うか</li>
+      <li>親として、自分の子どもに見せたいと思うか</li>
+      <li>アニメーションとして視覚的に魅力があるか</li>
+    </ol>
+  </div>
+
   <div class="grammar-note">
-    <strong>共通点（教育構造だけを比較対象にするため統一）：</strong> 教育テーマ・冒頭のAI断定（同一台詞・同一タイミング）・尺の範囲（10〜15.5秒）・Color Set・Font・AI Object・背景・Motion品質・音の有無・基本素材はすべて共通。両方とも自動再生のみで、タップ操作は不要（ブラウザ選択分岐UIではない）。<br />
-    <strong>検証しているProduction Grammar：</strong> One Moment One Cognitive Focus / Static-first, Motion-selective / Progressive Visual Disclosure / Semantic Geometry / Emotionally Safe Complexity / Typography as Visual System — 詳細は <code>README.md</code> を参照。<br />
-    <strong>Working / non-canonical：</strong> このPrototypeの結果だけでVisual RulebookやColor Paletteが確定することはありません。
+    <strong>共通点（教育構造だけを比較対象にするため統一）：</strong> 題材・科学的事実・冒頭Opening（同一マークアップ）・尺の範囲（10〜15.5秒）・Color Set・Font・Visual Asset集合・Motion品質・音の条件はすべて共通。両方とも自動再生のみで、タップ操作は不要。<br />
+    <strong>Working / non-canonical：</strong> このPrototypeの結果だけでVisual RulebookやColor Paletteが確定することはありません。前回版（AI Confidence題材）はContent密度不足のため、この回で題材・素材量・Motionを作り直しています。詳細な研究出典・Evidence Statusは <code>README.md</code> を参照。
   </div>
 </div>
 </body>

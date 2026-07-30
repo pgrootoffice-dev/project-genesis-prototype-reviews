@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>FARLENS Prototype B — Quiz-led Short</title>
+<title>FARLENS Prototype B — Quiz-led Short (oxygen)</title>
 <link rel="stylesheet" href="shared.css" />
 </head>
 <body>
@@ -11,36 +11,250 @@
   <div class="phone-frame" id="player-root">
     <div class="stage">
 
-      <!-- Identical opening to A (same markup, same timing) -- this is the
-           shared "開始条件" both variants keep fixed. -->
-      <section class="scene" data-id="b1-declare" data-start="0" data-end="2.5" data-tone="440,120">
-        <div class="ai-core"><span class="ai-mark">AI</span></div>
-        <div class="speech-bubble">これは100％正しいです。</div>
-      </section>
-
-      <section class="scene" data-id="b2-prompt" data-start="2.5" data-end="4.5" data-tone="330,100">
-        <p class="caption">どうする？</p>
-      </section>
-
-      <!-- Choice -> 判断の間 -> Reveal, all as one continuous scene so the
-           two pills never disappear and reappear -- only their own
-           border/glow state changes, driven by data-reveal-at (JS-toggled
-           class, not a CSS animation-delay -- see scene-engine.js and
-           shared.css for why that distinction matters here). -->
-      <section class="scene" data-id="b3-choice" data-start="4.5" data-end="9.5">
-        <div class="choice-row">
-          <div class="choice-pill" style="transition-delay:.1s">すぐ信じる</div>
-          <div class="choice-pill" style="transition-delay:.6s" data-reveal-at="7.8">根拠を確かめる</div>
+      <!-- Shared Opening (byte-identical in a.html and b.html; see
+           ai-confidence-ab.behavior.test.mjs "A/B Opening parity"). The
+           scientific frame ("空気中の酸素だけ" -- not O2 bound in water,
+           rock, living things, or buildings) is shown once, briefly, small
+           -- never explained at length, per README.md "Scope of the
+           scenario". -->
+      <section class="scene" data-id="open-world" data-start="0" data-end="1.5" data-tone="440,140">
+        <div class="scene-world">
+          <div class="camera cam-push" style="--scene-duration:1.5s">
+            <div class="layer-back">
+              <div class="sky-band"></div>
+              <div class="bg-decoration">
+                <span class="dot" style="left:12%;top:18%"></span>
+                <span class="dot" style="left:34%;top:9%"></span>
+                <span class="dot" style="left:62%;top:14%"></span>
+                <span class="dot" style="left:82%;top:22%"></span>
+              </div>
+            </div>
+            <div class="layer-mid">
+              <div class="ground"></div>
+              <div class="city-skyline">
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+              </div>
+              <div class="air-layer">
+                <span class="o2-particle" style="left:8%;top:15%"></span>
+                <span class="o2-particle" style="left:28%;top:45%"></span>
+                <span class="o2-particle" style="left:48%;top:10%"></span>
+                <span class="o2-particle" style="left:68%;top:50%"></span>
+                <span class="o2-particle" style="left:86%;top:25%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-caption">
+          <p class="caption small">空気中の酸素だけ</p>
         </div>
       </section>
 
-      <section class="scene" data-id="b4-reveal-line" data-start="9.5" data-end="13" data-tone="523,180">
-        <div class="evidence-card" aria-hidden="true">
-          <svg viewBox="0 0 100 100">
-            <path class="check-path" d="M22 52 L42 72 L80 28" />
-          </svg>
+      <section class="scene" data-id="open-question" data-start="1.5" data-end="3" data-tone="330,120">
+        <div class="scene-world">
+          <div class="camera">
+            <div class="layer-back">
+              <div class="sky-band"></div>
+              <div class="bg-decoration">
+                <span class="dot" style="left:12%;top:18%"></span>
+                <span class="dot" style="left:34%;top:9%"></span>
+                <span class="dot" style="left:62%;top:14%"></span>
+                <span class="dot" style="left:82%;top:22%"></span>
+              </div>
+            </div>
+            <div class="layer-mid">
+              <div class="ground"></div>
+              <div class="city-skyline">
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+              </div>
+              <div class="air-layer">
+                <span class="o2-particle" style="left:8%;top:15%"></span>
+                <span class="o2-particle" style="left:28%;top:45%"></span>
+                <span class="o2-particle" style="left:48%;top:10%"></span>
+                <span class="o2-particle" style="left:68%;top:50%"></span>
+                <span class="o2-particle" style="left:86%;top:25%"></span>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="caption">自信と正しさは、<br />同じとは限らない。</p>
+        <div class="scene-caption">
+          <p class="caption">もし、空気中の酸素が<br />5秒だけ消えたら？</p>
+        </div>
+      </section>
+
+      <!-- From here, A and B diverge: B poses a "which happens first?"
+           question, offers grounded choices, a judgment pause with no
+           game-show gimmicks, and a quiet, color-only Reveal. -->
+
+      <section class="scene" data-id="b3-prompt" data-start="3" data-end="5" data-tone="392,110">
+        <div class="scene-world">
+          <div class="camera cam-pan" style="--scene-duration:2s">
+            <div class="layer-back">
+              <div class="sky-band"></div>
+              <div class="bg-decoration">
+                <span class="dot" style="left:12%;top:18%"></span>
+                <span class="dot" style="left:34%;top:9%"></span>
+                <span class="dot" style="left:62%;top:14%"></span>
+                <span class="dot" style="left:82%;top:22%"></span>
+              </div>
+            </div>
+            <div class="layer-mid">
+              <div class="ground"></div>
+              <div class="city-skyline">
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+              </div>
+              <div class="air-layer">
+                <span class="o2-particle" style="left:8%;top:15%"></span>
+                <span class="o2-particle" style="left:28%;top:45%"></span>
+                <span class="o2-particle" style="left:48%;top:10%"></span>
+                <span class="o2-particle" style="left:68%;top:50%"></span>
+                <span class="o2-particle" style="left:86%;top:25%"></span>
+              </div>
+            </div>
+            <div class="layer-front">
+              <div class="person-figure" style="left:12%;bottom:9%"><span class="head"></span><span class="body"></span></div>
+              <div class="animal-figure" style="left:30%;bottom:7%"><span class="body"></span><span class="ear left"></span><span class="ear right"></span></div>
+              <div class="vehicle" style="left:47%;bottom:8%"><span class="body"></span><span class="wheel left"></span><span class="wheel right"></span></div>
+              <div class="flame" style="left:72%;bottom:10%"><span class="lobe l1"></span><span class="lobe l2"></span><span class="lobe l3"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-caption">
+          <p class="caption">先に起きるのは、<br />どっち？</p>
+        </div>
+      </section>
+
+      <!-- Choice -> 判断の間 -> Reveal as one continuous scene, so the
+           3 pills never disappear and reappear -- only the correct pill's
+           own border/glow state changes (data-reveal-at, no auto-highlight
+           before it, no score sound). Each icon shows what its own
+           hypothesis would look like -- that is normal quiz-option design,
+           not a pre-Reveal leak: only the pill that turns out correct ever
+           receives `.is-revealed`, and it does so at a single, late,
+           JS-timed instant, never before. -->
+      <section class="scene" data-id="b4-choice" data-start="5" data-end="8">
+        <div class="choice-stack">
+          <div class="choice-pill">
+            <div class="choice-icon"><div class="vehicle"><span class="body"></span><span class="wheel left"></span><span class="wheel right"></span></div></div>
+            <p class="choice-label">エンジンの調子が悪くなる</p>
+          </div>
+          <div class="choice-pill" data-reveal-at="7.6" data-tone="523,200">
+            <div class="choice-icon"><div class="flame"><span class="lobe l1"></span><span class="lobe l2"></span><span class="lobe l3"></span></div></div>
+            <p class="choice-label">炎が小さくなる</p>
+          </div>
+          <div class="choice-pill">
+            <div class="choice-icon"><div class="sky-swatch is-shifted"></div></div>
+            <p class="choice-label">空の色が変わる</p>
+          </div>
+        </div>
+        <div class="scene-caption">
+          <p class="caption">よく見てから、判断しよう。</p>
+        </div>
+      </section>
+
+      <!-- The visual payoff: same event, same timing mechanism as A's
+           a4-vanish, so the two variants stay comparable in what they
+           actually show, not just in what they say. -->
+      <section class="scene" data-id="b5-vanish" data-start="8" data-end="10.5" data-sweep="880,220,900">
+        <div class="scene-world">
+          <div class="camera cam-push" style="--scene-duration:2.5s">
+            <div class="layer-back">
+              <div class="sky-band"></div>
+              <div class="bg-decoration">
+                <span class="dot" style="left:12%;top:18%"></span>
+                <span class="dot" style="left:34%;top:9%"></span>
+                <span class="dot" style="left:62%;top:14%"></span>
+                <span class="dot" style="left:82%;top:22%"></span>
+              </div>
+            </div>
+            <div class="layer-mid">
+              <div class="ground"></div>
+              <div class="city-skyline">
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+              </div>
+              <div class="air-layer">
+                <span class="o2-particle" style="left:8%;top:15%" data-hide-from="8.1" data-hide-until="10.25"></span>
+                <span class="o2-particle" style="left:28%;top:45%" data-hide-from="8.12" data-hide-until="10.28"></span>
+                <span class="o2-particle" style="left:48%;top:10%" data-hide-from="8.14" data-hide-until="10.3"></span>
+                <span class="o2-particle" style="left:68%;top:50%" data-hide-from="8.16" data-hide-until="10.33"></span>
+                <span class="o2-particle" style="left:86%;top:25%" data-hide-from="8.18" data-hide-until="10.36"></span>
+              </div>
+              <div class="time-dial" style="top:24%;right:6%">
+                <span class="dial-tick" style="transform:rotate(-36deg)" data-reveal-at="8.2"></span>
+                <span class="dial-tick" style="transform:rotate(-18deg)" data-reveal-at="8.75"></span>
+                <span class="dial-tick" style="transform:rotate(0deg)" data-reveal-at="9.3"></span>
+                <span class="dial-tick" style="transform:rotate(18deg)" data-reveal-at="9.85"></span>
+                <span class="dial-tick" style="transform:rotate(36deg)" data-reveal-at="10.35"></span>
+              </div>
+            </div>
+            <div class="layer-front">
+              <div class="person-figure" style="left:12%;bottom:9%"><span class="head"></span><span class="body"></span></div>
+              <div class="animal-figure" style="left:30%;bottom:7%"><span class="body"></span><span class="ear left"></span><span class="ear right"></span></div>
+              <div class="vehicle" style="left:47%;bottom:8%" data-reveal-at="8.3"><span class="body"></span><span class="wheel left"></span><span class="wheel right"></span></div>
+              <div class="flame" style="left:72%;bottom:10%" data-hide-from="8.3" data-hide-until="10.4"><span class="lobe l1"></span><span class="lobe l2"></span><span class="lobe l3"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="scene-caption">
+          <p class="caption">炎が、小さくなった。</p>
+        </div>
+      </section>
+
+      <!-- 終わりは「答えはXでした」だけで終わらせず、短い因果関係の一文で
+           終える。得点演出・正解音・派手な報酬演出はなし。 -->
+      <section class="scene" data-id="b6-insight" data-start="10.5" data-end="14.5">
+        <div class="scene-world">
+          <div class="camera cam-pull" style="--scene-duration:4s">
+            <div class="layer-back">
+              <div class="sky-band"></div>
+              <div class="bg-decoration">
+                <span class="dot" style="left:12%;top:18%"></span>
+                <span class="dot" style="left:34%;top:9%"></span>
+                <span class="dot" style="left:62%;top:14%"></span>
+                <span class="dot" style="left:82%;top:22%"></span>
+              </div>
+            </div>
+            <div class="layer-mid">
+              <div class="ground"></div>
+              <div class="city-skyline">
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+              </div>
+              <div class="air-layer">
+                <span class="o2-particle" style="left:8%;top:15%"></span>
+                <span class="o2-particle" style="left:28%;top:45%"></span>
+                <span class="o2-particle" style="left:48%;top:10%"></span>
+                <span class="o2-particle" style="left:68%;top:50%"></span>
+                <span class="o2-particle" style="left:86%;top:25%"></span>
+              </div>
+            </div>
+            <div class="layer-front">
+              <div class="person-figure" style="left:12%;bottom:9%"><span class="head"></span><span class="body"></span></div>
+              <div class="animal-figure" style="left:30%;bottom:7%"><span class="body"></span><span class="ear left"></span><span class="ear right"></span></div>
+              <div class="vehicle" style="left:47%;bottom:8%"><span class="body"></span><span class="wheel left"></span><span class="wheel right"></span></div>
+              <div class="flame" style="left:72%;bottom:10%"><span class="lobe l1"></span><span class="lobe l2"></span><span class="lobe l3"></span></div>
+              <svg class="causal-line" data-reveal-at="11.2" data-tone="523,180" viewBox="0 0 100 100" aria-hidden="true">
+                <path d="M50 22 Q 62 55 76 82" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="scene-caption">
+          <p class="caption">火が消えたのは、<br />酸素が届かなかったから。</p>
+        </div>
       </section>
 
     </div>
@@ -51,7 +265,7 @@
     <button class="control-btn" data-action="play">▶ 再生する</button>
     <button class="control-btn secondary" data-action="mute">🔇 音: オフ</button>
   </div>
-  <p class="label-row">B — Quiz-led Short（問い・選択・間・Reveal・約13秒・得点演出なし）</p>
+  <p class="label-row">B — Quiz-led Short（問い・3択・判断の間・静かなReveal・約14.5秒）</p>
 </div>
 
 <script src="scene-engine.js"></script>
