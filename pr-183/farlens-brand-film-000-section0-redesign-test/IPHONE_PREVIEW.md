@@ -8,7 +8,7 @@ Device:
 iPhone Safari
 
 Review URL:
-`https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-<PR_NUMBER>/farlens-brand-film-000-section0-redesign-test/`
+`https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-183/farlens-brand-film-000-section0-redesign-test/`
 
 Review Steps:
 1. Direction A / B / Cを上から順に見る。
