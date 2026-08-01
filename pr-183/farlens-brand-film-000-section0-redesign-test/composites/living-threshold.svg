@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+<metadata>FARLENS Section 0 zero-base study; living-threshold; composed only from editable vector layers; no external image inputs</metadata>
+<metadata>living-threshold; 01-background.svg; editable vector layer; no external image input</metadata>
+<rect width="1080" height="1920" fill="#F0E8DC"/>
+<path d="M0 0H1080V1920H0Z" fill="#C9B8A0" opacity=".08"/>
+<path d="M0 1540L279 1466L552 1532L813 1452L1080 1517V1920H0Z" fill="#DED5C8"/>
+<metadata>living-threshold; 04-atmosphere.svg; editable vector layer; no external image input</metadata>
+<path d="M122 570L274 481L411 496" fill="none" stroke="#8B755F" stroke-width="3" opacity=".2"/>
+<path d="M685 474L828 500L954 598" fill="none" stroke="#5F756D" stroke-width="3" opacity=".2"/>
+<path d="M104 1442L313 1396M768 1412L967 1465" stroke="#7C6B60" stroke-width="3" opacity=".18"/>
+<metadata>living-threshold; 03-supporting-elements.svg; editable vector layer; no external image input</metadata>
+<path d="M176 986L253 828L347 750L317 1033Z" fill="#819183" opacity=".68"/>
+<path d="M723 768L829 839L909 997L764 1011Z" fill="#8C7771" opacity=".6"/>
+<path d="M237 1261L288 1132L443 1308L350 1382Z" fill="#BE9B73" opacity=".52"/>
+<path d="M647 1307L794 1124L853 1267L742 1394Z" fill="#768681" opacity=".48"/>
+<path d="M347 750L400 561L474 604Z" fill="#A8A07E" opacity=".62"/>
+<path d="M608 605L666 544L723 768Z" fill="#B69A7E" opacity=".56"/>
+<metadata>living-threshold; 02-main-subject.svg; editable vector layer; no external image input</metadata>
+<path d="M288 1132L347 750L474 604L531 754L487 1174Z" fill="#556C66"/>
+<path d="M487 1174L531 754L608 605L723 768L794 1124Z" fill="#30484D"/>
+<path d="M531 754L608 605L657 762L604 1173L487 1174Z" fill="#B86755"/>
+<path d="M487 1174L604 1173L647 1307L443 1308Z" fill="#AD8D63"/>
+<metadata>living-threshold; 05-typography.svg; editable vector layer; no external image input</metadata>
+<g id="typography" opacity="0"><text x="540" y="1670" text-anchor="middle">Reserved: optional FARLENS wordmark, not used in this study</text></g>
+<metadata>living-threshold; 06-transition-candidate.svg; editable vector layer; no external image input</metadata>
+<path d="M531 754L608 605" stroke="#F0C88F" stroke-width="9"/>
+<path d="M531 754L604 1173" stroke="#F0C88F" stroke-width="9"/>
+<path d="M604 1173L647 1307" stroke="#F0C88F" stroke-width="7" opacity=".72"/>
+</svg>

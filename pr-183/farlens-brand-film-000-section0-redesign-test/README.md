@@ -1,13 +1,12 @@
-# FARLENS Brand Film #000 — Section 0 Redesign Test
+# FARLENS Brand Film #000 — Section 0 Zero-base Taste Test
 
 Status: WORKING TASTE TEST — NON-CANONICAL
 
-Section 0 only. Six 9:16 studies: A1/A2, B1/B2, C1/C2. Section 1/2, Motion, and the 55-second film are intentionally excluded.
+Section 0 only. The previous six directions, Section 0→1 connection work, Motion, Section 1/2, and the 55-second film are stopped. The review surface contains three new 9:16 studies only.
 
-- `composites/`: six 1080 × 1920 PNG masters and SVG counterparts.
-- `source/variants/`: editable deterministic SVG sources.
-- `source/shared/atmosphere/`: built-in ImageGen background plates and lightweight derivatives.
-- `previews/`: iPhone list JPEGs and contact sheet.
-- `index.html`: iPhone-first comparison page; JPEG list, full PNG on tap.
+- `source/directions/`: six editable SVG layers per direction (Background, Main subject, Supporting elements, Atmosphere, Typography, Transition candidate).
+- `composites/`: three 1080 × 1920 PNG masters and reproducible SVG composites.
+- `previews/`: lightweight iPhone JPEGs and a three-up contact sheet.
+- `index.html`: iPhone-first comparison page with full-resolution tap enlargement.
 
-Run `node record-render.mjs` for the complete reproducible path: it rebuilds SVGs, renders six 1080 × 1920 PNGs through Chrome/Chromium, refreshes JPEGs and the contact sheet, records hashes for every direct input/output, and clears its temporary browser profile. `node verify.mjs` is read-only and refuses stale render lineage.
+No ImageGen, external image, reference image, old logo asset, or raster input is used. `node record-render.mjs` composes the existing editable SVG layers without regenerating them, renders masters, refreshes previews, and records the complete lineage. `node verify.mjs` is read-only and rejects stale lineage, embedded images, old direction names, and old-logo references. `node build.mjs --initialize` is an explicit destructive reset to the initial vector study and is not part of the normal render workflow.

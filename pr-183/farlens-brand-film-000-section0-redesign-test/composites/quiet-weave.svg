@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+<metadata>FARLENS Section 0 zero-base study; quiet-weave; composed only from editable vector layers; no external image inputs</metadata>
+<metadata>quiet-weave; 01-background.svg; editable vector layer; no external image input</metadata>
+<rect width="1080" height="1920" fill="#F2EADF"/>
+<path d="M0 0H1080V560C846 490 668 533 476 604C287 674 142 683 0 627Z" fill="#E7DDD0" opacity=".62"/>
+<path d="M0 1458C256 1386 415 1437 593 1506C773 1576 927 1582 1080 1522V1920H0Z" fill="#E9DFD2" opacity=".72"/>
+<metadata>quiet-weave; 04-atmosphere.svg; editable vector layer; no external image input</metadata>
+<path d="M111 452L366 527" stroke="#8A6B60" stroke-width="3" opacity=".22"/>
+<path d="M712 1368L966 1450" stroke="#51676B" stroke-width="3" opacity=".2"/>
+<path d="M152 1323L340 1266" stroke="#9E835F" stroke-width="2" opacity=".2"/>
+<metadata>quiet-weave; 03-supporting-elements.svg; editable vector layer; no external image input</metadata>
+<path d="M86 662L278 582L345 625L154 716Z" fill="#B9A487" opacity=".7"/>
+<path d="M752 1124L930 1026L982 1062L802 1170Z" fill="#8C746F" opacity=".55"/>
+<path d="M132 1160L278 1088L335 1126L188 1205Z" fill="#87968B" opacity=".48"/>
+<path d="M779 548L931 608L902 653L740 590Z" fill="#B7A789" opacity=".48"/>
+<metadata>quiet-weave; 02-main-subject.svg; editable vector layer; no external image input</metadata>
+<path d="M214 828L456 676L534 726L342 877L514 993L432 1048L205 900Z" fill="#C26F57"/>
+<path d="M866 730L633 684L547 747L751 803L568 958L659 1000L876 814Z" fill="#647C73"/>
+<path d="M342 877L514 993L568 958L751 803L633 774L533 858L456 807Z" fill="#263F4A"/>
+<path d="M514 993L432 1048L517 1103L659 1000L568 958Z" fill="#A99068"/>
+<metadata>quiet-weave; 05-typography.svg; editable vector layer; no external image input</metadata>
+<g id="typography" opacity="0"><text x="540" y="1670" text-anchor="middle">Reserved: optional FARLENS wordmark, not used in this study</text></g>
+<metadata>quiet-weave; 06-transition-candidate.svg; editable vector layer; no external image input</metadata>
+<path d="M533 858L547 747" stroke="#EAC994" stroke-width="10" stroke-linecap="square"/>
+<path d="M533 858L568 958" stroke="#EAC994" stroke-width="10" stroke-linecap="square"/>
+<path d="M533 858L456 807" stroke="#EAC994" stroke-width="10" stroke-linecap="square"/>
+</svg>

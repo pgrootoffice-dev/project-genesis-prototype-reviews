@@ -1,25 +1,25 @@
 {
-  "bundle_id": "farlens-brand-film-000-section0-redesign-test",
-  "title": "FARLENS Brand Film #000 Section 0 Redesign Test",
-  "source_task": "Section 0 only; six logo-emergence studies across three directions",
+  "bundle_id": "farlens-brand-film-000-section0-zero-base-test",
+  "title": "FARLENS Brand Film #000 Section 0 Zero-base Taste Test",
+  "source_task": "Section 0 only; three zero-base viewpoint-emergence studies without logo inputs",
   "rubric_ref": "docs/os/ARTIFACT_REVIEW_LOOP.md#rubric-working-strategy",
   "artifacts": [
     {
-      "id": "section0-six-frame-contact-sheet",
+      "id": "section0-zero-base-contact-sheet",
       "type": "image",
       "path": "prototypes/farlens-brand-film-000-section0-redesign-test/previews/contact-sheet.jpg",
-      "title": "Six Section 0 redesign studies",
-      "description": "A1/A2, B1/B2, C1/C2; white-card removal and viewpoint emergence comparison.",
+      "title": "Three zero-base Section 0 directions",
+      "description": "Quiet Weave, Mutual Ground, Living Threshold; no logo or reference-image inputs.",
       "context_links": ["docs/farlens/brand-film/BRAND_FILM_000_SECTION0_REDESIGN_COMPARISON.md"]
     },
     {
-      "id": "section0-iphone-comparison",
+      "id": "section0-zero-base-iphone-comparison",
       "type": "interactive",
       "path": "prototypes/farlens-brand-film-000-section0-redesign-test",
       "entry": "index.html",
-      "title": "Section 0 iPhone comparison",
-      "description": "Three directions, two variants each, with full-resolution tap enlargement.",
-      "interaction_steps": [{"action":"click","target_text":"A1 Aperture Assemblyを拡大"}],
+      "title": "Zero-base Section 0 iPhone comparison",
+      "description": "Three new directions only, with lightweight list images and full-resolution tap enlargement.",
+      "interaction_steps": [{"action":"click","target_text":"Quiet Weaveを拡大"}],
       "context_links": ["prototypes/farlens-brand-film-000-section0-redesign-test/IPHONE_PREVIEW.md"]
     }
   ]

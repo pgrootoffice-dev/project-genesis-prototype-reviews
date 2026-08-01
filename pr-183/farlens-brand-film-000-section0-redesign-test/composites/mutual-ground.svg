@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+<metadata>FARLENS Section 0 zero-base study; mutual-ground; composed only from editable vector layers; no external image inputs</metadata>
+<metadata>mutual-ground; 01-background.svg; editable vector layer; no external image input</metadata>
+<rect width="1080" height="1920" fill="#EFE6D9"/>
+<path d="M0 314L392 130L1080 362V0H0Z" fill="#E5D8C8" opacity=".72"/>
+<path d="M0 1612L380 1746L1080 1540V1920H0Z" fill="#E1D7CA" opacity=".65"/>
+<metadata>mutual-ground; 04-atmosphere.svg; editable vector layer; no external image input</metadata>
+<path d="M94 491L393 375L550 425L706 372L987 467" fill="none" stroke="#9E8271" stroke-width="3" opacity=".2"/>
+<path d="M136 1414L381 1510L550 1466L733 1514L951 1427" fill="none" stroke="#62736F" stroke-width="3" opacity=".18"/>
+<metadata>mutual-ground; 03-supporting-elements.svg; editable vector layer; no external image input</metadata>
+<path d="M169 724L302 616L431 686L344 790Z" fill="#B77A66" opacity=".62"/>
+<path d="M840 612L941 685L824 785L724 742Z" fill="#84927C" opacity=".66"/>
+<path d="M195 1242L318 1157L418 1219L287 1309Z" fill="#C39A75" opacity=".54"/>
+<path d="M778 1117L903 1193L817 1269L688 1194Z" fill="#7C8580" opacity=".48"/>
+<metadata>mutual-ground; 02-main-subject.svg; editable vector layer; no external image input</metadata>
+<path d="M91 1004L344 790L505 867L505 1040L318 1157Z" fill="#895C5A"/>
+<path d="M989 906L724 742L575 844L575 1023L778 1117Z" fill="#667B69"/>
+<path d="M505 867L575 844L676 931L575 1023L505 1040L410 952Z" fill="#293D46"/>
+<path d="M505 867L575 844V1023L505 1040Z" fill="#D6A96D"/>
+<metadata>mutual-ground; 05-typography.svg; editable vector layer; no external image input</metadata>
+<g id="typography" opacity="0"><text x="540" y="1670" text-anchor="middle">Reserved: optional FARLENS wordmark, not used in this study</text></g>
+<metadata>mutual-ground; 06-transition-candidate.svg; editable vector layer; no external image input</metadata>
+<path d="M540 728V844" stroke="#B18B67" stroke-width="7" opacity=".7"/>
+<path d="M540 1041V1202" stroke="#B18B67" stroke-width="7" opacity=".7"/>
+<path d="M540 1202L468 1290M540 1202L612 1290" stroke="#B18B67" stroke-width="5" opacity=".48"/>
+</svg>

@@ -5,21 +5,23 @@ GitHub Pages is the only official Founder review route.
 ## Prototype Review
 
 Device:
-iPhone Safari
+iPhone Safari (390 × 844 reference)
 
 Review URL:
 `https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-183/farlens-brand-film-000-section0-redesign-test/`
 
 Review Steps:
-1. Direction A / B / Cを上から順に見る。
-2. 各方向の1案目と2案目を比較する。
-3. 気になる案をタップし、1080 × 1920で確認する。
+1. New three directions onlyを上から順に確認する。
+2. 画面をタップし、1080 × 1920のマスターを拡大する。
+3. Quiet Weave / Mutual Ground / Living Thresholdの「関係が生まれる仕組み」を比較する。
 
 Review Points:
-- 白い四角や貼り付け感が消えたか。
-- 周囲の構造からFARLENSの視点が自然に立ち上がるか。
-- iPhoneでロゴ核が一目で強いか。
-- Section 1「世界の変化」へ続く流れが見えるか。
+- 既存ロゴの派生に見えないか。
+- 関係が自然発生する瞬間として成立するか。
+- iPhoneで一画面の主役が明確か。
+- Section 1へ分解・展開できるか。
 
 Expected Feeling:
-「ロゴを見せられたのではなく、FARLENSという視点が生まれた」。
+「完成ロゴを見せられたのではなく、世界からFARLENSの視点が生まれた」。
+
+390 × 844付近で横溢れなし。旧6案は本線から外し、Git履歴とProduction Logにのみ保持する。
