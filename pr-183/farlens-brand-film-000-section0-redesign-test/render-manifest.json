@@ -1,0 +1,54 @@
+{
+  "contract": "Build inputs, editable SVGs, masters, previews, and contact sheet are bound by this self-rendering command.",
+  "inputs": {
+    "build.mjs": "fce43bd396b7b1e128384d47b20c4fe49d3679bae33483ea69efe4b08a15a1ab",
+    "record-render.mjs": "822bf9359b221de3ba67dd2352acdd0c4c63a0d1df420fb0e1ad176ecccf8cbb",
+    "render-frame.html": "f77cf03ed14933cd976ea3ee32a49813353c06870f2cec70ae1591de07f6602d",
+    "source/shared/farlens-logo-ceo-original.jpg": "dee9fd460a3f442cc4af5a6f6daa881e8d536ef5816a99c17edd9b8b3cd9e438",
+    "source/shared/atmosphere/direction-a-observation-birth.png": "c1a58e487c3aec2f12bad57ba35f0cc49516bc1cd85624924fcf81d9419046af",
+    "source/shared/atmosphere/direction-a-observation-birth-light.jpg": "b2b33e9a6f36cb282ab6d4ab73d12c032da0e9860cabb5d71aeaa5fb87c401ad",
+    "source/shared/atmosphere/direction-b-shared-horizon.png": "1ce8a61db4c5a99c89c194dbbbcbb1fadf3804905704431ddb2d282a5f6e0358",
+    "source/shared/atmosphere/direction-b-shared-horizon-light.jpg": "cc7821dd1adb84bfa2a6e19a4a37576a976ae3220c2b7bb7b8534f5bfc087aba",
+    "source/shared/atmosphere/direction-c-converging-current.png": "911a415f733cf17ea46584365643382056a957c4c78bbc3c2d2d19cce029b777",
+    "source/shared/atmosphere/direction-c-converging-current-light.jpg": "3a5c0e9a909876f4ea100af95071cc2756cf7261f4030958487e8d309b9ddeb4"
+  },
+  "renders": {
+    "a1-aperture-assembly": {
+      "source_svg_sha256": "cecc43bdfecc68af0628986ca32a8e40847d031ff39216d860d33a8cc46d0325",
+      "composite_svg_sha256": "cecc43bdfecc68af0628986ca32a8e40847d031ff39216d860d33a8cc46d0325",
+      "png_sha256": "78d2b9da992d81cb9b462c456ee390a1655b0187206c83f35faa9979a2d108b8",
+      "preview_sha256": "5a968042871ae5c99108ebc22a5707ba3f7951541e705a76c04d1261f6f4a9b1"
+    },
+    "a2-field-alignment": {
+      "source_svg_sha256": "f6bd6020343beb1dfc4cd5ce54efcb175312f573d072626f3cf6dc3d91f607db",
+      "composite_svg_sha256": "f6bd6020343beb1dfc4cd5ce54efcb175312f573d072626f3cf6dc3d91f607db",
+      "png_sha256": "d7cde5d63f1335cca37188b650814b8704cb66398dd780c423f52b63b4bc0663",
+      "preview_sha256": "f0fed357b75603f4f5fd4392f13109668021050d1b3c65e6c65b851104b1d956"
+    },
+    "b1-shared-horizon": {
+      "source_svg_sha256": "f9f6cc4b50dd93e30d7a6bffb4f0713c4ecd99f50014682ee3220aa2b6af46c4",
+      "composite_svg_sha256": "f9f6cc4b50dd93e30d7a6bffb4f0713c4ecd99f50014682ee3220aa2b6af46c4",
+      "png_sha256": "7fb47f22ce0073ef48a9bf3164430343a645e1de2d7fd03d6e8366a1bc4a418e",
+      "preview_sha256": "8f6ff9d1f98f0d3d72f274fc03d0de89b0d79a20652fda3c21d567ef858a74e2"
+    },
+    "b2-two-viewpoints": {
+      "source_svg_sha256": "25ee678c8d00646ab9fc7666e9052bfcc0098a0fd2bd222205b959cb4b9c0384",
+      "composite_svg_sha256": "25ee678c8d00646ab9fc7666e9052bfcc0098a0fd2bd222205b959cb4b9c0384",
+      "png_sha256": "9876ecc896e73a3772cff433615bb936492694217ca1e76f2802cce32ed9e147",
+      "preview_sha256": "e47a96c7464a5609250f9aa46292ba5999746f5e249c5440eec5b93256b18130"
+    },
+    "c1-current-knot": {
+      "source_svg_sha256": "9de80d9c9eefaf663076d92ca10c5f7807cbf88b0859ba1d241c7ab95dfeb6ea",
+      "composite_svg_sha256": "9de80d9c9eefaf663076d92ca10c5f7807cbf88b0859ba1d241c7ab95dfeb6ea",
+      "png_sha256": "83ec467c75c79a80a8f00be0f57e527b8f91fe89061017be3af57a20d7c3a79e",
+      "preview_sha256": "7cdc5d756995f3af4b5be8fe706298d6fea89e91a72b9e6a560601c2a67d1a91"
+    },
+    "c2-folded-orbit": {
+      "source_svg_sha256": "385105dbce675ea3c65ef56514ba4123a43e5f29ac799602fa527f3c36965653",
+      "composite_svg_sha256": "385105dbce675ea3c65ef56514ba4123a43e5f29ac799602fa527f3c36965653",
+      "png_sha256": "331f7c94785ad8afe46f68727f30cfe7cc8960be2709c8bab7a1cd8954e7f4a1",
+      "preview_sha256": "e8fba57c94805c9262303f05f48381e46c90f05c553e5c8c4b7d25b3dc2805c0"
+    }
+  },
+  "contact_sheet_sha256": "912ec2d43b8ae6fc618e3dbf63a7183421f63beacec20c4fc8b555d6952e2389"
+}

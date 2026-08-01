@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "a1-aperture-assembly",
+    "name": "A1 Aperture Assembly",
+    "direction": "A — Intelligent Clarity"
+  },
+  {
+    "slug": "a2-field-alignment",
+    "name": "A2 Field Alignment",
+    "direction": "A — Intelligent Clarity"
+  },
+  {
+    "slug": "b1-shared-horizon",
+    "name": "B1 Shared Horizon",
+    "direction": "B — Family Future"
+  },
+  {
+    "slug": "b2-two-viewpoints",
+    "name": "B2 Two Viewpoints",
+    "direction": "B — Family Future"
+  },
+  {
+    "slug": "c1-current-knot",
+    "name": "C1 Current Knot",
+    "direction": "C — World in Motion"
+  },
+  {
+    "slug": "c2-folded-orbit",
+    "name": "C2 Folded Orbit",
+    "direction": "C — World in Motion"
+  }
+]
