@@ -4,7 +4,7 @@
   "artifact_id": "farlens-brand-film-000-motion-seed",
   "title": "FARLENS Brand Film #000 — Motion Seed Test",
   "pr_number": 184,
-  "commit_sha": "1d70c2134f273d4377d1e6e6293c920895b0bd3b",
+  "commit_sha": "349e7c94dc8ad487a98b13546efaf1e1f025a034",
   "source_files": [
     "assets/source/final-working-lock.jpg",
     "assets/source/section-0-working-lock.jpg",
@@ -30,7 +30,7 @@
   "manifest_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-manifest.json",
   "public_access_verification_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-public-access-verification.json",
   "checksum": "6b3710a7d7288084a42542cbaed8b6bb3e38d8b1e2df61ca3408345e55b54c48",
-  "generated_at": "2026-08-02T19:25:52+00:00",
+  "generated_at": "2026-08-02T22:19:04+00:00",
   "canonical_status": "working_non_canonical",
   "merge_status": "draft_unmerged",
   "known_issues": [
