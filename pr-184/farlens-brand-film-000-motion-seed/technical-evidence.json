@@ -1,0 +1,113 @@
+{
+  "status": "PASS",
+  "source_lock": {
+    "method": "locked JPEG decoded as the full-frame base; deterministic additive highlights are used in all scenes; Final also applies a temporary source-luminance-selected attenuation only to the existing wordmark and point, with the locked source appearance fully restored before the final 2-second hold",
+    "source_hashes": {
+      "final-working-lock.jpg": "20c73ec3e051857cc5c07c60e45d29ce54108e3fff54703da4364752e60c48bf",
+      "section-0-working-lock.jpg": "42d60f652b8a2b24cd348a12862f7a18c15cca0fd565e8a29c88e5d16d16a1dc",
+      "section-4-working-lock.jpg": "1bbd7f646b98b8f96df5d2d9cca1e608c9a8c7c7af302b6adb6cf77ac207a702"
+    },
+    "generative_services": [],
+    "external_uploads": [],
+    "source_resolution": "720x1280 (9:16)"
+  },
+  "technical_checks": [
+    {
+      "path": "output/master/section-0-motion-test.mp4",
+      "sha256": "b71bee84e39db5f843c9dfee75915687d63acbdb55eccee4f4dd4deae600a9e0",
+      "duration": 5.4,
+      "video_streams": 1,
+      "audio_streams": 0,
+      "codec": "h264",
+      "width": 720,
+      "height": 1280,
+      "fps": "30/1",
+      "pixel_format": "yuv420p"
+    },
+    {
+      "path": "output/master/section-4-motion-test.mp4",
+      "sha256": "5706e61d0d3be50b35f722c9ef1d9f27bdfb81991853d1b3d407e112f81ac474",
+      "duration": 5.6,
+      "video_streams": 1,
+      "audio_streams": 0,
+      "codec": "h264",
+      "width": 720,
+      "height": 1280,
+      "fps": "30/1",
+      "pixel_format": "yuv420p"
+    },
+    {
+      "path": "output/master/final-motion-test.mp4",
+      "sha256": "3179f19d8ba4b97080bce988232e34d96eae355771720ab32f7500662eb2b528",
+      "duration": 5.4,
+      "video_streams": 1,
+      "audio_streams": 0,
+      "codec": "h264",
+      "width": 720,
+      "height": 1280,
+      "fps": "30/1",
+      "pixel_format": "yuv420p"
+    },
+    {
+      "path": "output/master/motion-seed-sequence.mp4",
+      "sha256": "bdc4769b5b7e36c133544ccd79ebcead78888a7a6f0dee7b2b705b336e3bc144",
+      "duration": 16.4,
+      "video_streams": 1,
+      "audio_streams": 0,
+      "codec": "h264",
+      "width": 720,
+      "height": 1280,
+      "fps": "30/1",
+      "pixel_format": "yuv420p"
+    },
+    {
+      "path": "output/iphone/section-0-motion-test-iphone.mp4",
+      "sha256": "92033f5182daa93888955c3ec4af493c30e05f2bec4a21df2855804c5e3cbbe3",
+      "duration": 5.4,
+      "video_streams": 1,
+      "audio_streams": 0,
+      "codec": "h264",
+      "width": 540,
+      "height": 960,
+      "fps": "30/1",
+      "pixel_format": "yuv420p"
+    },
+    {
+      "path": "output/iphone/section-4-motion-test-iphone.mp4",
+      "sha256": "be2309f13efea423cd3fe2eec7d82a195654c9b5640c66c6ee4bab74f4f0b1aa",
+      "duration": 5.6,
+      "video_streams": 1,
+      "audio_streams": 0,
+      "codec": "h264",
+      "width": 540,
+      "height": 960,
+      "fps": "30/1",
+      "pixel_format": "yuv420p"
+    },
+    {
+      "path": "output/iphone/final-motion-test-iphone.mp4",
+      "sha256": "352f83a5a1249839e927e02a9bc8b9ae10c577193df69c14915f9a5a9db36d15",
+      "duration": 5.4,
+      "video_streams": 1,
+      "audio_streams": 0,
+      "codec": "h264",
+      "width": 540,
+      "height": 960,
+      "fps": "30/1",
+      "pixel_format": "yuv420p"
+    },
+    {
+      "path": "output/iphone/motion-seed-sequence-iphone.mp4",
+      "sha256": "6b3710a7d7288084a42542cbaed8b6bb3e38d8b1e2df61ca3408345e55b54c48",
+      "duration": 16.4,
+      "video_streams": 1,
+      "audio_streams": 0,
+      "codec": "h264",
+      "width": 540,
+      "height": 960,
+      "fps": "30/1",
+      "pixel_format": "yuv420p"
+    }
+  ],
+  "failures": []
+}

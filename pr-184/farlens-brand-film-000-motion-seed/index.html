@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#020d2a">
+  <title>FARLENS Brand Film #000｜Motion Seed Test</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">FARLENS BRAND FILM #000</p>
+      <h1>Motion Seed Test</h1>
+      <p class="intro">Working Lock静止画3枚に、意味を補助する最小限の2D Motionだけを加えた比較です。無音で確認してください。</p>
+    </header>
+
+    <section class="sequence" aria-labelledby="sequence-title">
+      <div class="section-heading">
+        <h2 id="sequence-title">3本連続</h2>
+        <span>16.4秒・無音</span>
+      </div>
+      <video controls playsinline preload="metadata" poster="assets/posters/final-motion-test.jpg">
+        <source src="output/iphone/motion-seed-sequence-iphone.mp4" media="(max-width: 700px)" type="video/mp4">
+        <source src="output/master/motion-seed-sequence.mp4" type="video/mp4">
+      </video>
+    </section>
+
+    <section class="grid" aria-label="個別Motionテスト">
+      <article>
+        <div class="section-heading"><h2>Section 0</h2><span>Brand Entrance・5.4秒</span></div>
+        <video controls playsinline preload="metadata" poster="assets/posters/section-0-motion-test.jpg">
+          <source src="output/iphone/section-0-motion-test-iphone.mp4" media="(max-width: 700px)" type="video/mp4">
+          <source src="output/master/section-0-motion-test.mp4" type="video/mp4">
+        </video>
+        <p>光点 → 既存線上の弱い追光 → 窓の温度 → 1.2%ズーム → 停止。</p>
+      </article>
+      <article>
+        <div class="section-heading"><h2>Section 4</h2><span>Research・5.6秒</span></div>
+        <video controls playsinline preload="metadata" poster="assets/posters/section-4-motion-test.jpg">
+          <source src="output/iphone/section-4-motion-test-iphone.mp4" media="(max-width: 700px)" type="video/mp4">
+          <source src="output/master/section-4-motion-test.mp4" type="video/mp4">
+        </video>
+        <p>5本を時差で追う → 確認点 → 中央核の一度だけの整理光 → 停止。</p>
+      </article>
+      <article>
+        <div class="section-heading"><h2>Final</h2><span>Brand Lock・5.4秒</span></div>
+        <video controls playsinline preload="metadata" poster="assets/posters/final-motion-test.jpg">
+          <source src="output/iphone/final-motion-test-iphone.mp4" media="(max-width: 700px)" type="video/mp4">
+          <source src="output/master/final-motion-test.mp4" type="video/mp4">
+        </video>
+        <p>残響の停止 → 元画像内文字の静かな露出復帰 → 最後2秒以上を完全停止。</p>
+      </article>
+    </section>
+
+    <section class="review">
+      <h2>確認ポイント</h2>
+      <ol>
+        <li>静止画の魅力と静けさが残っているか</li>
+        <li>3本のMotionの役割が明確に違うか</li>
+        <li>Section 0は入口、Section 4は整理、Finalは余韻として読めるか</li>
+        <li>iPhoneでFARLENSが自然に読めるか</li>
+      </ol>
+      <p class="note">このページはMotion判断用のWorking artifactです。Visual / Motion GrammarをCanonical化しません。</p>
+    </section>
+  </main>
+</body>
+</html>

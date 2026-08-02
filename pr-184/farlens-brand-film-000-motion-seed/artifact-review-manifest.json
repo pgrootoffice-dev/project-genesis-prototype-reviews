@@ -1,0 +1,56 @@
+{
+  "bundle_id": "farlens-brand-film-000-motion-seed",
+  "title": "FARLENS Brand Film #000 Motion Seed Test",
+  "source_task": "Working Lock静止画3枚によるSection 0 / Section 4 / Finalの軽量Motion検証",
+  "rubric_ref": "docs/os/ARTIFACT_REVIEW_LOOP.md#rubric",
+  "artifacts": [
+    {
+      "id": "section-0-motion",
+      "type": "video",
+      "path": "prototypes/farlens-brand-film-000-motion-seed/output/master/section-0-motion-test.mp4",
+      "title": "Section 0 — Brand Entrance",
+      "description": "接続の誕生を弱い光、既存線上の追光、窓の温度、1.2%ズームで検証",
+      "context_links": ["docs/farlens/brand-film/BRAND_FILM_000_VISUAL_CONTINUITY_MAP.md"],
+      "review_kind": "content_prototype",
+      "historical_fixture": false,
+      "youtube_premised": true,
+      "medium": "youtube_video",
+      "reward_structure": false,
+      "retired_reference": false,
+      "ceo_review_dimensions": ["taste", "brand_expression", "parent_trust"],
+      "ceo_prompt": "最初の5秒として静かなまま惹かれるか"
+    },
+    {
+      "id": "section-4-motion",
+      "type": "video",
+      "path": "prototypes/farlens-brand-film-000-motion-seed/output/master/section-4-motion-test.mp4",
+      "title": "Section 4 — Research",
+      "description": "集める・確かめる・読み解くを時差Flowと一度だけの整理光で検証",
+      "context_links": ["docs/farlens/brand-film/BRAND_FILM_000_VISUAL_CONTINUITY_MAP.md"],
+      "review_kind": "content_prototype",
+      "historical_fixture": false,
+      "youtube_premised": true,
+      "medium": "youtube_video",
+      "reward_structure": false,
+      "retired_reference": false,
+      "ceo_review_dimensions": ["taste", "brand_expression", "parent_trust"],
+      "ceo_prompt": "静かな知性を保ったまま中盤の見せ場になるか"
+    },
+    {
+      "id": "final-motion",
+      "type": "video",
+      "path": "prototypes/farlens-brand-film-000-motion-seed/output/master/final-motion-test.mp4",
+      "title": "Final — Brand Lock",
+      "description": "光点停止、ロック済み文字の露出復帰、2秒以上の静止余韻を検証",
+      "context_links": ["docs/farlens/brand-film/BRAND_FILM_000_VISUAL_CONTINUITY_MAP.md"],
+      "review_kind": "content_prototype",
+      "historical_fixture": false,
+      "youtube_premised": true,
+      "medium": "youtube_video",
+      "reward_structure": false,
+      "retired_reference": false,
+      "ceo_review_dimensions": ["taste", "brand_expression", "parent_trust"],
+      "ceo_prompt": "広告の締めではなくブランドが残る終わりに感じるか"
+    }
+  ]
+}
