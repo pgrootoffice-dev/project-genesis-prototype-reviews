@@ -1,0 +1,60 @@
+{
+  "title": "FARLENS Brand Film #000 — Motion Seed Test",
+  "frames": [
+    {
+      "percentage": 0,
+      "timestamp": 0.0,
+      "file": "frame-000.jpg"
+    },
+    {
+      "percentage": 10,
+      "timestamp": 1.64,
+      "file": "frame-010.jpg"
+    },
+    {
+      "percentage": 20,
+      "timestamp": 3.28,
+      "file": "frame-020.jpg"
+    },
+    {
+      "percentage": 30,
+      "timestamp": 4.92,
+      "file": "frame-030.jpg"
+    },
+    {
+      "percentage": 40,
+      "timestamp": 6.56,
+      "file": "frame-040.jpg"
+    },
+    {
+      "percentage": 50,
+      "timestamp": 8.2,
+      "file": "frame-050.jpg"
+    },
+    {
+      "percentage": 60,
+      "timestamp": 9.84,
+      "file": "frame-060.jpg"
+    },
+    {
+      "percentage": 70,
+      "timestamp": 11.48,
+      "file": "frame-070.jpg"
+    },
+    {
+      "percentage": 80,
+      "timestamp": 13.12,
+      "file": "frame-080.jpg"
+    },
+    {
+      "percentage": 90,
+      "timestamp": 14.76,
+      "file": "frame-090.jpg"
+    },
+    {
+      "percentage": 99,
+      "timestamp": 16.236,
+      "file": "frame-099.jpg"
+    }
+  ]
+}

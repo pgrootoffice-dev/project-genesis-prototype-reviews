@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "artifact_id": "farlens-brand-film-000-motion-seed",
+  "title": "FARLENS Brand Film #000 — Motion Seed Test",
+  "primary_artifact": "sequence",
+  "canonical_status": "working_non_canonical",
+  "merge_status": "draft_unmerged",
+  "known_issues": [
+    "Section 0 preserves the already-visible locked orange line and adds a restrained tracking light instead of reconstructing the line.",
+    "Section 4 motion is deliberately subtle and should be cross-checked in full-frame timeline images when contact-sheet detail is ambiguous."
+  ],
+  "ceo_decisions_required": [
+    "Whether Section 0 has enough attraction for the opening five seconds.",
+    "Whether Section 4 is strong enough as a mid-film highlight while remaining quiet.",
+    "Whether Final feels like the brand remains rather than an advertisement ending."
+  ],
+  "review_questions": [
+    "Do the locked compositions remain primary throughout all three tests?",
+    "Do connection, organization, and brand remainder read as three distinct motion roles?",
+    "Is FARLENS readable and appropriately quiet on iPhone?"
+  ],
+  "artifacts": [
+    {
+      "id": "sequence",
+      "title": "Motion Seed continuous comparison",
+      "video": "output/iphone/motion-seed-sequence-iphone.mp4",
+      "direct_filename": "compass-review-sequence.mp4",
+      "contact_sheet_filename": "compass-contact-sheet.jpg"
+    },
+    {
+      "id": "section-0",
+      "title": "Section 0 — Brand Entrance",
+      "video": "output/iphone/section-0-motion-test-iphone.mp4",
+      "source_image": "assets/source/section-0-working-lock.jpg",
+      "direct_filename": "compass-review-section-0.mp4",
+      "contact_sheet_filename": "section-0-compass-contact-sheet.jpg"
+    },
+    {
+      "id": "section-4",
+      "title": "Section 4 — Research",
+      "video": "output/iphone/section-4-motion-test-iphone.mp4",
+      "source_image": "assets/source/section-4-working-lock.jpg",
+      "direct_filename": "compass-review-section-4.mp4",
+      "contact_sheet_filename": "section-4-compass-contact-sheet.jpg"
+    },
+    {
+      "id": "final",
+      "title": "Final — Brand Lock",
+      "video": "output/iphone/final-motion-test-iphone.mp4",
+      "source_image": "assets/source/final-working-lock.jpg",
+      "direct_filename": "compass-review-final.mp4",
+      "contact_sheet_filename": "final-compass-contact-sheet.jpg"
+    }
+  ]
+}
