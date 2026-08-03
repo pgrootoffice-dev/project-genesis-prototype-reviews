@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "bridge_version": "0.2",
+  "artifact_id": "farlens-brand-film-000-motion-seed",
+  "commit_sha": "d5434e16f8fd233173839f9ac95921db853f5a6d",
+  "manifest": {
+    "schema_version": 1,
+    "bridge_version": "0.2",
+    "artifact_id": "farlens-brand-film-000-motion-seed",
+    "title": "FARLENS Brand Film #000 — Layered Semantic Motion A/B Test",
+    "pr_number": 184,
+    "commit_sha": "d5434e16f8fd233173839f9ac95921db853f5a6d",
+    "source_files": [
+      "LAYERED_SEMANTIC_MOTION_NOTES.md",
+      "assets/review/section-0-b-max-change.jpg",
+      "assets/review/section-4-b-max-change.jpg",
+      "assets/source/final-working-lock.jpg",
+      "assets/source/section-0-working-lock.jpg",
+      "assets/source/section-4-working-lock.jpg",
+      "layered-semantic-checksums.sha256",
+      "layered-semantic-technical-evidence.json",
+      "output/iphone/final-motion-test-iphone.mp4",
+      "output/iphone/layered-semantic-ab-sequence-iphone.mp4",
+      "output/iphone/section-0-ab-comparison-iphone.mp4",
+      "output/iphone/section-0-layered-semantic-motion-iphone.mp4",
+      "output/iphone/section-0-motion-test-iphone.mp4",
+      "output/iphone/section-4-ab-comparison-iphone.mp4",
+      "output/iphone/section-4-layered-semantic-motion-iphone.mp4",
+      "output/iphone/section-4-motion-test-iphone.mp4"
+    ],
+    "duration": 11.0,
+    "dimensions": {
+      "width": 720,
+      "height": 640
+    },
+    "fps": 30.0,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "audio": false,
+    "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-sequence.mp4",
+    "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-contact-sheet.jpg",
+    "frame_directory_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/review/frames/",
+    "source_comparison_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/source-vs-motion-comparison.jpg",
+    "manifest_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-manifest.json",
+    "public_access_verification_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-public-access-verification.json",
+    "workflow_run_id": 30783937002,
+    "artifact_name": "compass-review-bundle-pr-184",
+    "artifact_retention_days": 90,
+    "artifact_contents": [
+      "compass-review-sequence.mp4",
+      "compass-review-section-0.mp4",
+      "compass-review-section-0-layered.mp4",
+      "compass-review-section-0-ab.mp4",
+      "compass-review-section-4.mp4",
+      "compass-review-section-4-layered.mp4",
+      "compass-review-section-4-ab.mp4",
+      "compass-review-final.mp4",
+      "compass-contact-sheet.jpg",
+      "section-0-compass-contact-sheet.jpg",
+      "section-0-layered-compass-contact-sheet.jpg",
+      "section-0-ab-compass-contact-sheet.jpg",
+      "section-4-compass-contact-sheet.jpg",
+      "section-4-layered-compass-contact-sheet.jpg",
+      "section-4-ab-compass-contact-sheet.jpg",
+      "final-compass-contact-sheet.jpg",
+      "source-vs-motion-comparison.jpg",
+      "review/frames/",
+      "compass-review-manifest.json",
+      "compass-public-access-verification.json",
+      "README.md",
+      "LAYERED_SEMANTIC_MOTION_NOTES.md",
+      "layered-semantic-technical-evidence.json",
+      "layered-semantic-checksums.sha256",
+      "assets/review/section-0-b-max-change.jpg",
+      "assets/review/section-4-b-max-change.jpg"
+    ],
+    "artifact_upload_status": "PASS",
+    "pages_access_status": "PASS",
+    "compass_connector_retrieval_status": "WAITING_FOR_COMPASS_VERIFICATION",
+    "checksum": "eba6c0aa3ce97f369064476d946c15fa2bc9c3200a6af28757965acd8f6c0322",
+    "generated_at": "2026-08-03T04:18:00+00:00",
+    "canonical_status": "working_non_canonical",
+    "merge_status": "draft_unmerged",
+    "known_issues": [
+      "B is a Working Test, not a Canonical Motion Grammar decision.",
+      "Section 0 keeps the already-visible orange line and uses the existing trajectory; the line is not reconstructed.",
+      "Section 4 remains deliberately subtle, so timing should be judged in the actual MP4 as well as the timeline frames."
+    ],
+    "CEO_decisions_required": [
+      "Whether B strengthens the three semantic stages enough to replace or inform Base Motion.",
+      "Whether the added production cost is justified before any 11-Section expansion.",
+      "Whether either Section needs one more micro-adjustment before a broader template test."
+    ],
+    "review_questions": [
+      "Does Section 0 B read as world, connection, then family more clearly than A?",
+      "Does Section 4 B read as gather, verify, then interpret more clearly than A?",
+      "Do both B tests preserve the locked stills and FARLENS quietness?",
+      "Is the semantic gain large enough to justify the measured cost increase?"
+    ],
+    "retention_policy": "PR-numbered GitHub Pages assets remain under the existing review repository policy; this bridge does not delete on PR close or change retention.",
+    "timeline_frames": [
+      {
+        "percentage": 0,
+        "timestamp": 0.0,
+        "file": "frame-000.jpg"
+      },
+      {
+        "percentage": 10,
+        "timestamp": 1.1,
+        "file": "frame-010.jpg"
+      },
+      {
+        "percentage": 20,
+        "timestamp": 2.2,
+        "file": "frame-020.jpg"
+      },
+      {
+        "percentage": 30,
+        "timestamp": 3.3,
+        "file": "frame-030.jpg"
+      },
+      {
+        "percentage": 40,
+        "timestamp": 4.4,
+        "file": "frame-040.jpg"
+      },
+      {
+        "percentage": 50,
+        "timestamp": 5.5,
+        "file": "frame-050.jpg"
+      },
+      {
+        "percentage": 60,
+        "timestamp": 6.6,
+        "file": "frame-060.jpg"
+      },
+      {
+        "percentage": 70,
+        "timestamp": 7.7,
+        "file": "frame-070.jpg"
+      },
+      {
+        "percentage": 80,
+        "timestamp": 8.8,
+        "file": "frame-080.jpg"
+      },
+      {
+        "percentage": 90,
+        "timestamp": 9.9,
+        "file": "frame-090.jpg"
+      },
+      {
+        "percentage": 99,
+        "timestamp": 10.89,
+        "file": "frame-099.jpg"
+      }
+    ],
+    "supplemental_files": [
+      "LAYERED_SEMANTIC_MOTION_NOTES.md",
+      "layered-semantic-technical-evidence.json",
+      "layered-semantic-checksums.sha256",
+      "assets/review/section-0-b-max-change.jpg",
+      "assets/review/section-4-b-max-change.jpg"
+    ],
+    "artifacts": [
+      {
+        "id": "layered-ab-sequence",
+        "title": "Section 0 + Section 4 continuous A/B comparison",
+        "source_video": "output/iphone/layered-semantic-ab-sequence-iphone.mp4",
+        "source_image": null,
+        "direct_mp4": "compass-review-sequence.mp4",
+        "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-sequence.mp4",
+        "contact_sheet": "compass-contact-sheet.jpg",
+        "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-contact-sheet.jpg",
+        "copied_without_transcode": true,
+        "duration": 11.0,
+        "width": 720,
+        "height": 640,
+        "fps": 30.0,
+        "codec": "h264",
+        "pixel_format": "yuv420p",
+        "audio": false,
+        "checksum": "eba6c0aa3ce97f369064476d946c15fa2bc9c3200a6af28757965acd8f6c0322",
+        "bytes": 101402,
+        "faststart": true
+      },
+      {
+        "id": "section-0-a",
+        "title": "Section 0 A — Base Motion",
+        "source_video": "output/iphone/section-0-motion-test-iphone.mp4",
+        "source_image": "assets/source/section-0-working-lock.jpg",
+        "direct_mp4": "compass-review-section-0.mp4",
+        "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-0.mp4",
+        "contact_sheet": "section-0-compass-contact-sheet.jpg",
+        "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-0-compass-contact-sheet.jpg",
+        "copied_without_transcode": true,
+        "duration": 5.4,
+        "width": 540,
+        "height": 960,
+        "fps": 30.0,
+        "codec": "h264",
+        "pixel_format": "yuv420p",
+        "audio": false,
+        "checksum": "92033f5182daa93888955c3ec4af493c30e05f2bec4a21df2855804c5e3cbbe3",
+        "bytes": 43447,
+        "faststart": true,
+        "source_comparison_metric": {
+          "artifact_id": "section-0-a",
+          "max_change_timestamp": 5.133,
+          "mean_absolute_difference": 3.9571
+        }
+      },
+      {
+        "id": "section-0-b",
+        "title": "Section 0 B — Layered Semantic Motion",
+        "source_video": "output/iphone/section-0-layered-semantic-motion-iphone.mp4",
+        "source_image": "assets/source/section-0-working-lock.jpg",
+        "direct_mp4": "compass-review-section-0-layered.mp4",
+        "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-0-layered.mp4",
+        "contact_sheet": "section-0-layered-compass-contact-sheet.jpg",
+        "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-0-layered-compass-contact-sheet.jpg",
+        "copied_without_transcode": true,
+        "duration": 5.4,
+        "width": 540,
+        "height": 960,
+        "fps": 30.0,
+        "codec": "h264",
+        "pixel_format": "yuv420p",
+        "audio": false,
+        "checksum": "ea531823d34acd6e902ada0667a973af21a3e79a1bd63dcc816c9445c8bbc512",
+        "bytes": 28164,
+        "faststart": true,
+        "source_comparison_metric": {
+          "artifact_id": "section-0-b",
+          "max_change_timestamp": 0.933,
+          "mean_absolute_difference": 3.7662
+        }
+      },
+      {
+        "id": "section-0-ab",
+        "title": "Section 0 A/B side by side",
+        "source_video": "output/iphone/section-0-ab-comparison-iphone.mp4",
+        "source_image": null,
+        "direct_mp4": "compass-review-section-0-ab.mp4",
+        "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-0-ab.mp4",
+        "contact_sheet": "section-0-ab-compass-contact-sheet.jpg",
+        "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-0-ab-compass-contact-sheet.jpg",
+        "copied_without_transcode": true,
+        "duration": 5.4,
+        "width": 720,
+        "height": 640,
+        "fps": 30.0,
+        "codec": "h264",
+        "pixel_format": "yuv420p",
+        "audio": false,
+        "checksum": "967943b4c9a7177626e2de58b9e265218422b01dd93bf9fe3bb2997a8d626532",
+        "bytes": 43473,
+        "faststart": true
+      },
+      {
+        "id": "section-4-a",
+        "title": "Section 4 A — Base Motion",
+        "source_video": "output/iphone/section-4-motion-test-iphone.mp4",
+        "source_image": "assets/source/section-4-working-lock.jpg",
+        "direct_mp4": "compass-review-section-4.mp4",
+        "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-4.mp4",
+        "contact_sheet": "section-4-compass-contact-sheet.jpg",
+        "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-4-compass-contact-sheet.jpg",
+        "copied_without_transcode": true,
+        "duration": 5.6,
+        "width": 540,
+        "height": 960,
+        "fps": 30.0,
+        "codec": "h264",
+        "pixel_format": "yuv420p",
+        "audio": false,
+        "checksum": "be2309f13efea423cd3fe2eec7d82a195654c9b5640c66c6ee4bab74f4f0b1aa",
+        "bytes": 40756,
+        "faststart": true,
+        "source_comparison_metric": {
+          "artifact_id": "section-4-a",
+          "max_change_timestamp": 2.267,
+          "mean_absolute_difference": 3.7014
+        }
+      },
+      {
+        "id": "section-4-b",
+        "title": "Section 4 B — Layered Semantic Motion",
+        "source_video": "output/iphone/section-4-layered-semantic-motion-iphone.mp4",
+        "source_image": "assets/source/section-4-working-lock.jpg",
+        "direct_mp4": "compass-review-section-4-layered.mp4",
+        "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-4-layered.mp4",
+        "contact_sheet": "section-4-layered-compass-contact-sheet.jpg",
+        "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-4-layered-compass-contact-sheet.jpg",
+        "copied_without_transcode": true,
+        "duration": 5.6,
+        "width": 540,
+        "height": 960,
+        "fps": 30.0,
+        "codec": "h264",
+        "pixel_format": "yuv420p",
+        "audio": false,
+        "checksum": "136a2da9bc631d50b713f7369d27c8cf1b47ac4f8d83d6963484f4d33fe8b936",
+        "bytes": 53411,
+        "faststart": true,
+        "source_comparison_metric": {
+          "artifact_id": "section-4-b",
+          "max_change_timestamp": 4.0,
+          "mean_absolute_difference": 3.6588
+        }
+      },
+      {
+        "id": "section-4-ab",
+        "title": "Section 4 A/B side by side",
+        "source_video": "output/iphone/section-4-ab-comparison-iphone.mp4",
+        "source_image": null,
+        "direct_mp4": "compass-review-section-4-ab.mp4",
+        "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-4-ab.mp4",
+        "contact_sheet": "section-4-ab-compass-contact-sheet.jpg",
+        "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-4-ab-compass-contact-sheet.jpg",
+        "copied_without_transcode": true,
+        "duration": 5.6,
+        "width": 720,
+        "height": 640,
+        "fps": 30.0,
+        "codec": "h264",
+        "pixel_format": "yuv420p",
+        "audio": false,
+        "checksum": "2ad80f0e02c1dde2b2bab03d760f51f9ddb0a04e50e16733240778501142553f",
+        "bytes": 52957,
+        "faststart": true
+      },
+      {
+        "id": "final",
+        "title": "Final — Brand Lock",
+        "source_video": "output/iphone/final-motion-test-iphone.mp4",
+        "source_image": "assets/source/final-working-lock.jpg",
+        "direct_mp4": "compass-review-final.mp4",
+        "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-final.mp4",
+        "contact_sheet": "final-compass-contact-sheet.jpg",
+        "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/final-compass-contact-sheet.jpg",
+        "copied_without_transcode": true,
+        "duration": 5.4,
+        "width": 540,
+        "height": 960,
+        "fps": 30.0,
+        "codec": "h264",
+        "pixel_format": "yuv420p",
+        "audio": false,
+        "checksum": "352f83a5a1249839e927e02a9bc8b9ae10c577193df69c14915f9a5a9db36d15",
+        "bytes": 19938,
+        "faststart": true,
+        "source_comparison_metric": {
+          "artifact_id": "final",
+          "max_change_timestamp": 5.067,
+          "mean_absolute_difference": 1.3166
+        }
+      }
+    ]
+  },
+  "manifest_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-manifest.json",
+  "verified_at": "2026-08-03T04:18:57+00:00",
+  "status": "PASS",
+  "authentication_sent": false,
+  "public_anonymous_access": true,
+  "url_checks": [
+    {
+      "name": "source_comparison_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/source-vs-motion-comparison.jpg",
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 348233,
+      "expected_content_types": [
+        "image/jpeg"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "manifest_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-manifest.json",
+      "http_status": 200,
+      "content_type": "application/json",
+      "content_length": 15279,
+      "expected_content_types": [
+        "application/json",
+        "text/json"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "frame_directory_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/review/frames/",
+      "http_status": 200,
+      "content_type": "text/html",
+      "content_length": 1659,
+      "expected_content_types": [
+        "text/html"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:layered-ab-sequence:direct_mp4_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-sequence.mp4",
+      "http_status": 200,
+      "content_type": "video/mp4",
+      "content_length": 101402,
+      "expected_content_types": [
+        "video/mp4"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:layered-ab-sequence:contact_sheet_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-contact-sheet.jpg",
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 164116,
+      "expected_content_types": [
+        "image/jpeg"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-0-a:direct_mp4_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-0.mp4",
+      "http_status": 200,
+      "content_type": "video/mp4",
+      "content_length": 43447,
+      "expected_content_types": [
+        "video/mp4"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-0-a:contact_sheet_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-0-compass-contact-sheet.jpg",
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 191534,
+      "expected_content_types": [
+        "image/jpeg"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-0-b:direct_mp4_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-0-layered.mp4",
+      "http_status": 200,
+      "content_type": "video/mp4",
+      "content_length": 28164,
+      "expected_content_types": [
+        "video/mp4"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-0-b:contact_sheet_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-0-layered-compass-contact-sheet.jpg",
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 195134,
+      "expected_content_types": [
+        "image/jpeg"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-0-ab:direct_mp4_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-0-ab.mp4",
+      "http_status": 200,
+      "content_type": "video/mp4",
+      "content_length": 43473,
+      "expected_content_types": [
+        "video/mp4"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-0-ab:contact_sheet_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-0-ab-compass-contact-sheet.jpg",
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 153050,
+      "expected_content_types": [
+        "image/jpeg"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-4-a:direct_mp4_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-4.mp4",
+      "http_status": 200,
+      "content_type": "video/mp4",
+      "content_length": 40756,
+      "expected_content_types": [
+        "video/mp4"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-4-a:contact_sheet_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-4-compass-contact-sheet.jpg",
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 250048,
+      "expected_content_types": [
+        "image/jpeg"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-4-b:direct_mp4_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-4-layered.mp4",
+      "http_status": 200,
+      "content_type": "video/mp4",
+      "content_length": 53411,
+      "expected_content_types": [
+        "video/mp4"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-4-b:contact_sheet_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-4-layered-compass-contact-sheet.jpg",
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 253909,
+      "expected_content_types": [
+        "image/jpeg"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-4-ab:direct_mp4_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-4-ab.mp4",
+      "http_status": 200,
+      "content_type": "video/mp4",
+      "content_length": 52957,
+      "expected_content_types": [
+        "video/mp4"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:section-4-ab:contact_sheet_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-4-ab-compass-contact-sheet.jpg",
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 171623,
+      "expected_content_types": [
+        "image/jpeg"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:final:direct_mp4_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-final.mp4",
+      "http_status": 200,
+      "content_type": "video/mp4",
+      "content_length": 19938,
+      "expected_content_types": [
+        "video/mp4"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    },
+    {
+      "name": "artifact:final:contact_sheet_url",
+      "url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/final-compass-contact-sheet.jpg",
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 73249,
+      "expected_content_types": [
+        "image/jpeg"
+      ],
+      "anonymous_get": true,
+      "status": "PASS"
+    }
+  ],
+  "range_request": {
+    "requested": "bytes=0-1023",
+    "http_status": 206,
+    "content_range": "bytes 0-1023/101402",
+    "accept_ranges": "bytes",
+    "supported": true,
+    "status": "PASS"
+  },
+  "iphone_safari_compatibility_contract": {
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "fps": 30.0,
+    "max_720p_review_copy": true,
+    "faststart": true,
+    "status": "PASS"
+  },
+  "failures": []
+}

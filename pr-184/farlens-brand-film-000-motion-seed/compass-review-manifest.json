@@ -69,8 +69,8 @@
     "assets/review/section-0-b-max-change.jpg",
     "assets/review/section-4-b-max-change.jpg"
   ],
-  "artifact_upload_status": "PENDING_WORKFLOW_UPLOAD",
-  "pages_access_status": "PENDING_PUBLIC_VERIFICATION",
+  "artifact_upload_status": "PASS",
+  "pages_access_status": "PASS",
   "compass_connector_retrieval_status": "WAITING_FOR_COMPASS_VERIFICATION",
   "checksum": "eba6c0aa3ce97f369064476d946c15fa2bc9c3200a6af28757965acd8f6c0322",
   "generated_at": "2026-08-03T04:18:00+00:00",
