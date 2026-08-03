@@ -1,47 +1,86 @@
 {
   "schema_version": 1,
   "artifact_id": "farlens-brand-film-000-motion-seed",
-  "title": "FARLENS Brand Film #000 — Motion Seed Test",
-  "primary_artifact": "sequence",
+  "title": "FARLENS Brand Film #000 — Layered Semantic Motion A/B Test",
+  "primary_artifact": "layered-ab-sequence",
   "canonical_status": "working_non_canonical",
   "merge_status": "draft_unmerged",
   "known_issues": [
-    "Section 0 preserves the already-visible locked orange line and adds a restrained tracking light instead of reconstructing the line.",
-    "Section 4 motion is deliberately subtle and should be cross-checked in full-frame timeline images when contact-sheet detail is ambiguous."
+    "B is a Working Test, not a Canonical Motion Grammar decision.",
+    "Section 0 keeps the already-visible orange line and uses the existing trajectory; the line is not reconstructed.",
+    "Section 4 remains deliberately subtle, so timing should be judged in the actual MP4 as well as the timeline frames."
   ],
   "ceo_decisions_required": [
-    "Whether Section 0 has enough attraction for the opening five seconds.",
-    "Whether Section 4 is strong enough as a mid-film highlight while remaining quiet.",
-    "Whether Final feels like the brand remains rather than an advertisement ending."
+    "Whether B strengthens the three semantic stages enough to replace or inform Base Motion.",
+    "Whether the added production cost is justified before any 11-Section expansion.",
+    "Whether either Section needs one more micro-adjustment before a broader template test."
   ],
   "review_questions": [
-    "Do the locked compositions remain primary throughout all three tests?",
-    "Do connection, organization, and brand remainder read as three distinct motion roles?",
-    "Is FARLENS readable and appropriately quiet on iPhone?"
+    "Does Section 0 B read as world, connection, then family more clearly than A?",
+    "Does Section 4 B read as gather, verify, then interpret more clearly than A?",
+    "Do both B tests preserve the locked stills and FARLENS quietness?",
+    "Is the semantic gain large enough to justify the measured cost increase?"
+  ],
+  "supplemental_files": [
+    "LAYERED_SEMANTIC_MOTION_NOTES.md",
+    "layered-semantic-technical-evidence.json",
+    "layered-semantic-checksums.sha256",
+    "assets/review/section-0-b-max-change.jpg",
+    "assets/review/section-4-b-max-change.jpg"
   ],
   "artifacts": [
     {
-      "id": "sequence",
-      "title": "Motion Seed continuous comparison",
-      "video": "output/iphone/motion-seed-sequence-iphone.mp4",
+      "id": "layered-ab-sequence",
+      "title": "Section 0 + Section 4 continuous A/B comparison",
+      "video": "output/iphone/layered-semantic-ab-sequence-iphone.mp4",
       "direct_filename": "compass-review-sequence.mp4",
       "contact_sheet_filename": "compass-contact-sheet.jpg"
     },
     {
-      "id": "section-0",
-      "title": "Section 0 — Brand Entrance",
+      "id": "section-0-a",
+      "title": "Section 0 A — Base Motion",
       "video": "output/iphone/section-0-motion-test-iphone.mp4",
       "source_image": "assets/source/section-0-working-lock.jpg",
       "direct_filename": "compass-review-section-0.mp4",
       "contact_sheet_filename": "section-0-compass-contact-sheet.jpg"
     },
     {
-      "id": "section-4",
-      "title": "Section 4 — Research",
+      "id": "section-0-b",
+      "title": "Section 0 B — Layered Semantic Motion",
+      "video": "output/iphone/section-0-layered-semantic-motion-iphone.mp4",
+      "source_image": "assets/source/section-0-working-lock.jpg",
+      "direct_filename": "compass-review-section-0-layered.mp4",
+      "contact_sheet_filename": "section-0-layered-compass-contact-sheet.jpg"
+    },
+    {
+      "id": "section-0-ab",
+      "title": "Section 0 A/B side by side",
+      "video": "output/iphone/section-0-ab-comparison-iphone.mp4",
+      "direct_filename": "compass-review-section-0-ab.mp4",
+      "contact_sheet_filename": "section-0-ab-compass-contact-sheet.jpg"
+    },
+    {
+      "id": "section-4-a",
+      "title": "Section 4 A — Base Motion",
       "video": "output/iphone/section-4-motion-test-iphone.mp4",
       "source_image": "assets/source/section-4-working-lock.jpg",
       "direct_filename": "compass-review-section-4.mp4",
       "contact_sheet_filename": "section-4-compass-contact-sheet.jpg"
+    },
+    {
+      "id": "section-4-b",
+      "title": "Section 4 B — Layered Semantic Motion",
+      "video": "output/iphone/section-4-layered-semantic-motion-iphone.mp4",
+      "source_image": "assets/source/section-4-working-lock.jpg",
+      "direct_filename": "compass-review-section-4-layered.mp4",
+      "contact_sheet_filename": "section-4-layered-compass-contact-sheet.jpg"
+    },
+    {
+      "id": "section-4-ab",
+      "title": "Section 4 A/B side by side",
+      "video": "output/iphone/section-4-ab-comparison-iphone.mp4",
+      "direct_filename": "compass-review-section-4-ab.mp4",
+      "contact_sheet_filename": "section-4-ab-compass-contact-sheet.jpg"
     },
     {
       "id": "final",
