@@ -1,0 +1,60 @@
+{
+  "title": "FARLENS Brand Film #000 — Section 0 Layer-first Motion D Prototype",
+  "frames": [
+    {
+      "percentage": 0,
+      "timestamp": 0.0,
+      "file": "frame-000.jpg"
+    },
+    {
+      "percentage": 10,
+      "timestamp": 2.16,
+      "file": "frame-010.jpg"
+    },
+    {
+      "percentage": 20,
+      "timestamp": 4.32,
+      "file": "frame-020.jpg"
+    },
+    {
+      "percentage": 30,
+      "timestamp": 6.48,
+      "file": "frame-030.jpg"
+    },
+    {
+      "percentage": 40,
+      "timestamp": 8.64,
+      "file": "frame-040.jpg"
+    },
+    {
+      "percentage": 50,
+      "timestamp": 10.8,
+      "file": "frame-050.jpg"
+    },
+    {
+      "percentage": 60,
+      "timestamp": 12.96,
+      "file": "frame-060.jpg"
+    },
+    {
+      "percentage": 70,
+      "timestamp": 15.12,
+      "file": "frame-070.jpg"
+    },
+    {
+      "percentage": 80,
+      "timestamp": 17.28,
+      "file": "frame-080.jpg"
+    },
+    {
+      "percentage": 90,
+      "timestamp": 19.44,
+      "file": "frame-090.jpg"
+    },
+    {
+      "percentage": 99,
+      "timestamp": 21.384,
+      "file": "frame-099.jpg"
+    }
+  ]
+}

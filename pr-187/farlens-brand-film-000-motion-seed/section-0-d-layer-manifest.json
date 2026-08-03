@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "scope": "Section 0 D Layer-first assets — Working / NON-CANONICAL",
+  "source": "assets/source/section-0-working-lock.jpg",
+  "canvas": {
+    "width": 720,
+    "height": 1280
+  },
+  "layer_count": 9,
+  "manual_mask_count": 8,
+  "layers": [
+    {
+      "name": "background",
+      "file": "assets/layers/section-0-d/01-background.png",
+      "sha256": "3661f3180b2803f0b0727ac6a1f6452ae04ee7d8f03f0ac5d20608f22c272130",
+      "opaque_pixels": 921600
+    },
+    {
+      "name": "earth",
+      "file": "assets/layers/section-0-d/02-earth.png",
+      "sha256": "34c806a88ec56c734cbe28ad4fc2770361dc7a32ee221411c1be25586167e6b2",
+      "opaque_pixels": 164752
+    },
+    {
+      "name": "clouds",
+      "file": "assets/layers/section-0-d/03-clouds.png",
+      "sha256": "145794e4d82970f44aaad1d5bf219d8aa1e47dba5f7122647c313b881dccb6df",
+      "opaque_pixels": 8074
+    },
+    {
+      "name": "connection-line",
+      "file": "assets/layers/section-0-d/04-connection-line.png",
+      "sha256": "54d5e10832751be6320bef62e719bf9bc87108a9f5870d4d95891e9c577719b9",
+      "opaque_pixels": 2906
+    },
+    {
+      "name": "traveling-light",
+      "file": "assets/layers/section-0-d/05-traveling-light.png",
+      "sha256": "ba5a1a8d52232c8242ec964b88a65beac36f434b4aab734c909cff6ef00066fc",
+      "opaque_pixels": 1304
+    },
+    {
+      "name": "hill",
+      "file": "assets/layers/section-0-d/06-hill.png",
+      "sha256": "8327dda6ca4d051662848774869da92819265485912c12cafddc59934dc97d11",
+      "opaque_pixels": 103535
+    },
+    {
+      "name": "house",
+      "file": "assets/layers/section-0-d/07-house.png",
+      "sha256": "32bddafabfa1386b8d7c9f62c3499694cf38fbcfe5d99ac3823f63878f410f9b",
+      "opaque_pixels": 8126
+    },
+    {
+      "name": "trees",
+      "file": "assets/layers/section-0-d/08-trees.png",
+      "sha256": "41159add07065e4cdd77b776cb8554c8e75fc0421ba706fd72b20db8875cdc60",
+      "opaque_pixels": 3834
+    },
+    {
+      "name": "window-glow",
+      "file": "assets/layers/section-0-d/09-window-glow.png",
+      "sha256": "1e73bc72fa1afc5a42d9b761f9384c55f6aadf2156e76740c759aeeb7f843a0d",
+      "opaque_pixels": 528
+    }
+  ],
+  "recomposition": {
+    "file": "assets/review/section-0-d-recomposed.png",
+    "difference_file": "assets/review/section-0-d-difference.png",
+    "mean_absolute_error": 0.0,
+    "maximum_channel_error": 0,
+    "changed_channel_values": 0,
+    "pixel_exact": true
+  },
+  "new_objects": [],
+  "generative_services": [],
+  "external_uploads": []
+}

@@ -1,0 +1,165 @@
+{
+  "status": "PASS",
+  "scope": "Section 0 and Section 4 Layered Semantic Motion A/B working test",
+  "a_and_final_lock": {
+    "status": "PASS",
+    "sha256": {
+      "output/master/final-motion-test.mp4": "3179f19d8ba4b97080bce988232e34d96eae355771720ab32f7500662eb2b528",
+      "output/master/motion-seed-sequence.mp4": "bdc4769b5b7e36c133544ccd79ebcead78888a7a6f0dee7b2b705b336e3bc144",
+      "output/master/section-0-motion-test.mp4": "b71bee84e39db5f843c9dfee75915687d63acbdb55eccee4f4dd4deae600a9e0",
+      "output/master/section-4-motion-test.mp4": "5706e61d0d3be50b35f722c9ef1d9f27bdfb81991853d1b3d407e112f81ac474",
+      "output/iphone/final-motion-test-iphone.mp4": "352f83a5a1249839e927e02a9bc8b9ae10c577193df69c14915f9a5a9db36d15",
+      "output/iphone/motion-seed-sequence-iphone.mp4": "6b3710a7d7288084a42542cbaed8b6bb3e38d8b1e2df61ca3408345e55b54c48",
+      "output/iphone/section-0-motion-test-iphone.mp4": "92033f5182daa93888955c3ec4af493c30e05f2bec4a21df2855804c5e3cbbe3",
+      "output/iphone/section-4-motion-test-iphone.mp4": "be2309f13efea423cd3fe2eec7d82a195654c9b5640c66c6ee4bab74f4f0b1aa"
+    }
+  },
+  "deterministic_2d_method": {
+    "source_base": "complete locked JPEG on every frame",
+    "allowed_operations": [
+      "soft source-region duplicate",
+      "existing-path response",
+      "local RGB light change"
+    ],
+    "background_reconstruction": false,
+    "generative_services": [],
+    "external_uploads": []
+  },
+  "technical_checks": [
+    {
+      "path": "output/master/section-0-layered-semantic-motion.mp4",
+      "sha256": "fb38a56cab9682ee79d98cd8543d64a5c44b5736978711f452a4827b4503c6fe",
+      "bytes": 83212,
+      "duration": 5.4,
+      "width": 720,
+      "height": 1280,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/master/section-4-layered-semantic-motion.mp4",
+      "sha256": "3669a1fc5ab5fe64673bc235bc94cff9a62bb06328f344049cb597ee7d87de82",
+      "bytes": 129188,
+      "duration": 5.6,
+      "width": 720,
+      "height": 1280,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/master/section-0-ab-comparison.mp4",
+      "sha256": "cc56e8e76534ffed7f5a6123a2ee8966168c388175640bde0b45814bf23effb7",
+      "bytes": 280046,
+      "duration": 5.4,
+      "width": 1440,
+      "height": 1280,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/master/section-4-ab-comparison.mp4",
+      "sha256": "8f7e7523f75446429fa6dde304b1d5413188d3bb523f6d362482f1ba0ecab184",
+      "bytes": 251903,
+      "duration": 5.6,
+      "width": 1440,
+      "height": 1280,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/master/layered-semantic-ab-sequence.mp4",
+      "sha256": "92ce60a3179dd1d920e3165f9d7b0becfa798c43f376b8652f076f278f2abbe4",
+      "bytes": 556041,
+      "duration": 11.0,
+      "width": 1440,
+      "height": 1280,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/iphone/section-0-layered-semantic-motion-iphone.mp4",
+      "sha256": "ea531823d34acd6e902ada0667a973af21a3e79a1bd63dcc816c9445c8bbc512",
+      "bytes": 28164,
+      "duration": 5.4,
+      "width": 540,
+      "height": 960,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/iphone/section-4-layered-semantic-motion-iphone.mp4",
+      "sha256": "136a2da9bc631d50b713f7369d27c8cf1b47ac4f8d83d6963484f4d33fe8b936",
+      "bytes": 53411,
+      "duration": 5.6,
+      "width": 540,
+      "height": 960,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/iphone/section-0-ab-comparison-iphone.mp4",
+      "sha256": "967943b4c9a7177626e2de58b9e265218422b01dd93bf9fe3bb2997a8d626532",
+      "bytes": 43473,
+      "duration": 5.4,
+      "width": 720,
+      "height": 640,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/iphone/section-4-ab-comparison-iphone.mp4",
+      "sha256": "2ad80f0e02c1dde2b2bab03d760f51f9ddb0a04e50e16733240778501142553f",
+      "bytes": 52957,
+      "duration": 5.6,
+      "width": 720,
+      "height": 640,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/iphone/layered-semantic-ab-sequence-iphone.mp4",
+      "sha256": "eba6c0aa3ce97f369064476d946c15fa2bc9c3200a6af28757965acd8f6c0322",
+      "bytes": 101402,
+      "duration": 11.0,
+      "width": 720,
+      "height": 640,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    }
+  ],
+  "maximum_change_frames": [
+    {
+      "section": 0,
+      "timestamp": 4.133,
+      "mean_absolute_difference": 0.2035,
+      "file": "assets/review/section-0-b-max-change.jpg"
+    },
+    {
+      "section": 4,
+      "timestamp": 4.533,
+      "mean_absolute_difference": 0.2392,
+      "file": "assets/review/section-4-b-max-change.jpg"
+    }
+  ],
+  "failures": []
+}
