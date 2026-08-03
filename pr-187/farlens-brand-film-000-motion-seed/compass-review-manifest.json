@@ -132,8 +132,8 @@
     "assets/layers/section-0-d/08-trees.png",
     "assets/layers/section-0-d/09-window-glow.png"
   ],
-  "artifact_upload_status": "PENDING_WORKFLOW_UPLOAD",
-  "pages_access_status": "PENDING_PUBLIC_VERIFICATION",
+  "artifact_upload_status": "PASS",
+  "pages_access_status": "PASS",
   "compass_connector_retrieval_status": "WAITING_FOR_COMPASS_VERIFICATION",
   "checksum": "1fe0cb47745d3545abefc3aa7c4760e04fcb9794190dfb4cb4274d253ce5ec3a",
   "generated_at": "2026-08-03T13:10:45+00:00",
