@@ -23,29 +23,29 @@ Review Steps:
 
 1. Open the exact HTTPS URL from the PR handoff.
 2. Keep the device unmuted or muted; every file is intentionally silent.
-3. Play `2本連続 A/B` once without pausing; the left panel is A and the right panel is B.
-4. Play Section 0 A, B, then A/B and judge whether world / connection / family are more legible in B.
-5. Play Section 4 A, B, then A/B and judge whether gather / verify / interpret are more legible in B.
-6. Confirm the B layer separation feels natural and the final hold is stable.
+3. Play `A → B → C 連続比較` once without pausing.
+4. Play Section 0 A, B, C, then A/B/C and judge whether C makes the actual delivery from world to home legible.
+5. Confirm the traveling light is visible on iPhone without becoming a flare, particle, or neon effect.
+6. Confirm the C layer separation feels natural and the 4.3–5.4 second hold is stable. Section 4 remains an unchanged reference.
 
 Review Points:
 
 - Do the locked compositions, shapes, colors, and textures remain primary?
 - Is Section 0 attractive enough without becoming loud?
-- Does Section 4 feel organized and intelligent rather than decorative?
-- Is the meaning gain large enough to justify the recorded 65–80% Section-level implementation increase?
+- Does C communicate `届く` more clearly than A/B?
+- Is the meaning gain large enough to justify explicit path extraction and verification?
 - Do any motions feel generative, distorted, or over-produced?
 
 Expected Feeling:
 
-> 「静止画の静けさは残ったまま、つながる・整理される、の意味順がAより分かる。」
+> 「静止画の静けさは残ったまま、世界の変化が家族へ届く、と一度で分かる。」
 
 Expected result:
 
-- the page and all A/B silent videos load without login, download, or setup
+- the page and all A/B/C silent videos load without login, download, or setup
 - the iPhone-sized H.264 versions are selected automatically
-- Section 0 is 5.4 seconds and Section 4 is 5.6 seconds in A and B
-- the combined A/B comparison is 11.0 seconds
+- Section 0 A, B, and C are 5.4 seconds each
+- the combined A→B→C comparison is 16.2 seconds
 - no captions, BGM, voice, analytics, backend, account, or stored state is present
 
 ## Builder Publication Rule

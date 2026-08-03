@@ -2,12 +2,14 @@
   "schema_version": 1,
   "bridge_version": "0.2",
   "artifact_id": "farlens-brand-film-000-motion-seed",
-  "title": "FARLENS Brand Film #000 — Layered Semantic Motion A/B Test",
+  "title": "FARLENS Brand Film #000 — Section 0 Motion A/B/C Test",
   "pr_number": 184,
-  "commit_sha": "d5434e16f8fd233173839f9ac95921db853f5a6d",
+  "commit_sha": "0de3fcf2dd742bd0a84f6f0eb4b20156873c384d",
   "source_files": [
     "LAYERED_SEMANTIC_MOTION_NOTES.md",
+    "SECTION_0_MOTION_C_NOTES.md",
     "assets/review/section-0-b-max-change.jpg",
+    "assets/review/section-0-c-max-change.jpg",
     "assets/review/section-4-b-max-change.jpg",
     "assets/source/final-working-lock.jpg",
     "assets/source/section-0-working-lock.jpg",
@@ -17,16 +19,21 @@
     "output/iphone/final-motion-test-iphone.mp4",
     "output/iphone/layered-semantic-ab-sequence-iphone.mp4",
     "output/iphone/section-0-ab-comparison-iphone.mp4",
+    "output/iphone/section-0-abc-comparison-iphone.mp4",
+    "output/iphone/section-0-abc-sequence-iphone.mp4",
     "output/iphone/section-0-layered-semantic-motion-iphone.mp4",
     "output/iphone/section-0-motion-test-iphone.mp4",
+    "output/iphone/section-0-traveling-light-motion-iphone.mp4",
     "output/iphone/section-4-ab-comparison-iphone.mp4",
     "output/iphone/section-4-layered-semantic-motion-iphone.mp4",
-    "output/iphone/section-4-motion-test-iphone.mp4"
+    "output/iphone/section-4-motion-test-iphone.mp4",
+    "section-0-c-checksums.sha256",
+    "section-0-c-technical-evidence.json"
   ],
-  "duration": 11.0,
+  "duration": 16.2,
   "dimensions": {
-    "width": 720,
-    "height": 640
+    "width": 540,
+    "height": 960
   },
   "fps": 30.0,
   "codec": "h264",
@@ -38,11 +45,14 @@
   "source_comparison_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/source-vs-motion-comparison.jpg",
   "manifest_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-manifest.json",
   "public_access_verification_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-public-access-verification.json",
-  "workflow_run_id": 30783937002,
+  "workflow_run_id": 30791681752,
   "artifact_name": "compass-review-bundle-pr-184",
   "artifact_retention_days": 90,
   "artifact_contents": [
     "compass-review-sequence.mp4",
+    "compass-review-section-0-c.mp4",
+    "compass-review-section-0-abc.mp4",
+    "compass-review-section-0-4-ab-sequence.mp4",
     "compass-review-section-0.mp4",
     "compass-review-section-0-layered.mp4",
     "compass-review-section-0-ab.mp4",
@@ -51,6 +61,9 @@
     "compass-review-section-4-ab.mp4",
     "compass-review-final.mp4",
     "compass-contact-sheet.jpg",
+    "section-0-c-compass-contact-sheet.jpg",
+    "section-0-abc-compass-contact-sheet.jpg",
+    "section-0-4-ab-sequence-contact-sheet.jpg",
     "section-0-compass-contact-sheet.jpg",
     "section-0-layered-compass-contact-sheet.jpg",
     "section-0-ab-compass-contact-sheet.jpg",
@@ -67,30 +80,34 @@
     "layered-semantic-technical-evidence.json",
     "layered-semantic-checksums.sha256",
     "assets/review/section-0-b-max-change.jpg",
-    "assets/review/section-4-b-max-change.jpg"
+    "assets/review/section-4-b-max-change.jpg",
+    "SECTION_0_MOTION_C_NOTES.md",
+    "section-0-c-technical-evidence.json",
+    "section-0-c-checksums.sha256",
+    "assets/review/section-0-c-max-change.jpg"
   ],
-  "artifact_upload_status": "PASS",
-  "pages_access_status": "PASS",
+  "artifact_upload_status": "PENDING_WORKFLOW_UPLOAD",
+  "pages_access_status": "PENDING_PUBLIC_VERIFICATION",
   "compass_connector_retrieval_status": "WAITING_FOR_COMPASS_VERIFICATION",
-  "checksum": "eba6c0aa3ce97f369064476d946c15fa2bc9c3200a6af28757965acd8f6c0322",
-  "generated_at": "2026-08-03T04:18:00+00:00",
+  "checksum": "7836894c74a58f87a35f57a923899a108a6f843f745aa4118c80a77302b5fa56",
+  "generated_at": "2026-08-03T06:55:19+00:00",
   "canonical_status": "working_non_canonical",
   "merge_status": "draft_unmerged",
   "known_issues": [
-    "B is a Working Test, not a Canonical Motion Grammar decision.",
-    "Section 0 keeps the already-visible orange line and uses the existing trajectory; the line is not reconstructed.",
-    "Section 4 remains deliberately subtle, so timing should be judged in the actual MP4 as well as the timeline frames."
+    "C is a Working Test, not a Canonical Motion Grammar decision.",
+    "The orange line remains visible from the locked JPEG; C adds one source-path-following light and additive trail without reconstructing the line.",
+    "Section 4, Final, and all existing A/B media are byte-locked and unchanged."
   ],
   "CEO_decisions_required": [
-    "Whether B strengthens the three semantic stages enough to replace or inform Base Motion.",
-    "Whether the added production cost is justified before any 11-Section expansion.",
-    "Whether either Section needs one more micro-adjustment before a broader template test."
+    "Whether C makes 届く materially clearer than A/B while preserving FARLENS quietness.",
+    "Whether the iPhone-visible traveling light is restrained enough.",
+    "Whether the added path-mapping cost is justified as a reusable Motion primitive."
   ],
   "review_questions": [
-    "Does Section 0 B read as world, connection, then family more clearly than A?",
-    "Does Section 4 B read as gather, verify, then interpret more clearly than A?",
-    "Do both B tests preserve the locked stills and FARLENS quietness?",
-    "Is the semantic gain large enough to justify the measured cost increase?"
+    "Does C read as a light actually traveling from world to home on first viewing?",
+    "Is the C/A/B difference clear without weakening the locked still?",
+    "Is the 1.1-second settled hold sufficiently clear?",
+    "Is C's semantic gain worth its path extraction and verification cost?"
   ],
   "retention_policy": "PR-numbered GitHub Pages assets remain under the existing review repository policy; this bridge does not delete on PR close or change retention.",
   "timeline_frames": [
@@ -101,52 +118,52 @@
     },
     {
       "percentage": 10,
-      "timestamp": 1.1,
+      "timestamp": 1.62,
       "file": "frame-010.jpg"
     },
     {
       "percentage": 20,
-      "timestamp": 2.2,
+      "timestamp": 3.24,
       "file": "frame-020.jpg"
     },
     {
       "percentage": 30,
-      "timestamp": 3.3,
+      "timestamp": 4.86,
       "file": "frame-030.jpg"
     },
     {
       "percentage": 40,
-      "timestamp": 4.4,
+      "timestamp": 6.48,
       "file": "frame-040.jpg"
     },
     {
       "percentage": 50,
-      "timestamp": 5.5,
+      "timestamp": 8.1,
       "file": "frame-050.jpg"
     },
     {
       "percentage": 60,
-      "timestamp": 6.6,
+      "timestamp": 9.72,
       "file": "frame-060.jpg"
     },
     {
       "percentage": 70,
-      "timestamp": 7.7,
+      "timestamp": 11.34,
       "file": "frame-070.jpg"
     },
     {
       "percentage": 80,
-      "timestamp": 8.8,
+      "timestamp": 12.96,
       "file": "frame-080.jpg"
     },
     {
       "percentage": 90,
-      "timestamp": 9.9,
+      "timestamp": 14.58,
       "file": "frame-090.jpg"
     },
     {
       "percentage": 99,
-      "timestamp": 10.89,
+      "timestamp": 16.038,
       "file": "frame-099.jpg"
     }
   ],
@@ -155,18 +172,90 @@
     "layered-semantic-technical-evidence.json",
     "layered-semantic-checksums.sha256",
     "assets/review/section-0-b-max-change.jpg",
-    "assets/review/section-4-b-max-change.jpg"
+    "assets/review/section-4-b-max-change.jpg",
+    "SECTION_0_MOTION_C_NOTES.md",
+    "section-0-c-technical-evidence.json",
+    "section-0-c-checksums.sha256",
+    "assets/review/section-0-c-max-change.jpg"
   ],
   "artifacts": [
     {
-      "id": "layered-ab-sequence",
-      "title": "Section 0 + Section 4 continuous A/B comparison",
-      "source_video": "output/iphone/layered-semantic-ab-sequence-iphone.mp4",
+      "id": "section-0-abc-sequence",
+      "title": "Section 0 A then B then C",
+      "source_video": "output/iphone/section-0-abc-sequence-iphone.mp4",
       "source_image": null,
       "direct_mp4": "compass-review-sequence.mp4",
       "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-sequence.mp4",
       "contact_sheet": "compass-contact-sheet.jpg",
       "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-contact-sheet.jpg",
+      "copied_without_transcode": true,
+      "duration": 16.2,
+      "width": 540,
+      "height": 960,
+      "fps": 30.0,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio": false,
+      "checksum": "7836894c74a58f87a35f57a923899a108a6f843f745aa4118c80a77302b5fa56",
+      "bytes": 106481,
+      "faststart": true
+    },
+    {
+      "id": "section-0-c",
+      "title": "Section 0 C — Traveling Light",
+      "source_video": "output/iphone/section-0-traveling-light-motion-iphone.mp4",
+      "source_image": "assets/source/section-0-working-lock.jpg",
+      "direct_mp4": "compass-review-section-0-c.mp4",
+      "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-0-c.mp4",
+      "contact_sheet": "section-0-c-compass-contact-sheet.jpg",
+      "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-0-c-compass-contact-sheet.jpg",
+      "copied_without_transcode": true,
+      "duration": 5.4,
+      "width": 540,
+      "height": 960,
+      "fps": 30.0,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio": false,
+      "checksum": "9759af58ad0e47c226eb87f1e6e814186f9ee8ce22d1fbe7e5bf6fe9d8412e83",
+      "bytes": 29214,
+      "faststart": true,
+      "source_comparison_metric": {
+        "artifact_id": "section-0-c",
+        "max_change_timestamp": 3.333,
+        "mean_absolute_difference": 3.7709
+      }
+    },
+    {
+      "id": "section-0-abc",
+      "title": "Section 0 A/B/C side by side",
+      "source_video": "output/iphone/section-0-abc-comparison-iphone.mp4",
+      "source_image": null,
+      "direct_mp4": "compass-review-section-0-abc.mp4",
+      "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-0-abc.mp4",
+      "contact_sheet": "section-0-abc-compass-contact-sheet.jpg",
+      "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-0-abc-compass-contact-sheet.jpg",
+      "copied_without_transcode": true,
+      "duration": 5.4,
+      "width": 810,
+      "height": 480,
+      "fps": 30.0,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "audio": false,
+      "checksum": "1108e412f9f3ee89ab0e490a9308f85f6dc82d6eb374c089fd30bada5530bb3e",
+      "bytes": 41732,
+      "faststart": true
+    },
+    {
+      "id": "layered-ab-sequence",
+      "title": "Section 0 + Section 4 continuous A/B comparison",
+      "source_video": "output/iphone/layered-semantic-ab-sequence-iphone.mp4",
+      "source_image": null,
+      "direct_mp4": "compass-review-section-0-4-ab-sequence.mp4",
+      "direct_mp4_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/compass-review-section-0-4-ab-sequence.mp4",
+      "contact_sheet": "section-0-4-ab-sequence-contact-sheet.jpg",
+      "contact_sheet_url": "https://pgrootoffice-dev.github.io/project-genesis-prototype-reviews/pr-184/farlens-brand-film-000-motion-seed/section-0-4-ab-sequence-contact-sheet.jpg",
       "copied_without_transcode": true,
       "duration": 11.0,
       "width": 720,

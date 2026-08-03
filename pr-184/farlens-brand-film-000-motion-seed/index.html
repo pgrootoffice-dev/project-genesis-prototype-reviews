@@ -4,34 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#020d2a">
-  <title>FARLENS Brand Film #000｜Layered Semantic Motion A/B Test</title>
+  <title>FARLENS Brand Film #000｜Section 0 Motion A/B/C Test</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main>
     <header>
       <p class="eyebrow">FARLENS BRAND FILM #000</p>
-      <h1>Layered Semantic Motion</h1>
-      <p class="intro">左が現行A（Base Motion）、右がWorking Test Bです。Section 0と4だけを、意味の順序・主役・停止が読み取れるかで比較します。無音で確認してください。</p>
+      <h1>Section 0 Motion A/B/C</h1>
+      <p class="intro">A（Base）とB（Layered）は変更せず、Cだけに既存オレンジライン上を実際に移動する光を追加したWorking Testです。「届く」の明確さと静止画の強さを無音で比較してください。</p>
     </header>
 
     <section class="sequence sequence-wide" aria-labelledby="sequence-title">
       <div class="section-heading">
-        <h2 id="sequence-title">2本連続 A/B</h2>
-        <span>左 A / 右 B・11.0秒・無音</span>
+        <h2 id="sequence-title">A → B → C 連続比較</h2>
+        <span>16.2秒・無音</span>
       </div>
       <video controls playsinline preload="metadata">
-        <source src="output/iphone/layered-semantic-ab-sequence-iphone.mp4" media="(max-width: 700px)" type="video/mp4">
-        <source src="output/master/layered-semantic-ab-sequence.mp4" type="video/mp4">
+        <source src="output/iphone/section-0-abc-sequence-iphone.mp4" media="(max-width: 700px)" type="video/mp4">
+        <source src="output/master/section-0-abc-sequence.mp4" type="video/mp4">
       </video>
     </section>
 
     <section class="comparison-section" aria-labelledby="section-0-title">
       <div class="comparison-title">
-        <div><p class="eyebrow">SECTION 0</p><h2 id="section-0-title">つながる</h2></div>
-        <p>世界 → 接続 → 家族 → Hold</p>
+        <div><p class="eyebrow">SECTION 0</p><h2 id="section-0-title">届く</h2></div>
+        <p>覚醒 → 移動 → 到達・定着 → Hold</p>
       </div>
-      <div class="comparison-grid">
+      <div class="three-way-grid">
         <article>
           <div class="section-heading"><h3>A｜Base</h3><span>変更なし</span></div>
           <video controls playsinline preload="metadata"><source src="output/iphone/section-0-motion-test-iphone.mp4" type="video/mp4"></video>
@@ -40,17 +40,21 @@
           <div class="section-heading"><h3>B｜Layered</h3><span>5 layers</span></div>
           <video controls playsinline preload="metadata"><source src="output/iphone/section-0-layered-semantic-motion-iphone.mp4" type="video/mp4"></video>
         </article>
-        <article class="ab-card">
-          <div class="section-heading"><h3>A/B｜横並び</h3><span>左 A / 右 B</span></div>
-          <video controls playsinline preload="metadata"><source src="output/iphone/section-0-ab-comparison-iphone.mp4" type="video/mp4"></video>
+        <article>
+          <div class="section-heading"><h3>C｜Traveling Light</h3><span>6 semantic layers</span></div>
+          <video controls playsinline preload="metadata"><source src="output/iphone/section-0-traveling-light-motion-iphone.mp4" type="video/mp4"></video>
+        </article>
+        <article class="abc-card">
+          <div class="section-heading"><h3>A/B/C｜横並び</h3><span>左 A / 中 B / 右 C</span></div>
+          <video controls playsinline preload="metadata"><source src="output/iphone/section-0-abc-comparison-iphone.mp4" type="video/mp4"></video>
         </article>
       </div>
     </section>
 
     <section class="comparison-section" aria-labelledby="section-4-title">
       <div class="comparison-title">
-        <div><p class="eyebrow">SECTION 4</p><h2 id="section-4-title">整理される</h2></div>
-        <p>集める → 確かめる → 読み解く → Hold</p>
+        <div><p class="eyebrow">SECTION 4｜UNCHANGED REFERENCE</p><h2 id="section-4-title">整理される</h2></div>
+        <p>既存A/B・変更なし</p>
       </div>
       <div class="comparison-grid">
         <article>
@@ -71,26 +75,30 @@
     <section class="review">
       <h2>判断ポイント</h2>
       <ol>
-        <li>Bで台本の3段階がAより明確になったか</li>
-        <li>局所レイヤーの分離が不自然に見えないか</li>
-        <li>静止画の魅力とFARLENSらしい静けさが残っているか</li>
-        <li>65–80%のSection別実装負荷増に見合う意味の差があるか</li>
+        <li>Cで光点が本当に世界から家へ移動して見えるか</li>
+        <li>「届く」がA/Bより一度で明確に伝わるか</li>
+        <li>静止画の魅力、静けさ、主役と補助の強弱が保たれているか</li>
+        <li>36点のパス追従を再利用Primitiveとして採用する価値があるか</li>
       </ol>
-      <p class="note">Finalと現行Aは変更していません。BもWorking Testであり、Motion GrammarをCanonical化しません。</p>
+      <p class="note">Section 4、Final、現行A/Bは変更していません。CもWorking Test / NON-CANONICALであり、Motion GrammarをCanonical化しません。</p>
     </section>
 
     <section class="review" aria-labelledby="compass-review-title">
       <h2 id="compass-review-title">Compass Review Bridge v0.2</h2>
       <p>GitHub Pages公開とActions ArtifactはWorkflowが生成します。Compass Connectorの実取得確認前はWAITINGです。</p>
       <ul class="artifact-links">
-        <li><a href="compass-review-sequence.mp4">Direct MP4｜2本連続A/B</a></li>
+        <li><a href="compass-review-sequence.mp4">Direct MP4｜Section 0 A→B→C</a></li>
+        <li><a href="compass-review-section-0-c.mp4">Section 0 C</a></li>
+        <li><a href="compass-review-section-0-abc.mp4">Section 0 A/B/C</a></li>
         <li><a href="compass-review-section-0.mp4">Section 0 A</a></li>
         <li><a href="compass-review-section-0-layered.mp4">Section 0 B</a></li>
         <li><a href="compass-review-section-0-ab.mp4">Section 0 A/B</a></li>
         <li><a href="compass-review-section-4.mp4">Section 4 A</a></li>
         <li><a href="compass-review-section-4-layered.mp4">Section 4 B</a></li>
         <li><a href="compass-review-section-4-ab.mp4">Section 4 A/B</a></li>
-        <li><a href="compass-contact-sheet.jpg">Contact Sheet｜連続A/B</a></li>
+        <li><a href="compass-contact-sheet.jpg">Contact Sheet｜A→B→C</a></li>
+        <li><a href="section-0-c-compass-contact-sheet.jpg">Contact Sheet｜Section 0 C</a></li>
+        <li><a href="section-0-abc-compass-contact-sheet.jpg">Contact Sheet｜Section 0 A/B/C</a></li>
         <li><a href="section-0-layered-compass-contact-sheet.jpg">Contact Sheet｜Section 0 B</a></li>
         <li><a href="section-4-layered-compass-contact-sheet.jpg">Contact Sheet｜Section 4 B</a></li>
         <li><a href="source-vs-motion-comparison.jpg">Source Comparison</a></li>

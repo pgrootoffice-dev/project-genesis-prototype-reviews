@@ -1,0 +1,293 @@
+{
+  "status": "PASS",
+  "scope": "Section 0 Motion C — Working Test / NON-CANONICAL",
+  "design_source": {
+    "pr": 186,
+    "commit": "6cfde74041e7a64e791bac31b15d61db772521cc",
+    "file": "docs/farlens/brand-film/SECTION_00_MOTION_C_DESIGN_REVIEW.md"
+  },
+  "existing_a_b_section4_final_lock": {
+    "status": "PASS",
+    "sha256": {
+      "assets/source/final-working-lock.jpg": "20c73ec3e051857cc5c07c60e45d29ce54108e3fff54703da4364752e60c48bf",
+      "assets/source/section-0-working-lock.jpg": "42d60f652b8a2b24cd348a12862f7a18c15cca0fd565e8a29c88e5d16d16a1dc",
+      "assets/source/section-4-working-lock.jpg": "1bbd7f646b98b8f96df5d2d9cca1e608c9a8c7c7af302b6adb6cf77ac207a702",
+      "output/master/final-motion-test.mp4": "3179f19d8ba4b97080bce988232e34d96eae355771720ab32f7500662eb2b528",
+      "output/master/motion-seed-sequence.mp4": "bdc4769b5b7e36c133544ccd79ebcead78888a7a6f0dee7b2b705b336e3bc144",
+      "output/master/section-0-motion-test.mp4": "b71bee84e39db5f843c9dfee75915687d63acbdb55eccee4f4dd4deae600a9e0",
+      "output/master/section-4-motion-test.mp4": "5706e61d0d3be50b35f722c9ef1d9f27bdfb81991853d1b3d407e112f81ac474",
+      "output/iphone/final-motion-test-iphone.mp4": "352f83a5a1249839e927e02a9bc8b9ae10c577193df69c14915f9a5a9db36d15",
+      "output/iphone/motion-seed-sequence-iphone.mp4": "6b3710a7d7288084a42542cbaed8b6bb3e38d8b1e2df61ca3408345e55b54c48",
+      "output/iphone/section-0-motion-test-iphone.mp4": "92033f5182daa93888955c3ec4af493c30e05f2bec4a21df2855804c5e3cbbe3",
+      "output/iphone/section-4-motion-test-iphone.mp4": "be2309f13efea423cd3fe2eec7d82a195654c9b5640c66c6ee4bab74f4f0b1aa",
+      "output/master/section-0-layered-semantic-motion.mp4": "fb38a56cab9682ee79d98cd8543d64a5c44b5736978711f452a4827b4503c6fe",
+      "output/master/section-4-layered-semantic-motion.mp4": "3669a1fc5ab5fe64673bc235bc94cff9a62bb06328f344049cb597ee7d87de82",
+      "output/master/section-0-ab-comparison.mp4": "cc56e8e76534ffed7f5a6123a2ee8966168c388175640bde0b45814bf23effb7",
+      "output/master/section-4-ab-comparison.mp4": "8f7e7523f75446429fa6dde304b1d5413188d3bb523f6d362482f1ba0ecab184",
+      "output/master/layered-semantic-ab-sequence.mp4": "92ce60a3179dd1d920e3165f9d7b0becfa798c43f376b8652f076f278f2abbe4",
+      "output/iphone/section-0-layered-semantic-motion-iphone.mp4": "ea531823d34acd6e902ada0667a973af21a3e79a1bd63dcc816c9445c8bbc512",
+      "output/iphone/section-4-layered-semantic-motion-iphone.mp4": "136a2da9bc631d50b713f7369d27c8cf1b47ac4f8d83d6963484f4d33fe8b936",
+      "output/iphone/section-0-ab-comparison-iphone.mp4": "967943b4c9a7177626e2de58b9e265218422b01dd93bf9fe3bb2997a8d626532",
+      "output/iphone/section-4-ab-comparison-iphone.mp4": "2ad80f0e02c1dde2b2bab03d760f51f9ddb0a04e50e16733240778501142553f",
+      "output/iphone/layered-semantic-ab-sequence-iphone.mp4": "eba6c0aa3ce97f369064476d946c15fa2bc9c3200a6af28757965acd8f6c0322",
+      "assets/review/section-0-b-max-change.jpg": "bce365221d19673407673635647b2d269a69486433716504e28cea362e96e647",
+      "assets/review/section-4-b-max-change.jpg": "f93d19440698852cbbf82d3e4423942f5b8d4fdacac961f3d2279734f29c0620"
+    }
+  },
+  "motion_contract": {
+    "meaning_verb": "届く",
+    "hero": "Traveling Light on the locked orange line",
+    "semantic_order": [
+      "覚醒",
+      "移動",
+      "到達・定着"
+    ],
+    "hold": {
+      "start": 4.3,
+      "end": 5.4,
+      "duration": 1.1,
+      "mean_frame_difference": 0.00772
+    },
+    "path_coordinate_count": 36,
+    "path_coordinates": [
+      [
+        167,
+        516
+      ],
+      [
+        186,
+        526
+      ],
+      [
+        208,
+        535
+      ],
+      [
+        226,
+        545
+      ],
+      [
+        242,
+        555
+      ],
+      [
+        255,
+        565
+      ],
+      [
+        267,
+        575
+      ],
+      [
+        279,
+        585
+      ],
+      [
+        288,
+        595
+      ],
+      [
+        296,
+        605
+      ],
+      [
+        304,
+        615
+      ],
+      [
+        311,
+        625
+      ],
+      [
+        318,
+        635
+      ],
+      [
+        323,
+        645
+      ],
+      [
+        328,
+        655
+      ],
+      [
+        334,
+        665
+      ],
+      [
+        338,
+        675
+      ],
+      [
+        342,
+        685
+      ],
+      [
+        346,
+        695
+      ],
+      [
+        350,
+        705
+      ],
+      [
+        358,
+        725
+      ],
+      [
+        365,
+        745
+      ],
+      [
+        372,
+        765
+      ],
+      [
+        380,
+        785
+      ],
+      [
+        387,
+        805
+      ],
+      [
+        396,
+        825
+      ],
+      [
+        405,
+        845
+      ],
+      [
+        415,
+        865
+      ],
+      [
+        428,
+        885
+      ],
+      [
+        441,
+        905
+      ],
+      [
+        458,
+        925
+      ],
+      [
+        478,
+        945
+      ],
+      [
+        497,
+        960
+      ],
+      [
+        513,
+        969
+      ],
+      [
+        528,
+        978
+      ],
+      [
+        536,
+        982
+      ]
+    ],
+    "camera": "fixed"
+  },
+  "deterministic_2d_method": {
+    "source_base": "complete locked JPEG on every frame",
+    "allowed_operations": [
+      "source-region duplicate",
+      "source-traced path follow",
+      "additive trail",
+      "local RGB light change"
+    ],
+    "new_stars_or_particles": false,
+    "background_reconstruction": false,
+    "generative_services": [],
+    "external_uploads": []
+  },
+  "technical_checks": [
+    {
+      "path": "output/master/section-0-traveling-light-motion.mp4",
+      "sha256": "5824018dbf6e2079a84f18ff9b9fe0fe5f9f2e32db8d5767f7c33fa327e7c17a",
+      "bytes": 75156,
+      "duration": 5.4,
+      "width": 720,
+      "height": 1280,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/master/section-0-abc-comparison.mp4",
+      "sha256": "8fb7dd3db56d830007cd9ecd7eafc137ab0bca71fc394b6e004ec805527d5e7a",
+      "bytes": 344068,
+      "duration": 5.4,
+      "width": 2160,
+      "height": 1280,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/master/section-0-abc-sequence.mp4",
+      "sha256": "1e292790088cdf157e60987e7b9a5ecb72c20fd87302e68cc08df4ba7ad1afcd",
+      "bytes": 361114,
+      "duration": 16.2,
+      "width": 720,
+      "height": 1280,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/iphone/section-0-traveling-light-motion-iphone.mp4",
+      "sha256": "9759af58ad0e47c226eb87f1e6e814186f9ee8ce22d1fbe7e5bf6fe9d8412e83",
+      "bytes": 29214,
+      "duration": 5.4,
+      "width": 540,
+      "height": 960,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/iphone/section-0-abc-comparison-iphone.mp4",
+      "sha256": "1108e412f9f3ee89ab0e490a9308f85f6dc82d6eb374c089fd30bada5530bb3e",
+      "bytes": 41732,
+      "duration": 5.4,
+      "width": 810,
+      "height": 480,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    },
+    {
+      "path": "output/iphone/section-0-abc-sequence-iphone.mp4",
+      "sha256": "7836894c74a58f87a35f57a923899a108a6f843f745aa4118c80a77302b5fa56",
+      "bytes": 106481,
+      "duration": 16.2,
+      "width": 540,
+      "height": 960,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio_streams": 0
+    }
+  ],
+  "maximum_change_frame": {
+    "timestamp": 4.0,
+    "mean_absolute_difference": 1.1575,
+    "file": "assets/review/section-0-c-max-change.jpg"
+  },
+  "failures": []
+}
