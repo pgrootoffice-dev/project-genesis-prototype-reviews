@@ -86,8 +86,8 @@
     "section-0-c-checksums.sha256",
     "assets/review/section-0-c-max-change.jpg"
   ],
-  "artifact_upload_status": "PENDING_WORKFLOW_UPLOAD",
-  "pages_access_status": "PENDING_PUBLIC_VERIFICATION",
+  "artifact_upload_status": "PASS",
+  "pages_access_status": "PASS",
   "compass_connector_retrieval_status": "WAITING_FOR_COMPASS_VERIFICATION",
   "checksum": "7836894c74a58f87a35f57a923899a108a6f843f745aa4118c80a77302b5fa56",
   "generated_at": "2026-08-03T06:55:19+00:00",
