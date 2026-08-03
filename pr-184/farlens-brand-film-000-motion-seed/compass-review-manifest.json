@@ -47,8 +47,8 @@
     "compass-public-access-verification.json",
     "README.md"
   ],
-  "artifact_upload_status": "PENDING_WORKFLOW_UPLOAD",
-  "pages_access_status": "PENDING_PUBLIC_VERIFICATION",
+  "artifact_upload_status": "PASS",
+  "pages_access_status": "PASS",
   "compass_connector_retrieval_status": "WAITING_FOR_COMPASS_VERIFICATION",
   "checksum": "6b3710a7d7288084a42542cbaed8b6bb3e38d8b1e2df61ca3408345e55b54c48",
   "generated_at": "2026-08-03T01:56:07+00:00",
