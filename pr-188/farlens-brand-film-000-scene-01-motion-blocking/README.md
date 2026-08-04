@@ -8,7 +8,9 @@ Status: **WORKING TEST / NON-CANONICAL / PIPELINE STAGE 3**
 
 - 承認済みStatic Sequence PNGを唯一の画面設計入力にする。
 - 元PNGは編集せず、レンダー時に5つの既存Frame領域を参照する。
-- Frameを単純クロスフェードせず、局所Reveal、時差Reveal、伝播線、交差Flow、世界規模への開きで意味を橋渡しする。
+- 元PNGのレビュー番号領域は上塗りせず、入力Cropから除外する。映像内に番号・ラベル・説明文字を描画しない。
+- 同一Frame由来の背景延長Layerで16:9全体を満たし、比率維持の主画をFeather Maskで接続する。
+- Frameを単純クロスフェードせず、起点から左右へ広がる非円形のOrganic Arrival Mask、伝播線、交差Flow、世界規模への開きで到達状態を橋渡しする。
 - Swift/CoreGraphicsで300フレームを決定論的に描画し、既存FFmpegでH.264へ書き出す。
 - カメラは固定。主要変化はFrame内の光、層、構造、相互作用側で起こす。
 
@@ -35,10 +37,10 @@ Blockingでは上記を評価対象にせず、安価で局所修正可能な意
 | Frame | Beat | Time | Blocking change |
 | --- | --- | --- | --- |
 | 1 | Beat 1 | 0.0–1.6s | 静かな世界。環境光の微弱な呼吸のみ。 |
-| 2 | Beat 2 | 1.6–3.0s | 一つの局所Revealと単一Glow。 |
-| 3 | Beat 3 | 3.0–5.3s | 3領域を時差で開き、異なる方向へ伝播。 |
-| 4 | Beat 3→4 | 5.3–7.6s | 3領域が接続し、交差Flowと反応点で相互作用・加速。 |
-| 5 | Beat 4 | 7.6–10.0s | 世界規模へ開き、左右の流れを一つの世界へ収束。 |
+| 2 | Beat 2 | 1.6–3.0s | Frame 1内の一点へ光が集まり、局所変化が立ち上がって定着。 |
+| 3 | Beat 3 | 3.0–5.3s | Beat 2の起点から3方向へ時差伝播し、Frame 3状態へ到達。 |
+| 4 | Beat 3→4 | 5.3–7.6s | 既存Flowが関係を持ち、交差Flowと反応点で相互作用・加速。 |
+| 5 | Beat 4 | 7.6–10.0s | 既存の接続が世界規模へ広がり、9.3秒以降は静かに安定。 |
 
 機械可読版は [`beat-map.json`](./beat-map.json) にあります。
 
@@ -58,6 +60,11 @@ Blockingでは上記を評価対象にせず、安価で局所修正可能な意
 - `assets/review/storyboard-motion-contact-sheet.png`
 - `assets/review/transition-contact-sheet.png`
 - `assets/review/max-change-frame.jpg`
+- `assets/review/contact-sheet-0.5-second.png`
+- `assets/review/transition-frame-1-to-2.png`
+- `assets/review/transition-frame-2-to-3.png`
+- `assets/review/transition-frame-3-to-4.png`
+- `assets/review/transition-frame-4-to-5.png`
 - `technical-evidence.json`
 - `checksums.sha256`
 

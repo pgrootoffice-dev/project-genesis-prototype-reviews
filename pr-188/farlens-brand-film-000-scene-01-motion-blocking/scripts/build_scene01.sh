@@ -34,7 +34,7 @@ ffmpeg -loglevel error -y \
   -pix_fmt yuv420p -movflags +faststart \
   "$prototype_dir/output/iphone/scene-01-motion-blocking-iphone.mp4"
 
-timestamps=(0.8 2.2 4.2 6.7 8.8)
+timestamps=(0.8 2.7 4.7 7.1 9.5)
 names=(frame-01-beat-1 frame-02-beat-2 frame-03-beat-3 frame-04-beat-3-to-4 frame-05-beat-4)
 for index in {1..5}; do
   ffmpeg -loglevel error -y \
@@ -44,7 +44,7 @@ for index in {1..5}; do
 done
 
 ffmpeg -loglevel error -y \
-  -ss 6.7 -i "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
+  -ss 6.8 -i "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
   -frames:v 1 "$prototype_dir/assets/review/max-change-frame.jpg"
 
 ffmpeg -loglevel error -y \
@@ -54,8 +54,33 @@ ffmpeg -loglevel error -y \
 
 ffmpeg -loglevel error -y \
   -i "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
-  -vf "select='eq(n,42)+eq(n,50)+eq(n,84)+eq(n,94)+eq(n,154)+eq(n,168)+eq(n,222)+eq(n,232)',setpts=N/FRAME_RATE/TB,scale=320:180,tile=4x2:padding=8:margin=8:color=0x061329" \
+  -vf "select='eq(n,30)+eq(n,48)+eq(n,81)+eq(n,96)+eq(n,153)+eq(n,171)+eq(n,222)+eq(n,240)',setpts=N/FRAME_RATE/TB,scale=320:180,tile=4x2:padding=8:margin=8:color=0x061329" \
   -frames:v 1 "$prototype_dir/assets/review/transition-contact-sheet.png"
+
+ffmpeg -loglevel error -y \
+  -i "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
+  -vf "fps=2,scale=240:135,tile=5x4:padding=8:margin=8:color=0x061329" \
+  -frames:v 1 "$prototype_dir/assets/review/contact-sheet-0.5-second.png"
+
+ffmpeg -loglevel error -y \
+  -i "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
+  -vf "select='eq(n,30)+eq(n,39)+eq(n,48)+eq(n,57)+eq(n,69)+eq(n,84)',setpts=N/FRAME_RATE/TB,scale=400:225,tile=3x2:padding=8:margin=8:color=0x061329" \
+  -frames:v 1 "$prototype_dir/assets/review/transition-frame-1-to-2.png"
+
+ffmpeg -loglevel error -y \
+  -i "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
+  -vf "select='eq(n,81)+eq(n,90)+eq(n,99)+eq(n,111)+eq(n,126)+eq(n,150)',setpts=N/FRAME_RATE/TB,scale=400:225,tile=3x2:padding=8:margin=8:color=0x061329" \
+  -frames:v 1 "$prototype_dir/assets/review/transition-frame-2-to-3.png"
+
+ffmpeg -loglevel error -y \
+  -i "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
+  -vf "select='eq(n,153)+eq(n,159)+eq(n,171)+eq(n,183)+eq(n,201)+eq(n,219)',setpts=N/FRAME_RATE/TB,scale=400:225,tile=3x2:padding=8:margin=8:color=0x061329" \
+  -frames:v 1 "$prototype_dir/assets/review/transition-frame-3-to-4.png"
+
+ffmpeg -loglevel error -y \
+  -i "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
+  -vf "select='eq(n,222)+eq(n,228)+eq(n,240)+eq(n,255)+eq(n,270)+eq(n,285)',setpts=N/FRAME_RATE/TB,scale=400:225,tile=3x2:padding=8:margin=8:color=0x061329" \
+  -frames:v 1 "$prototype_dir/assets/review/transition-frame-4-to-5.png"
 
 ffprobe -v error -show_entries \
   format=duration,size,bit_rate:stream=index,codec_name,codec_type,width,height,r_frame_rate,pix_fmt \
@@ -70,12 +95,13 @@ python3 "$script_dir/verify_scene01.py" --write-evidence
     output/master/scene-01-motion-blocking.mp4 \
     output/iphone/scene-01-motion-blocking-iphone.mp4 \
     assets/keyframes/*.png \
-    assets/review/max-change-frame.jpg \
-    assets/review/storyboard-motion-contact-sheet.png \
-    assets/review/transition-contact-sheet.png \
+    assets/review/*.jpg \
+    assets/review/*.png \
     assets/source/static-sequence-working-lock.png \
     assets/source/SOURCE_PROVENANCE.md \
     beat-map.json \
+    technical-evidence.json \
+    production-evidence.json \
     > checksums.sha256
 )
 

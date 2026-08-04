@@ -29,12 +29,12 @@
       "start": 1.6,
       "end": 3.0,
       "meaning": "一つの小さな変化が生まれる。",
-      "major_change": "起点からの局所Revealと単一Glow。",
+      "major_change": "Frame 1の世界を保ったまま一点へ光が集まり、有機的なLayer Openingで小さな変化が定着。",
       "layers": [
-        "L0 Background",
-        "L1 Adopted Frame 2",
-        "L2 Local Reveal",
-        "L3 Change Light"
+        "L0 Extended Background",
+        "L1 Adopted State 1→2",
+        "L2 Organic Arrival Mask",
+        "L3 Gathering Light"
       ]
     },
     {
@@ -43,12 +43,12 @@
       "start": 3.0,
       "end": 5.3,
       "meaning": "変化が世界内部へ伝播し、異なる現象が生まれる。",
-      "major_change": "3領域を時差Revealし、3方向の光の流れを別タイミングで進行。",
+      "major_change": "Beat 2の起点から3方向へ時差伝播し、その到達に伴ってFrame 3状態が世界内部から開く。",
       "layers": [
-        "L0 Background",
-        "L1 Adopted Frame 3",
-        "L2 Staggered Regions",
-        "L4 Propagation Paths"
+        "L0 Extended Background",
+        "L1 Adopted State 2→3",
+        "L2 Organic Arrival Mask",
+        "L4 Persistent Propagation Paths"
       ]
     },
     {
@@ -57,12 +57,12 @@
       "start": 5.3,
       "end": 7.6,
       "meaning": "異なる現象が接続し、相互作用と加速が始まる。",
-      "major_change": "3領域が接続し、交差する流れと反応点で相互作用を提示。",
+      "major_change": "Frame 3の伝播Flowを保持したまま相互接続へ展開し、交差する流れと反応点で加速を提示。",
       "layers": [
-        "L0 Background",
-        "L1 Adopted Frame 4",
-        "L2 Regional Reveal",
-        "L4 Crossing Flows",
+        "L0 Extended Background",
+        "L1 Adopted State 3→4",
+        "L2 Organic Arrival Mask",
+        "L4 Persistent Crossing Flows",
         "L5 Interaction Response"
       ]
     },
@@ -72,42 +72,64 @@
       "start": 7.6,
       "end": 10.0,
       "meaning": "視点が広がり、世界全体が次の時代へ動き始める。",
-      "major_change": "中央から世界規模へ開き、左右の流れが一つの世界へ収束。9.3秒以降は安定。",
+      "major_change": "既存の接続を中央から左右へ穏やかに延長し、Frame 5の世界規模へ到達。9.3秒以降は完全安定。",
       "layers": [
-        "L0 Background",
-        "L1 Adopted Frame 5",
-        "L2 World Reveal",
+        "L0 Extended Background",
+        "L1 Adopted State 4→5",
+        "L2 Organic Arrival Mask",
         "L3 Horizon Light",
-        "L4 Global Flows"
+        "L4 Outward Global Flows"
       ]
     }
   ],
   "videos": {
     "master": {
       "path": "output/master/scene-01-motion-blocking.mp4",
-      "sha256": "45a176b303751be48781b482d52fb13d6957bb474d4d19226ab3c61afa62a3ae",
-      "bytes": 614703,
+      "sha256": "30d9bfd8758b8636bd6b97aa756f037b2bbefa5522a50fdaa8a39705a7f7258b",
+      "bytes": 1131107,
       "duration": 10.0,
       "width": 1280,
       "height": 720,
       "codec": "h264",
       "pixel_format": "yuv420p",
       "fps": "30/1",
+      "decoded_frame_count": 300,
       "audio": false,
-      "faststart": true
+      "faststart": true,
+      "full_decode": true,
+      "detected_content_crop": [
+        [
+          1280,
+          720,
+          0,
+          0
+        ]
+      ],
+      "black_bars_detected": false
     },
     "iphone": {
       "path": "output/iphone/scene-01-motion-blocking-iphone.mp4",
-      "sha256": "87f1f30dd36b0334367533587488297e063b13396418aff50b20feed80c2d48e",
-      "bytes": 271128,
+      "sha256": "ed007097b677d35e311fa9aac17498ce28a74855bd8109f1700882f07eb103af",
+      "bytes": 447676,
       "duration": 10.0,
       "width": 960,
       "height": 540,
       "codec": "h264",
       "pixel_format": "yuv420p",
       "fps": "30/1",
+      "decoded_frame_count": 300,
       "audio": false,
-      "faststart": true
+      "faststart": true,
+      "full_decode": true,
+      "detected_content_crop": [
+        [
+          960,
+          540,
+          0,
+          0
+        ]
+      ],
+      "black_bars_detected": false
     }
   },
   "checks": {
@@ -115,7 +137,12 @@
     "duration_0_to_10_seconds": true,
     "iphone_compatible_encode": true,
     "source_image_unchanged": true,
-    "no_audio": true
+    "no_audio": true,
+    "frame_numbers_detected_zero": true,
+    "black_bars_detected_zero": true,
+    "circular_transition_code_zero": true,
+    "all_300_frames_regenerated": true,
+    "required_transition_evidence_present": true
   },
   "failures": []
 }

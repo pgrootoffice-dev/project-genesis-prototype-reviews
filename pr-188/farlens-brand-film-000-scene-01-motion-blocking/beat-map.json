@@ -23,8 +23,8 @@
       "start": 1.6,
       "end": 3.0,
       "meaning": "一つの小さな変化が生まれる。",
-      "major_change": "起点からの局所Revealと単一Glow。",
-      "layers": ["L0 Background", "L1 Adopted Frame 2", "L2 Local Reveal", "L3 Change Light"]
+      "major_change": "Frame 1の世界を保ったまま一点へ光が集まり、有機的なLayer Openingで小さな変化が定着。",
+      "layers": ["L0 Extended Background", "L1 Adopted State 1→2", "L2 Organic Arrival Mask", "L3 Gathering Light"]
     },
     {
       "frame": 3,
@@ -32,8 +32,8 @@
       "start": 3.0,
       "end": 5.3,
       "meaning": "変化が世界内部へ伝播し、異なる現象が生まれる。",
-      "major_change": "3領域を時差Revealし、3方向の光の流れを別タイミングで進行。",
-      "layers": ["L0 Background", "L1 Adopted Frame 3", "L2 Staggered Regions", "L4 Propagation Paths"]
+      "major_change": "Beat 2の起点から3方向へ時差伝播し、その到達に伴ってFrame 3状態が世界内部から開く。",
+      "layers": ["L0 Extended Background", "L1 Adopted State 2→3", "L2 Organic Arrival Mask", "L4 Persistent Propagation Paths"]
     },
     {
       "frame": 4,
@@ -41,8 +41,8 @@
       "start": 5.3,
       "end": 7.6,
       "meaning": "異なる現象が接続し、相互作用と加速が始まる。",
-      "major_change": "3領域が接続し、交差する流れと反応点で相互作用を提示。",
-      "layers": ["L0 Background", "L1 Adopted Frame 4", "L2 Regional Reveal", "L4 Crossing Flows", "L5 Interaction Response"]
+      "major_change": "Frame 3の伝播Flowを保持したまま相互接続へ展開し、交差する流れと反応点で加速を提示。",
+      "layers": ["L0 Extended Background", "L1 Adopted State 3→4", "L2 Organic Arrival Mask", "L4 Persistent Crossing Flows", "L5 Interaction Response"]
     },
     {
       "frame": 5,
@@ -50,8 +50,8 @@
       "start": 7.6,
       "end": 10.0,
       "meaning": "視点が広がり、世界全体が次の時代へ動き始める。",
-      "major_change": "中央から世界規模へ開き、左右の流れが一つの世界へ収束。9.3秒以降は安定。",
-      "layers": ["L0 Background", "L1 Adopted Frame 5", "L2 World Reveal", "L3 Horizon Light", "L4 Global Flows"]
+      "major_change": "既存の接続を中央から左右へ穏やかに延長し、Frame 5の世界規模へ到達。9.3秒以降は完全安定。",
+      "layers": ["L0 Extended Background", "L1 Adopted State 4→5", "L2 Organic Arrival Mask", "L3 Horizon Light", "L4 Outward Global Flows"]
     }
   ]
 }
