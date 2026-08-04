@@ -1,0 +1,52 @@
+{
+  "bundle_id": "farlens-brand-film-000-scene-01-motion-blocking",
+  "title": "FARLENS Brand Film #000 — Scene 1 Motion Blocking",
+  "source_task": "Draft PR #186 Scene 1 production handoff — Pipeline Stage 3 implementation",
+  "rubric_ref": "docs/os/ARTIFACT_REVIEW_LOOP.md#rubric",
+  "artifacts": [
+    {
+      "id": "scene-01-motion-blocking",
+      "type": "video",
+      "path": "prototypes/farlens-brand-film-000-scene-01-motion-blocking/output/master/scene-01-motion-blocking.mp4",
+      "title": "Scene 1 Motion Blocking — 0 to 10 seconds",
+      "description": "Working, non-canonical Stage 3 blocking. Review semantic progression, timing, role handoff, and the Frame 3 versus Frame 4 distinction; do not review final texture or production polish.",
+      "context_links": [
+        "prototypes/farlens-brand-film-000-scene-01-motion-blocking/README.md",
+        "prototypes/farlens-brand-film-000-scene-01-motion-blocking/beat-map.json",
+        "prototypes/farlens-brand-film-000-scene-01-motion-blocking/assets/source/SOURCE_PROVENANCE.md"
+      ],
+      "review_kind": "content_prototype",
+      "medium": "youtube_video",
+      "youtube_premised": true,
+      "historical_fixture": false,
+      "retired_reference": false,
+      "ceo_review_dimensions": [
+        "design",
+        "world_view",
+        "taste",
+        "parent_trust",
+        "child_attraction"
+      ],
+      "verdict": {
+        "overall": "Ready",
+        "confidence": "Medium",
+        "summary": "採用済み5 Framesを変えず、静けさ→単一変化→異なる現象への伝播→接続と相互作用→世界規模への始動という10秒の意味進行を、局所Revealと時差Flowで確認できるMotion Blockingになった。完成画の質感ではなくStage 3のテンポと主役交代を判断できる状態。",
+        "good_points": [
+          "Artifact Reviewの16-frame contact sheetでFrame 1〜5が順序どおり現れ、Frame 3とFrame 4の間に部分Revealと交差Flowを挟んでいることを実物確認した。",
+          "motion-intensity検査でlong_static_segmentsは0件。Beat境界だけでなく各Beat内部にも知覚可能な変化があり、単純な5枚クロスフェード列ではない。",
+          "Frame 4は要素数を増やすだけでなく、左右を横断する2つのFlowと交差部の反応で接続・相互作用を担当し、Frame 3の分岐伝播と役割を分けている。"
+        ],
+        "critical_issues": [
+          "採用画像が5 Framesを収めたワイドなStatic Sequenceシートであるため、各Frameの既存比率を守ると16:9内に上下余白が残る。これはBlocking上の既知制約でありFinal composition評価には使えない。",
+          "Frame番号は採用画像内のレビュー表示をそのまま保持している。Final用の独立Frame素材が引き渡されるStage 5以降では除外が必要。音声も未実装のためNarration/Sound同期は未確認。"
+        ],
+        "top_points_for_founder": [
+          "Frame 3の『異なる現象が生まれる』とFrame 4の『現象同士が接続し相互作用する』が一度見て別の意味に感じられるか。",
+          "Beat 1の静けさに対して、Beat 4までのMotion量の上昇が十分か、または強すぎるか。",
+          "Frame 5の開きが希望の押し売りではなく、静かな世界規模の始動として感じられるか。"
+        ],
+        "recommendation": "このままFounder Reviewへ"
+      }
+    }
+  ]
+}

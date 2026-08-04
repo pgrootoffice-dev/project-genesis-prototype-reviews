@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "scene": "Scene 1｜世界は動き始めている",
+  "duration_seconds": 10.0,
+  "motion_order": [
+    "静止／呼吸",
+    "変化／連鎖",
+    "接続／拡大／移行"
+  ],
+  "timeline": [
+    {
+      "frame": 1,
+      "beat": "Beat 1",
+      "start": 0.0,
+      "end": 1.6,
+      "meaning": "静かな世界。完全停止ではなく微弱な呼吸だけがある。",
+      "major_change": "環境光のごく小さな呼吸。構図は固定。",
+      "layers": ["L0 Background", "L1 Adopted Frame 1", "L3 Ambient Light"]
+    },
+    {
+      "frame": 2,
+      "beat": "Beat 2",
+      "start": 1.6,
+      "end": 3.0,
+      "meaning": "一つの小さな変化が生まれる。",
+      "major_change": "起点からの局所Revealと単一Glow。",
+      "layers": ["L0 Background", "L1 Adopted Frame 2", "L2 Local Reveal", "L3 Change Light"]
+    },
+    {
+      "frame": 3,
+      "beat": "Beat 3",
+      "start": 3.0,
+      "end": 5.3,
+      "meaning": "変化が世界内部へ伝播し、異なる現象が生まれる。",
+      "major_change": "3領域を時差Revealし、3方向の光の流れを別タイミングで進行。",
+      "layers": ["L0 Background", "L1 Adopted Frame 3", "L2 Staggered Regions", "L4 Propagation Paths"]
+    },
+    {
+      "frame": 4,
+      "beat": "Beat 3→4",
+      "start": 5.3,
+      "end": 7.6,
+      "meaning": "異なる現象が接続し、相互作用と加速が始まる。",
+      "major_change": "3領域が接続し、交差する流れと反応点で相互作用を提示。",
+      "layers": ["L0 Background", "L1 Adopted Frame 4", "L2 Regional Reveal", "L4 Crossing Flows", "L5 Interaction Response"]
+    },
+    {
+      "frame": 5,
+      "beat": "Beat 4",
+      "start": 7.6,
+      "end": 10.0,
+      "meaning": "視点が広がり、世界全体が次の時代へ動き始める。",
+      "major_change": "中央から世界規模へ開き、左右の流れが一つの世界へ収束。9.3秒以降は安定。",
+      "layers": ["L0 Background", "L1 Adopted Frame 5", "L2 World Reveal", "L3 Horizon Light", "L4 Global Flows"]
+    }
+  ]
+}

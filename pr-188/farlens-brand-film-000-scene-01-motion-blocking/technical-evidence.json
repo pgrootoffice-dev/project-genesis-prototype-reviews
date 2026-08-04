@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "artifact_id": "farlens-brand-film-000-scene-01-motion-blocking",
+  "status": "PASS",
+  "classification": "WORKING TEST / NON-CANONICAL / MOTION BLOCKING",
+  "source_static_sequence": {
+    "path": "docs/farlens/brand-film/assets/scene-01/BRAND_FILM_000_SCENE_01_STATIC_SEQUENCE_WORKING_LOCK.png",
+    "sha256": "97bfd90afc8e6ceaa6d6bf3e8a26d78b6cf9b9d506240af5fd84fb5b9d290c59",
+    "expected_sha256": "97bfd90afc8e6ceaa6d6bf3e8a26d78b6cf9b9d506240af5fd84fb5b9d290c59",
+    "unchanged": true
+  },
+  "frame_beat_mapping": [
+    {
+      "frame": 1,
+      "beat": "Beat 1",
+      "start": 0.0,
+      "end": 1.6,
+      "meaning": "静かな世界。完全停止ではなく微弱な呼吸だけがある。",
+      "major_change": "環境光のごく小さな呼吸。構図は固定。",
+      "layers": [
+        "L0 Background",
+        "L1 Adopted Frame 1",
+        "L3 Ambient Light"
+      ]
+    },
+    {
+      "frame": 2,
+      "beat": "Beat 2",
+      "start": 1.6,
+      "end": 3.0,
+      "meaning": "一つの小さな変化が生まれる。",
+      "major_change": "起点からの局所Revealと単一Glow。",
+      "layers": [
+        "L0 Background",
+        "L1 Adopted Frame 2",
+        "L2 Local Reveal",
+        "L3 Change Light"
+      ]
+    },
+    {
+      "frame": 3,
+      "beat": "Beat 3",
+      "start": 3.0,
+      "end": 5.3,
+      "meaning": "変化が世界内部へ伝播し、異なる現象が生まれる。",
+      "major_change": "3領域を時差Revealし、3方向の光の流れを別タイミングで進行。",
+      "layers": [
+        "L0 Background",
+        "L1 Adopted Frame 3",
+        "L2 Staggered Regions",
+        "L4 Propagation Paths"
+      ]
+    },
+    {
+      "frame": 4,
+      "beat": "Beat 3→4",
+      "start": 5.3,
+      "end": 7.6,
+      "meaning": "異なる現象が接続し、相互作用と加速が始まる。",
+      "major_change": "3領域が接続し、交差する流れと反応点で相互作用を提示。",
+      "layers": [
+        "L0 Background",
+        "L1 Adopted Frame 4",
+        "L2 Regional Reveal",
+        "L4 Crossing Flows",
+        "L5 Interaction Response"
+      ]
+    },
+    {
+      "frame": 5,
+      "beat": "Beat 4",
+      "start": 7.6,
+      "end": 10.0,
+      "meaning": "視点が広がり、世界全体が次の時代へ動き始める。",
+      "major_change": "中央から世界規模へ開き、左右の流れが一つの世界へ収束。9.3秒以降は安定。",
+      "layers": [
+        "L0 Background",
+        "L1 Adopted Frame 5",
+        "L2 World Reveal",
+        "L3 Horizon Light",
+        "L4 Global Flows"
+      ]
+    }
+  ],
+  "videos": {
+    "master": {
+      "path": "output/master/scene-01-motion-blocking.mp4",
+      "sha256": "45a176b303751be48781b482d52fb13d6957bb474d4d19226ab3c61afa62a3ae",
+      "bytes": 614703,
+      "duration": 10.0,
+      "width": 1280,
+      "height": 720,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio": false,
+      "faststart": true
+    },
+    "iphone": {
+      "path": "output/iphone/scene-01-motion-blocking-iphone.mp4",
+      "sha256": "87f1f30dd36b0334367533587488297e063b13396418aff50b20feed80c2d48e",
+      "bytes": 271128,
+      "duration": 10.0,
+      "width": 960,
+      "height": 540,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "audio": false,
+      "faststart": true
+    }
+  },
+  "checks": {
+    "frame_beat_order_locked": true,
+    "duration_0_to_10_seconds": true,
+    "iphone_compatible_encode": true,
+    "source_image_unchanged": true,
+    "no_audio": true
+  },
+  "failures": []
+}
