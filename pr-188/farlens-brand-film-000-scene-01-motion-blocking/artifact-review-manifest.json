@@ -30,10 +30,11 @@
       "verdict": {
         "overall": "Ready",
         "confidence": "Medium",
-        "summary": "Compass初稿レビューを反映し、採用済み5 Framesをカット素材ではなく到達状態として扱う連続Motion Blockingへ更新した。映像内Frame番号、黒帯、円形Revealを除去し、発生→伝播→接続と相互作用→世界規模への展開を、Organic Arrival MaskとBeatをまたぐFlowで確認できる状態。",
+        "summary": "Compass再レビューで唯一残ったFrame 2→3を局所修正。採用済み5 Framesを到達状態として扱う構造を維持し、起点の近景をFrame 3冒頭まで残しながら、3本のFlow到達に同期して奥景→中景→前景が開く連続伝播へ更新した。",
         "good_points": [
           "0.5秒刻みContact Sheetと4つのTransition拡大Sheetで、Frame番号と黒帯がなく、各状態が局所発生と伝播を経て連続的に到達することを実物確認した。",
-          "Frame 1→2は一点へのGathering Lightから非円形Maskが左右へ開き、同一世界内で小さな変化が立ち上がる。Frame 2→3は同じ起点から3方向のFlowが時差進行する。",
+          "Frame 1→2は一点へのGathering Lightから非円形Maskが左右へ開き、同一世界内で小さな変化が立ち上がる。Frame 2→3は同じ起点と近景を保持し、3方向のFlow到達後に奥景・中景・前景が順に開く。",
+          "Frame 2→3の修正前後を同一時刻6点で並べたComparison Sheetにより、変更が2.6〜4.0秒周辺へ局所化されていることを確認できる。",
           "Frame 3の伝播FlowをFrame 4へ保持し、その端点間を横断する2つのFlowと交差反応で接続・相互作用を担当させている。"
         ],
         "critical_issues": [

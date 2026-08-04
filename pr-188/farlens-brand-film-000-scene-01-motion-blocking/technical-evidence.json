@@ -85,8 +85,8 @@
   "videos": {
     "master": {
       "path": "output/master/scene-01-motion-blocking.mp4",
-      "sha256": "30d9bfd8758b8636bd6b97aa756f037b2bbefa5522a50fdaa8a39705a7f7258b",
-      "bytes": 1131107,
+      "sha256": "f684be2ebcb176f043f419bdfed297bbeb1e4eb7ef68dae98cfbc462197d1b79",
+      "bytes": 1167276,
       "duration": 10.0,
       "width": 1280,
       "height": 720,
@@ -109,8 +109,8 @@
     },
     "iphone": {
       "path": "output/iphone/scene-01-motion-blocking-iphone.mp4",
-      "sha256": "ed007097b677d35e311fa9aac17498ce28a74855bd8109f1700882f07eb103af",
-      "bytes": 447676,
+      "sha256": "2c7dce60db133313a5853ff66b77243879900e188e09d7735aee1ba3b34ef5a5",
+      "bytes": 461154,
       "duration": 10.0,
       "width": 960,
       "height": 540,
@@ -142,7 +142,8 @@
     "black_bars_detected_zero": true,
     "circular_transition_code_zero": true,
     "all_300_frames_regenerated": true,
-    "required_transition_evidence_present": true
+    "required_transition_evidence_present": true,
+    "frame_2_to_3_revision_localized": true
   },
   "failures": []
 }

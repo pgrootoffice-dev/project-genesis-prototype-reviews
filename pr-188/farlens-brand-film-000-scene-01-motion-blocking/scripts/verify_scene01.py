@@ -164,6 +164,7 @@ def verify() -> dict:
         ROOT / "assets/review/contact-sheet-0.5-second.png",
         ROOT / "assets/review/transition-frame-1-to-2.png",
         ROOT / "assets/review/transition-frame-2-to-3.png",
+        ROOT / "assets/review/comparison-frame-2-to-3-before-after.png",
         ROOT / "assets/review/transition-frame-3-to-4.png",
         ROOT / "assets/review/transition-frame-4-to-5.png",
         *(ROOT / "assets/keyframes").glob("*.png"),
@@ -198,6 +199,11 @@ def verify() -> dict:
             "circular_transition_code_zero": no_circle_transition_code,
             "all_300_frames_regenerated": not any("300 decoded frames" in item for item in failures),
             "required_transition_evidence_present": not any("review evidence" in item for item in failures),
+            "frame_2_to_3_revision_localized": (
+                "drawFrame2To3DepthArrival" in renderer_source
+                and "makeFrame2OriginBridgeMask" in renderer_source
+                and "makeFrame2To3DepthMask" in renderer_source
+            ),
         },
         "failures": failures,
     }

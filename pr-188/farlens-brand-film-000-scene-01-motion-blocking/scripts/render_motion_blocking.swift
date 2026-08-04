@@ -246,6 +246,123 @@ func drawLayerArrival(_ context: CGContext, from: Int, to: Int, progress: Double
     context.restoreGState()
 }
 
+// Frame 2→3 is deliberately handled separately from the other transitions.
+// Frame 3 is revealed only as the three propagation fronts reach into depth;
+// the warm Frame 2 origin remains as a temporary foreground bridge.
+func frame2To3Progress(_ time: Double) -> (left: Double, right: Double, lower: Double) {
+    (
+        eased((time - 2.72) / 1.38),
+        eased((time - 3.08) / 1.35),
+        eased((time - 3.46) / 1.18)
+    )
+}
+
+func makeFrame2To3DepthMask(time: Double) -> CGImage {
+    let progress = frame2To3Progress(time)
+    let leftReach = CGFloat(progress.left) * 470.0
+    let rightReach = max(CGFloat(progress.right) * 535.0,
+                         CGFloat(progress.lower) * 365.0)
+    let depthProgress = CGFloat(smooth((time - 2.92) / 1.42))
+    let origin = CGPoint(x: 585, y: 360)
+    let horizontalFeather: CGFloat = 110
+    let depthFeather: CGFloat = 0.22
+    var pixels = [UInt8](repeating: 0, count: canvasWidth * canvasHeight)
+
+    for y in 0..<canvasHeight {
+        let dy = abs(CGFloat(y) - origin.y) / (CGFloat(canvasHeight) * 0.5)
+        // The horizon/inner world opens first. Midground and foreground follow.
+        let depthFront = depthProgress * 1.38
+        let depthWave = CGFloat(sin(Double(y) * 0.031 + 0.7) * 0.025)
+        let depthAlpha = smooth(Double((depthFront - dy + depthFeather + depthWave) /
+                                       (depthFeather * 2.0)))
+        let lowerBias = CGFloat(y) > origin.y ? CGFloat(progress.lower) * 44.0 : 0.0
+
+        for x in 0..<canvasWidth {
+            let dx = CGFloat(x) - origin.x
+            let reach = dx < 0 ? leftReach : rightReach + lowerBias
+            let wave = CGFloat(sin(Double(y) * 0.024 + 2.1) * 28.0
+                             + sin(Double(y) * 0.061 + 0.4) * 9.0)
+            let horizontalAlpha = smooth(Double((reach + wave - abs(dx) + horizontalFeather) /
+                                                 (horizontalFeather * 2.0)))
+            let alpha = min(depthAlpha, horizontalAlpha)
+            pixels[y * canvasWidth + x] = UInt8(clamp(alpha) * 255.0)
+        }
+    }
+
+    let graySpace = CGColorSpaceCreateDeviceGray()
+    return pixels.withUnsafeMutableBytes { buffer in
+        guard let maskContext = CGContext(data: buffer.baseAddress,
+                                          width: canvasWidth, height: canvasHeight,
+                                          bitsPerComponent: 8, bytesPerRow: canvasWidth,
+                                          space: graySpace,
+                                          bitmapInfo: CGImageAlphaInfo.none.rawValue),
+              let mask = maskContext.makeImage() else {
+            fatalError("cannot create Frame 2 to 3 depth mask")
+        }
+        return mask
+    }
+}
+
+func makeFrame2OriginBridgeMask(time: Double) -> CGImage {
+    let fade = CGFloat(1.0 - smooth((time - 3.34) / 0.72))
+    let radiusX: CGFloat = 80.0 + fade * 255.0
+    let radiusY: CGFloat = 52.0 + fade * 155.0
+    let feather: CGFloat = 0.28
+    var pixels = [UInt8](repeating: 0, count: canvasWidth * canvasHeight)
+
+    for y in 0..<canvasHeight {
+        for x in 0..<canvasWidth {
+            let dx = (CGFloat(x) - 585.0) / radiusX
+            let dy = (CGFloat(y) - 360.0) / radiusY
+            let organic = sqrt(dx * dx + dy * dy)
+                + CGFloat(sin(Double(y) * 0.043 + 1.8) * 0.075)
+                + CGFloat(sin(Double(x) * 0.026 + 0.6) * 0.045)
+            let alpha = smooth(Double((1.0 + feather - organic) / (feather * 2.0))) * Double(fade)
+            pixels[y * canvasWidth + x] = UInt8(clamp(alpha) * 255.0)
+        }
+    }
+
+    let graySpace = CGColorSpaceCreateDeviceGray()
+    return pixels.withUnsafeMutableBytes { buffer in
+        guard let maskContext = CGContext(data: buffer.baseAddress,
+                                          width: canvasWidth, height: canvasHeight,
+                                          bitsPerComponent: 8, bytesPerRow: canvasWidth,
+                                          space: graySpace,
+                                          bitmapInfo: CGImageAlphaInfo.none.rawValue),
+              let mask = maskContext.makeImage() else {
+            fatalError("cannot create Frame 2 origin bridge mask")
+        }
+        return mask
+    }
+}
+
+func drawFrame2To3DepthArrival(_ context: CGContext, time: Double) {
+    if time >= 4.46 {
+        drawWorldState(context, index: 2, time: time)
+    } else {
+        drawWorldState(context, index: 1, time: time)
+        let depthMask = makeFrame2To3DepthMask(time: time)
+        context.saveGState()
+        context.clip(to: canvasRect, mask: depthMask)
+        drawWorldState(context, index: 2, time: time)
+        context.restoreGState()
+
+        if time < 4.06 {
+            let bridgeMask = makeFrame2OriginBridgeMask(time: time)
+            context.saveGState()
+            context.clip(to: canvasRect, mask: bridgeMask)
+            drawWorldState(context, index: 1, time: time)
+            context.restoreGState()
+        }
+    }
+
+    let originHold = CGFloat(1.0 - smooth((time - 3.72) / 0.46))
+    if originHold > 0.0 {
+        drawGlow(context, center: CGPoint(x: 585, y: 360), radius: 62 + originHold * 34,
+                 alpha: 0.035 + originHold * 0.075)
+    }
+}
+
 func drawGatheringLight(_ context: CGContext, time: Double) {
     let p = eased((time - 1.00) / 0.60)
     let held = CGFloat(smooth((time - 1.08) / 0.52))
@@ -266,18 +383,16 @@ func drawBirthResponse(_ context: CGContext, time: Double) {
 }
 
 func drawPropagation(_ context: CGContext, time: Double, alphaScale: CGFloat = 1.0) {
-    let p1 = eased((time - 2.72) / 1.38)
-    let p2 = eased((time - 3.08) / 1.35)
-    let p3 = eased((time - 3.46) / 1.18)
+    let progress = frame2To3Progress(time)
     drawCurve(context, from: CGPoint(x: 585, y: 360), c1: CGPoint(x: 480, y: 330),
               c2: CGPoint(x: 330, y: 400), to: CGPoint(x: 145, y: 328),
-              progress: p1, width: 3.0, alpha: 0.42 * alphaScale)
+              progress: progress.left, width: 3.0, alpha: 0.42 * alphaScale)
     drawCurve(context, from: CGPoint(x: 585, y: 360), c1: CGPoint(x: 705, y: 300),
               c2: CGPoint(x: 825, y: 395), to: CGPoint(x: 1085, y: 330),
-              progress: p2, width: 2.8, alpha: 0.38 * alphaScale)
+              progress: progress.right, width: 2.8, alpha: 0.38 * alphaScale)
     drawCurve(context, from: CGPoint(x: 585, y: 365), c1: CGPoint(x: 640, y: 430),
               c2: CGPoint(x: 760, y: 435), to: CGPoint(x: 925, y: 400),
-              progress: p3, width: 2.2, alpha: 0.31 * alphaScale)
+              progress: progress.lower, width: 2.2, alpha: 0.31 * alphaScale)
 }
 
 func drawInteraction(_ context: CGContext, time: Double) {
@@ -328,8 +443,7 @@ func render(time: Double, context: CGContext) {
                          progress: (time - 1.60) / 1.02, time: time)
         drawBirthResponse(context, time: time)
     } else if time < 5.30 {
-        drawLayerArrival(context, from: 1, to: 2,
-                         progress: (time - 3.00) / 1.18, time: time)
+        drawFrame2To3DepthArrival(context, time: time)
         drawPropagation(context, time: time)
     } else if time < 7.60 {
         drawLayerArrival(context, from: 2, to: 3,

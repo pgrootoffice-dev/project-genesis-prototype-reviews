@@ -69,8 +69,28 @@ ffmpeg -loglevel error -y \
 
 ffmpeg -loglevel error -y \
   -i "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
-  -vf "select='eq(n,81)+eq(n,90)+eq(n,99)+eq(n,111)+eq(n,126)+eq(n,150)',setpts=N/FRAME_RATE/TB,scale=400:225,tile=3x2:padding=8:margin=8:color=0x061329" \
+  -vf "select='eq(n,78)+eq(n,84)+eq(n,90)+eq(n,99)+eq(n,111)+eq(n,120)',setpts=N/FRAME_RATE/TB,scale=400:225,tile=3x2:padding=8:margin=8:color=0x061329" \
   -frames:v 1 "$prototype_dir/assets/review/transition-frame-2-to-3.png"
+
+# The before/after sheet is historical review evidence. Supply the approved
+# pre-revision MP4 when creating or refreshing it; subsequent deterministic
+# rebuilds preserve the committed comparison asset.
+comparison_path="$prototype_dir/assets/review/comparison-frame-2-to-3-before-after.png"
+if [[ -n "${FRAME23_BASELINE_MP4:-}" ]]; then
+  test -s "$FRAME23_BASELINE_MP4"
+  baseline_sheet="$render_dir/frame-2-to-3-before.png"
+  ffmpeg -loglevel error -y \
+    -i "$FRAME23_BASELINE_MP4" \
+    -vf "select='eq(n,78)+eq(n,84)+eq(n,90)+eq(n,99)+eq(n,111)+eq(n,120)',setpts=N/FRAME_RATE/TB,scale=400:225,tile=3x2:padding=8:margin=8:color=0x061329" \
+    -frames:v 1 "$baseline_sheet"
+  ffmpeg -loglevel error -y \
+    -i "$baseline_sheet" \
+    -i "$prototype_dir/assets/review/transition-frame-2-to-3.png" \
+    -filter_complex "[0:v][1:v]hstack=inputs=2" \
+    -frames:v 1 "$comparison_path"
+else
+  test -s "$comparison_path"
+fi
 
 ffmpeg -loglevel error -y \
   -i "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
