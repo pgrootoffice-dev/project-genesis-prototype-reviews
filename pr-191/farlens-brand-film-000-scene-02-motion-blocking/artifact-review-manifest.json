@@ -1,0 +1,46 @@
+{
+  "bundle_id": "farlens-scene-02-compass-review-bundle",
+  "title": "FARLENS Brand Film #000 — Scene 2 Motion Blocking",
+  "source_task": "Draft PR #190 Motion Blocking Design; Draft PR #188 implementation reference",
+  "rubric_ref": "docs/os/ARTIFACT_REVIEW_LOOP.md#rubric",
+  "artifacts": [
+    {
+      "id": "scene-02-motion-blocking",
+      "type": "video",
+      "path": "prototypes/farlens-brand-film-000-scene-02-motion-blocking/output/master/scene-02-motion-blocking.mp4",
+      "title": "Scene 2 Motion Blocking — 13 seconds",
+      "description": "Working, non-canonical Stage 3 blocking. Review semantic progression, timing, A3→A4 recognition shift, A4→A5 readability recovery, and Scene 1 continuity; do not review Final texture or sound sync.",
+      "context_links": [
+        "prototypes/farlens-brand-film-000-scene-02-motion-blocking/README.md",
+        "prototypes/farlens-brand-film-000-scene-02-motion-blocking/beat-map.json",
+        "prototypes/farlens-brand-film-000-scene-02-motion-blocking/assets/source/SOURCE_PROVENANCE.md"
+      ],
+      "review_kind": "content_prototype",
+      "medium": "youtube_video",
+      "youtube_premised": true,
+      "historical_fixture": false,
+      "retired_reference": false,
+      "ceo_review_dimensions": ["design", "world_view", "taste", "parent_trust", "child_attraction"],
+      "verdict": {
+        "overall": "Ready",
+        "confidence": "Medium",
+        "summary": "採用A1〜A5を変更せず、8膜Slot・Refraction・Depth Blur・親子認識・余白回復を局所制御可能なMotion Blockingとして実装した。",
+        "good_points": [
+          "正式Timingと5 Beatを13.000秒へ固定し、A3・A4・A5の意味変化を個別Evidence Sheetで確認できる。",
+          "A4の親子は新規描画せず、採用画像内の同じ左下量塊を焦点差だけで前景化する。",
+          "A5の遠方光は既存位置を維持し、呼吸程度の光量変化だけに限定する。"
+        ],
+        "critical_issues": [
+          "採用Staticは合成済みPNGのため、8膜はFinal用の精密素材分離ではなく固定Mask SlotによるBlocking分解である。",
+          "Sound、Narration、字幕、Final textureは未実装であり、完成映像判断の対象外である。"
+        ],
+        "top_points_for_founder": [
+          "A3で世界が消えず、存在しているが見えにくいと感じるか。",
+          "A4で新規登場ではなく、そこにいた親子へ認識が移ったと感じるか。",
+          "A5の余白と遠方光が答えの提示ではなく、共に探す未来として感じられるか。"
+        ],
+        "recommendation": "軽微修正後にFounder Reviewへ"
+      }
+    }
+  ]
+}

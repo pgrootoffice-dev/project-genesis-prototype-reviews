@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "artifact_id": "farlens-brand-film-000-scene-02-motion-blocking",
+  "status": "PASS",
+  "classification": "WORKING TEST / NON-CANONICAL / MOTION BLOCKING",
+  "source_static_sequence": {
+    "BRAND_FILM_000_SCENE_02_STATIC_A1.png": {
+      "sha256": "6c4d3f3896889db7a8e16802c92b8d739a4bc5342bdbfaeb12851523606fbc8d",
+      "expected_sha256": "6c4d3f3896889db7a8e16802c92b8d739a4bc5342bdbfaeb12851523606fbc8d",
+      "unchanged": true
+    },
+    "BRAND_FILM_000_SCENE_02_STATIC_A2.png": {
+      "sha256": "c4f16462dbe58888a5072a6d023e39db877c57811b5041a444eeb8cc07e57122",
+      "expected_sha256": "c4f16462dbe58888a5072a6d023e39db877c57811b5041a444eeb8cc07e57122",
+      "unchanged": true
+    },
+    "BRAND_FILM_000_SCENE_02_STATIC_A3.png": {
+      "sha256": "dbc4f9c4449d23c72fca7d649b5d54112c2ecd00828c0ddf11598d78e6e23cac",
+      "expected_sha256": "dbc4f9c4449d23c72fca7d649b5d54112c2ecd00828c0ddf11598d78e6e23cac",
+      "unchanged": true
+    },
+    "BRAND_FILM_000_SCENE_02_STATIC_A4.png": {
+      "sha256": "b909d73c727d937ee8acf63ceee247214cecd46f888ceecabde50fdd227b7274",
+      "expected_sha256": "b909d73c727d937ee8acf63ceee247214cecd46f888ceecabde50fdd227b7274",
+      "unchanged": true
+    },
+    "BRAND_FILM_000_SCENE_02_STATIC_A5.png": {
+      "sha256": "8ce4ad337213db9b99e0b75f973266494abb5d1fbcfe6d7f9468e1f59071dcc1",
+      "expected_sha256": "8ce4ad337213db9b99e0b75f973266494abb5d1fbcfe6d7f9468e1f59071dcc1",
+      "unchanged": true
+    }
+  },
+  "frame_beat_mapping": [
+    {
+      "frame": "A1",
+      "beat": "Beat 1",
+      "local_start": 0.0,
+      "local_end": 2.2,
+      "absolute_start": 10.0,
+      "absolute_end": 12.2,
+      "meaning": "静かな世界に、3枚の情報膜が局所的な空気屈折として認識され始める。",
+      "recognizable_membranes": 3,
+      "layers": [
+        "BG",
+        "Terrain",
+        "Atmosphere",
+        "Information Membrane 01-03",
+        "Refraction",
+        "Warm Residual Light",
+        "Grade"
+      ]
+    },
+    {
+      "frame": "A2",
+      "beat": "Beat 2",
+      "local_start": 2.2,
+      "local_end": 4.6,
+      "absolute_start": 12.2,
+      "absolute_end": 14.6,
+      "meaning": "同じ8スロットのうち04〜06が奥行き差を伴って認識され、重なり部分の屈折が増える。",
+      "recognizable_membranes": 6,
+      "layers": [
+        "BG",
+        "Terrain",
+        "Atmosphere",
+        "Information Membrane 01-06",
+        "Refraction",
+        "Warm Residual Light",
+        "Grade"
+      ]
+    },
+    {
+      "frame": "A3",
+      "beat": "Beat 3",
+      "local_start": 4.6,
+      "local_end": 7.2,
+      "absolute_start": 14.6,
+      "absolute_end": 17.2,
+      "meaning": "全8枚が認識され、焦点操作ではなく屈折量によって中央〜中央右が存在したまま見えにくくなる。",
+      "recognizable_membranes": 8,
+      "layers": [
+        "BG",
+        "Terrain",
+        "Atmosphere",
+        "Information Membrane 01-08",
+        "Refraction",
+        "Warm Residual Light",
+        "Grade"
+      ]
+    },
+    {
+      "frame": "A4",
+      "beat": "Beat 4",
+      "local_start": 7.2,
+      "local_end": 10.0,
+      "absolute_start": 17.2,
+      "absolute_end": 20.0,
+      "meaning": "新規追加なしで、Depth Blur・輪郭分離・情報膜Priority低下により既存の左下量塊を親子として認識する。",
+      "recognizable_membranes": "8-origin-priority-lowered",
+      "layers": [
+        "BG",
+        "Terrain",
+        "Atmosphere",
+        "Information Membrane 01-08",
+        "Refraction",
+        "Parent",
+        "Child",
+        "Depth Blur",
+        "Grade"
+      ]
+    },
+    {
+      "frame": "A5",
+      "beat": "Beat 5",
+      "local_start": 10.0,
+      "local_end": 13.0,
+      "absolute_start": 20.0,
+      "absolute_end": 23.0,
+      "meaning": "情報膜の優先度とDepth Blurが段階的に弱まり、認識可能な膜0枚、親子と世界全体の可読性、未来の余白が戻る。",
+      "recognizable_membranes": 0,
+      "layers": [
+        "BG",
+        "Terrain",
+        "Atmosphere",
+        "Parent",
+        "Child",
+        "Distant Possibility Light",
+        "Depth Blur",
+        "Grade"
+      ]
+    }
+  ],
+  "videos": {
+    "master": {
+      "path": "output/master/scene-02-motion-blocking.mp4",
+      "sha256": "9667cfef2be62c8fa7b00713daa13bcdcda6e0c6d96b28785498b91b2536bfc2",
+      "bytes": 1774987,
+      "duration": 13.0,
+      "width": 1280,
+      "height": 720,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "decoded_frame_count": 390,
+      "audio": false,
+      "faststart": true,
+      "full_decode": true,
+      "black_bars_detected": false
+    },
+    "iphone": {
+      "path": "output/iphone/scene-02-motion-blocking-iphone.mp4",
+      "sha256": "bd54b8fc12a170639edbcc47bd6cf48b36f38c69da91d88ef41af96218a10691",
+      "bytes": 546830,
+      "duration": 13.0,
+      "width": 960,
+      "height": 540,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "decoded_frame_count": 390,
+      "audio": false,
+      "faststart": true,
+      "full_decode": true,
+      "black_bars_detected": false
+    },
+    "transition_review": {
+      "path": "output/review/scene-01-to-02-preroll.mp4",
+      "sha256": "2499b1e1f4b9f0dd646bb59965b60311eec487018b62cd1fb587d024874e8c47",
+      "bytes": 378895,
+      "duration": 1.7,
+      "width": 1280,
+      "height": 720,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "decoded_frame_count": 51,
+      "audio": false,
+      "faststart": true,
+      "full_decode": true,
+      "black_bars_detected": false
+    }
+  },
+  "checks": {
+    "duration_13_seconds": true,
+    "frame_order_locked": true,
+    "membrane_progression_locked": true,
+    "source_images_unchanged": true,
+    "no_audio": true,
+    "black_bars_detected_zero": true,
+    "all_390_frames_regenerated": true,
+    "iphone_compatible_encode": true,
+    "review_artifacts_present": true,
+    "a4_parent_child_is_existing_source_region": true,
+    "a5_recognizable_membranes_zero_at_design_state": true,
+    "distant_light_breath_only": true
+  },
+  "failures": []
+}

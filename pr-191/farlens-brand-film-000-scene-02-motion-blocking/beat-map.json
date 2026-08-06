@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "scene": "Scene 2｜増える情報、深まる問い",
+  "duration_seconds": 13.0,
+  "brand_film_range": { "start": 10.0, "end": 23.0 },
+  "timeline": [
+    {
+      "frame": "A1",
+      "beat": "Beat 1",
+      "local_start": 0.0,
+      "local_end": 2.2,
+      "absolute_start": 10.0,
+      "absolute_end": 12.2,
+      "meaning": "静かな世界に、3枚の情報膜が局所的な空気屈折として認識され始める。",
+      "recognizable_membranes": 3,
+      "layers": ["BG", "Terrain", "Atmosphere", "Information Membrane 01-03", "Refraction", "Warm Residual Light", "Grade"]
+    },
+    {
+      "frame": "A2",
+      "beat": "Beat 2",
+      "local_start": 2.2,
+      "local_end": 4.6,
+      "absolute_start": 12.2,
+      "absolute_end": 14.6,
+      "meaning": "同じ8スロットのうち04〜06が奥行き差を伴って認識され、重なり部分の屈折が増える。",
+      "recognizable_membranes": 6,
+      "layers": ["BG", "Terrain", "Atmosphere", "Information Membrane 01-06", "Refraction", "Warm Residual Light", "Grade"]
+    },
+    {
+      "frame": "A3",
+      "beat": "Beat 3",
+      "local_start": 4.6,
+      "local_end": 7.2,
+      "absolute_start": 14.6,
+      "absolute_end": 17.2,
+      "meaning": "全8枚が認識され、焦点操作ではなく屈折量によって中央〜中央右が存在したまま見えにくくなる。",
+      "recognizable_membranes": 8,
+      "layers": ["BG", "Terrain", "Atmosphere", "Information Membrane 01-08", "Refraction", "Warm Residual Light", "Grade"]
+    },
+    {
+      "frame": "A4",
+      "beat": "Beat 4",
+      "local_start": 7.2,
+      "local_end": 10.0,
+      "absolute_start": 17.2,
+      "absolute_end": 20.0,
+      "meaning": "新規追加なしで、Depth Blur・輪郭分離・情報膜Priority低下により既存の左下量塊を親子として認識する。",
+      "recognizable_membranes": "8-origin-priority-lowered",
+      "layers": ["BG", "Terrain", "Atmosphere", "Information Membrane 01-08", "Refraction", "Parent", "Child", "Depth Blur", "Grade"]
+    },
+    {
+      "frame": "A5",
+      "beat": "Beat 5",
+      "local_start": 10.0,
+      "local_end": 13.0,
+      "absolute_start": 20.0,
+      "absolute_end": 23.0,
+      "meaning": "情報膜の優先度とDepth Blurが段階的に弱まり、認識可能な膜0枚、親子と世界全体の可読性、未来の余白が戻る。",
+      "recognizable_membranes": 0,
+      "layers": ["BG", "Terrain", "Atmosphere", "Parent", "Child", "Distant Possibility Light", "Depth Blur", "Grade"]
+    }
+  ]
+}
