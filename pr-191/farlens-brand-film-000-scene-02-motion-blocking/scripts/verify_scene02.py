@@ -96,6 +96,8 @@ def verify() -> dict:
         "makeFocusMask",
         "makeSkyRestoreMask",
         "drawDistantLightBreath",
+        "drawClipped(context, image: sourceImages[2], mask: focusMask, alpha: 1.0)",
+        "let backgroundArrival = CGFloat(smooth((time - 8.15) / 1.55))",
     ]
     for marker in required_renderer_markers:
         if marker not in renderer:
@@ -163,6 +165,8 @@ def verify() -> dict:
         ROOT / "assets/review/contact-sheet-0.5-second.png",
         ROOT / "assets/review/transition-contact-sheet.png",
         ROOT / "assets/review/a3-to-a4-focus-expanded.png",
+        ROOT / "assets/review/a3-to-a4-before-after.png",
+        ROOT / "assets/review/max-change-frame.png",
         ROOT / "assets/review/a4-to-a5-space-recovery-expanded.png",
         ROOT / "assets/review/scene-01-to-02-transition.png",
         ROOT / "assets/source/scene-01-terminal-review.png",
@@ -173,6 +177,34 @@ def verify() -> dict:
     for path in required:
         if not path.is_file() or path.stat().st_size == 0:
             failures.append(f"missing review artifact: {path.relative_to(ROOT)}")
+
+    revision_path = ROOT / "revision-evidence.json"
+    revision_evidence = json.loads(revision_path.read_text(encoding="utf-8")) if revision_path.is_file() else {}
+    if not revision_evidence:
+        failures.append("revision evidence missing")
+    else:
+        unchanged = revision_evidence.get("unchanged_regions", {})
+        metrics = revision_evidence.get("transition_metrics_at_frame_246", {})
+        baseline_path = ROOT / "assets/source/revision-01/scene-02-motion-blocking-before-revision.mp4"
+        recorded_files = {
+            "baseline_master_sha256": baseline_path,
+            "revised_master_sha256": VIDEOS["master"],
+            "preroll_sha256": VIDEOS["transition_review"],
+        }
+        for field, path in recorded_files.items():
+            actual = sha256(path) if path.is_file() else "missing"
+            if revision_evidence.get(field) != actual:
+                failures.append(f"revision evidence SHA mismatch: {field}")
+        if not unchanged.get("a1_through_a3_effectively_unchanged"):
+            failures.append("A1 through A3 decoded frames changed")
+        if not unchanged.get("scene_1_to_2_preroll_unchanged"):
+            failures.append("Scene 1 to 2 pre-roll changed")
+        if not unchanged.get("a4_to_a5_right_world_effectively_unchanged"):
+            failures.append("A4 to A5 right-world behavior changed")
+        if not metrics.get("full_screen_blend_contribution_reduced"):
+            failures.append("full-screen blend contribution was not reduced")
+        if not metrics.get("fixed_focus_continuity_improved"):
+            failures.append("left-lower focus continuity did not improve")
 
     return {
         "schema_version": 1,
@@ -195,7 +227,12 @@ def verify() -> dict:
             "a4_parent_child_is_existing_source_region": "makeFocusMask" in renderer,
             "a5_recognizable_membranes_zero_at_design_state": "makeSkyRestoreMask" in renderer,
             "distant_light_breath_only": "drawDistantLightBreath" in renderer,
+            "a3_a4_focus_plate_transform_none": "focus_plate_transform" not in renderer and "sourceImages[2]" in renderer,
+            "a3_a4_revision_evidence_pass": not any(
+                token in issue for issue in failures for token in ["A1 through A3", "pre-roll", "right-world", "full-screen", "focus continuity"]
+            ),
         },
+        "revision_evidence": revision_evidence,
         "failures": failures,
     }
 

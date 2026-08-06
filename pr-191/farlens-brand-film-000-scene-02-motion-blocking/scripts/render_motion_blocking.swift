@@ -211,6 +211,28 @@ func drawLatentMassPriorityVeil(_ context: CGContext, strength: CGFloat) {
     context.restoreGState()
 }
 
+// Recognition changes locally without changing the adopted A3 mass plate.
+// This is a small luminance separation, not new anatomy or a shape morph.
+func drawFocusRecognitionLift(_ context: CGContext, strength: CGFloat) {
+    guard strength > 0.001 else { return }
+    context.saveGState()
+    context.clip(to: canvasRect, mask: focusMask)
+    let colors = [
+        CGColor(red: 0.24, green: 0.42, blue: 0.52, alpha: strength * 0.045),
+        CGColor(red: 0.04, green: 0.12, blue: 0.20, alpha: 0),
+    ] as CFArray
+    guard let gradient = CGGradient(colorsSpace: colorSpace, colors: colors,
+                                    locations: [0, 1]) else {
+        context.restoreGState()
+        return
+    }
+    context.drawRadialGradient(gradient,
+                               startCenter: CGPoint(x: 245, y: 155), startRadius: 18,
+                               endCenter: CGPoint(x: 245, y: 155), endRadius: 330,
+                               options: [])
+    context.restoreGState()
+}
+
 func drawDistantLightBreath(_ context: CGContext, time: Double, strength: CGFloat) {
     let breath = CGFloat(0.5 + 0.5 * sin(time * 0.86))
     let alpha = strength * (0.012 + breath * 0.018)
@@ -274,22 +296,35 @@ func drawA3(_ context: CGContext, time: Double) {
 }
 
 func drawA4Focused(_ context: CGContext, time: Double, arrival: CGFloat) {
-    let sourceMix = 1.0 - arrival
-    drawImage(context, sourceImages[2], alpha: sourceMix)
-    drawImage(context, sourceImages[3], alpha: arrival)
+    // A3 remains the continuous plate. A4 enters later and only outside the
+    // fixed focus zone, avoiding a full-screen image swap at 7.2 seconds.
+    drawImage(context, sourceImages[2])
+    let backgroundArrival = CGFloat(smooth((time - 8.15) / 1.55))
+    if backgroundArrival > 0.001 {
+        context.saveGState()
+        context.clip(to: canvasRect, mask: backgroundBlurMask)
+        drawImage(context, sourceImages[3], alpha: backgroundArrival)
+        context.restoreGState()
+    }
 
     let blurStrength = CGFloat(smooth((time - 7.45) / 1.05)) * arrival
     drawLatentMassPriorityVeil(context, strength: 1.0 - arrival)
     if blurStrength > 0.001 {
         context.saveGState()
         context.clip(to: canvasRect, mask: backgroundBlurMask)
-        drawSoftBlur(context, image: sourceImages[3], alpha: blurStrength * 0.82, radius: 4.2)
+        drawSoftBlur(context, image: sourceImages[2],
+                     alpha: blurStrength * (1.0 - backgroundArrival) * 0.82, radius: 4.2)
+        drawSoftBlur(context, image: sourceImages[3],
+                     alpha: blurStrength * backgroundArrival * 0.82, radius: 4.2)
         context.restoreGState()
         context.setFillColor(CGColor(red: 0.015, green: 0.055, blue: 0.12, alpha: blurStrength * 0.055))
         context.fill(CGRect(x: 360, y: 285, width: 920, height: 435))
     }
-    let focusArrival = CGFloat(smooth(Double(arrival) / 0.58))
-    drawClipped(context, image: sourceImages[3], mask: focusMask, alpha: focusArrival)
+    // The same A3 terrain masses are pinned across every A4 frame. Only their
+    // contrast priority changes; center, ratio, ground contact and outline do not.
+    drawClipped(context, image: sourceImages[2], mask: focusMask, alpha: 1.0)
+    let focusArrival = CGFloat(smooth(Double(arrival) / 0.72))
+    drawFocusRecognitionLift(context, strength: focusArrival)
     drawAtmosphere(context, time: time, strength: 0.32)
 }
 
@@ -335,7 +370,8 @@ func render(time: Double, context: CGContext) {
         drawA5Clean(context, time: time, alpha: recovery)
         // Parent and Child stay on the exact A4 ground contact throughout the
         // recovery. A5 changes the world's readability, not their position.
-        drawClipped(context, image: sourceImages[3], mask: focusMask, alpha: 1.0)
+        drawClipped(context, image: sourceImages[2], mask: focusMask, alpha: 1.0)
+        drawFocusRecognitionLift(context, strength: 1.0)
     }
 }
 

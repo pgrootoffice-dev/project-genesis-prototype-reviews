@@ -11,6 +11,8 @@ Scene 2「増える情報、深まる問い」（Brand Film 10.0〜23.0秒）の
 - A1=3、A2=6、A3=8、A4=8由来を維持しPriority低下、A5=認識可能0。
 - A3の見えにくさはRefraction量で作り、Depth Blurを使わない。
 - A4では既存の左下量塊を、Depth Blur・輪郭分離・膜Priority低下だけで親子として認識させる。
+- Compass RevisionではA3の左下量塊を固定Focus PlateとしてA4・A5まで保持し、中心・比率・接地面・輪郭を変えず、局所明度差と背景側Depth Blurだけを段階化する。
+- A4背景の採用画像は焦点領域外へ0.95秒遅らせて入れ、7.2秒付近の全画面Blendを弱める。
 - A5では空側を同一採用世界の膜なし状態へ段階的に戻し、地形・親子・右遠景の既存暖色光を保持する。
 - Swift/CoreGraphicsで390 Frameを決定論的に描画し、FFmpegでH.264/yuv420p/faststartへ書き出す。
 
@@ -42,6 +44,12 @@ Scene 2「増える情報、深まる問い」（Brand Film 10.0〜23.0秒）の
 - A5で情報消滅ではなくPriorityが退き、世界の可読性が戻るか
 - 右遠景の光が答え・ゴールに見えないか
 - Scene 1→2が同じ世界の別地点へ入る呼吸としてつながるか
+
+## Compass revision evidence
+
+- `assets/review/a3-to-a4-before-after.png`: 上段が修正前、下段が修正後の同時刻比較
+- `assets/review/max-change-frame.png`: 修正前後の差が最大となったFrame 243（8.100秒／絶対18.100秒）の修正版
+- `revision-evidence.json`: 非変更区間、全画面Blend低下、焦点連続性の機械検査
 
 Sound、Narration、字幕、Final textureはMotion Blockingの対象外です。
 

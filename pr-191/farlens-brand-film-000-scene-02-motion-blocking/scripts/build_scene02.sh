@@ -5,6 +5,7 @@ script_dir="$(cd "$(dirname "$0")" && pwd)"
 prototype_dir="$(cd "$script_dir/.." && pwd)"
 repo_root="$(cd "$prototype_dir/../.." && pwd)"
 source_dir="$repo_root/docs/farlens/brand-film/assets/scene-02"
+baseline_master="$prototype_dir/assets/source/revision-01/scene-02-motion-blocking-before-revision.mp4"
 render_dir="$(mktemp -d /tmp/farlens-scene02-blocking.XXXXXX)"
 frame_dir="$render_dir/frames"
 mkdir -p "$frame_dir" "$prototype_dir/output/master" "$prototype_dir/output/iphone" \
@@ -34,6 +35,8 @@ for index in {1..5}; do
   actual="$(shasum -a 256 "$source_dir/${sources[$index]}" | awk '{print $1}')"
   [[ "$actual" == "${expected[$index]}" ]]
 done
+test "$(shasum -a 256 "$baseline_master" | awk '{print $1}')" = \
+  "9667cfef2be62c8fa7b00713daa13bcdcda6e0c6d96b28785498b91b2536bfc2"
 
 swift -module-cache-path "$render_dir/swift-cache" \
   "$script_dir/render_motion_blocking.swift" \
@@ -75,6 +78,11 @@ ffmpeg -loglevel error -y \
   -frames:v 1 "$prototype_dir/assets/review/a3-to-a4-focus-expanded.png"
 
 ffmpeg -loglevel error -y \
+  -i "$baseline_master" -i "$prototype_dir/output/master/scene-02-motion-blocking.mp4" \
+  -filter_complex "[0:v]select='eq(n,216)+eq(n,228)+eq(n,246)+eq(n,270)',setpts=N/FRAME_RATE/TB,scale=320:180,tile=4x1:padding=8:margin=8:color=0x061329[before];[1:v]select='eq(n,216)+eq(n,228)+eq(n,246)+eq(n,270)',setpts=N/FRAME_RATE/TB,scale=320:180,tile=4x1:padding=8:margin=8:color=0x061329[after];[before][after]vstack=inputs=2" \
+  -frames:v 1 "$prototype_dir/assets/review/a3-to-a4-before-after.png"
+
+ffmpeg -loglevel error -y \
   -i "$prototype_dir/output/master/scene-02-motion-blocking.mp4" \
   -vf "select='eq(n,288)+eq(n,300)+eq(n,318)+eq(n,336)+eq(n,360)+eq(n,384)',setpts=N/FRAME_RATE/TB,scale=480:270,tile=3x2:padding=8:margin=8:color=0x061329" \
   -frames:v 1 "$prototype_dir/assets/review/a4-to-a5-space-recovery-expanded.png"
@@ -93,6 +101,18 @@ ffmpeg -loglevel error -y \
   -vf "select='eq(n,0)+eq(n,9)+eq(n,18)+eq(n,27)+eq(n,39)+eq(n,50)',setpts=N/FRAME_RATE/TB,scale=400:225,tile=3x2:padding=8:margin=8:color=0x061329" \
   -frames:v 1 "$prototype_dir/assets/review/scene-01-to-02-transition.png"
 
+python3 "$script_dir/build_revision_evidence.py" \
+  --before "$baseline_master" \
+  --after "$prototype_dir/output/master/scene-02-motion-blocking.mp4" \
+  --preroll "$prototype_dir/output/review/scene-01-to-02-preroll.mp4" \
+  --output "$prototype_dir/revision-evidence.json"
+
+max_change_frame="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["max_change_frame"])' "$prototype_dir/revision-evidence.json")"
+ffmpeg -loglevel error -y \
+  -i "$prototype_dir/output/master/scene-02-motion-blocking.mp4" \
+  -vf "select='eq(n,$max_change_frame)'" -vsync 0 \
+  -frames:v 1 "$prototype_dir/assets/review/max-change-frame.png"
+
 ffprobe -v error -show_entries \
   format=duration,size,bit_rate:stream=index,codec_name,codec_type,width,height,r_frame_rate,pix_fmt,nb_frames \
   -of json "$prototype_dir/output/master/scene-02-motion-blocking.mp4" \
@@ -108,7 +128,8 @@ python3 "$script_dir/verify_scene02.py" --write-evidence
     output/review/scene-01-to-02-preroll.mp4 \
     assets/keyframes/*.png assets/review/*.png \
     assets/source/scene-01-terminal-review.png assets/source/SOURCE_PROVENANCE.md \
-    beat-map.json technical-evidence.json production-evidence.json \
+    assets/source/revision-01/scene-02-motion-blocking-before-revision.mp4 \
+    beat-map.json revision-evidence.json technical-evidence.json production-evidence.json \
     > checksums.sha256
 )
 

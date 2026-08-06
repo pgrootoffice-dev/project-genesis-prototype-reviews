@@ -23,6 +23,13 @@ The five PNGs under `docs/farlens/brand-film/assets/scene-02/` are read directly
 - Extracted PNG SHA-256: `32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c`
 - Reference implementation: Draft PR #188, commit `0c78afc7ff7205df70c43723439a33fd68904196`
 
+## Compass revision baseline
+
+`revision-01/scene-02-motion-blocking-before-revision.mp4` is the exact Master reviewed from Workflow Run `31072498229` / Artifact `8956156501`. It is retained only to build the requested same-time before/after sheet and quantitative revision evidence.
+
+- Baseline SHA-256: `9667cfef2be62c8fa7b00713daa13bcdcda6e0c6d96b28785498b91b2536bfc2`
+- It is not used as a visual source in the revised Master.
+
 ## Authority boundary
 
 - PR #190 and PR #188 remain unchanged.

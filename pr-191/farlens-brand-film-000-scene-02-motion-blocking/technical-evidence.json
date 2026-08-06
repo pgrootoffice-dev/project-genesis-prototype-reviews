@@ -133,8 +133,8 @@
   "videos": {
     "master": {
       "path": "output/master/scene-02-motion-blocking.mp4",
-      "sha256": "9667cfef2be62c8fa7b00713daa13bcdcda6e0c6d96b28785498b91b2536bfc2",
-      "bytes": 1774987,
+      "sha256": "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904",
+      "bytes": 1830354,
       "duration": 13.0,
       "width": 1280,
       "height": 720,
@@ -149,8 +149,8 @@
     },
     "iphone": {
       "path": "output/iphone/scene-02-motion-blocking-iphone.mp4",
-      "sha256": "bd54b8fc12a170639edbcc47bd6cf48b36f38c69da91d88ef41af96218a10691",
-      "bytes": 546830,
+      "sha256": "2c6ec134a571179581f4b6a5054f1923f0399ec05bc000ce967df1c433510067",
+      "bytes": 565894,
       "duration": 13.0,
       "width": 960,
       "height": 540,
@@ -192,7 +192,44 @@
     "review_artifacts_present": true,
     "a4_parent_child_is_existing_source_region": true,
     "a5_recognizable_membranes_zero_at_design_state": true,
-    "distant_light_breath_only": true
+    "distant_light_breath_only": true,
+    "a3_a4_focus_plate_transform_none": true,
+    "a3_a4_revision_evidence_pass": true
+  },
+  "revision_evidence": {
+    "schema_version": 1,
+    "revision": "Compass PASS WITH REVISION — A3 to A4 recognition shift only",
+    "baseline_master_sha256": "9667cfef2be62c8fa7b00713daa13bcdcda6e0c6d96b28785498b91b2536bfc2",
+    "revised_master_sha256": "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904",
+    "preroll_sha256": "2499b1e1f4b9f0dd646bb59965b60311eec487018b62cd1fb587d024874e8c47",
+    "max_change_frame": 243,
+    "max_change_local_time_seconds": 8.1,
+    "max_change_absolute_time_seconds": 18.1,
+    "max_change_ssim": 0.936756,
+    "unchanged_regions": {
+      "a1_through_a3_frames_0_215_min_ssim": 0.991002,
+      "a1_through_a3_render_path_unchanged": true,
+      "a1_through_a3_effectively_unchanged": true,
+      "a4_to_a5_right_world_frames_300_389_min_ssim": 0.986149,
+      "a4_to_a5_motion_parameters_unchanged": true,
+      "a4_to_a5_right_world_effectively_unchanged": true,
+      "scene_1_to_2_preroll_unchanged": true
+    },
+    "transition_metrics_at_frame_246": {
+      "former_background_ssim_to_a3": 0.884771,
+      "revised_background_ssim_to_a3": 0.9818,
+      "full_screen_blend_contribution_reduced": true,
+      "former_focus_ssim_to_a3": 0.796731,
+      "revised_focus_ssim_to_a3": 0.956267,
+      "fixed_focus_continuity_improved": true
+    },
+    "implementation_guards": {
+      "focus_plate_source": "adopted A3 left-lower terrain masses",
+      "focus_plate_transform": "none",
+      "new_human_geometry": false,
+      "a4_background_entry_delay_seconds": 0.95,
+      "a4_background_entry_duration_seconds": 1.55
+    }
   },
   "failures": []
 }
