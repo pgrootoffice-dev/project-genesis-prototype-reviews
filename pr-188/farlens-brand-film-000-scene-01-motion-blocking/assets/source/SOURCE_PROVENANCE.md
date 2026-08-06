@@ -20,7 +20,16 @@ Frame / Beat対応は固定する。
 1. Frame 1 = Beat 1
 2. Frame 2 = Beat 2
 3. Frame 3 = Beat 3
-4. Frame 4 = Beat 3→4
-5. Frame 5 = Beat 4
+4. Frame 4 = Beat 4（接続から世界全体への広がりを開始）
+5. Frame 5 = Beat 4完了（7.6〜9.3秒）＋Beat 5接続安定（9.3〜10.0秒）
 
 参照設計文書はPR #186に留め、この実装PRから変更しない。
+
+## Scene 2 connection boundary
+
+PR #191のScene 2 Masterは読み取り専用参照としてのみ扱う。Scene 1終端9.95秒のPNGは、PR #191が保持するScene 1 terminal referenceと同一SHAでなければBuildを失敗させる。
+
+- PR #191 Head: `23cc8f2446f77895f926e7e19264f49dfc9012dd`
+- Scene 2 Master SHA-256: `3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904`
+- Scene 1 terminal reference SHA-256: `32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c`
+- Scene 2 Static A1〜A5、Renderer、Motion、Timingは変更しない

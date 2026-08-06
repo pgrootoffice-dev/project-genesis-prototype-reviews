@@ -12,11 +12,25 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parents[1]
 SOURCE = REPO / "docs/farlens/brand-film/assets/scene-01/BRAND_FILM_000_SCENE_01_STATIC_SEQUENCE_WORKING_LOCK.png"
 EXPECTED_SOURCE_SHA = "97bfd90afc8e6ceaa6d6bf3e8a26d78b6cf9b9d506240af5fd84fb5b9d290c59"
+EXPECTED_SCENE2_SHA = "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904"
+EXPECTED_TERMINAL_SHA = "32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c"
 
-VIDEOS = {
-    "master": ROOT / "output/master/scene-01-motion-blocking.mp4",
-    "iphone": ROOT / "output/iphone/scene-01-motion-blocking-iphone.mp4",
+VIDEO_SPECS = {
+    "master": {
+        "path": ROOT / "output/master/scene-01-motion-blocking.mp4",
+        "size": (1280, 720), "frames": 300, "duration": 10.0,
+    },
+    "iphone": {
+        "path": ROOT / "output/iphone/scene-01-motion-blocking-iphone.mp4",
+        "size": (960, 540), "frames": 300, "duration": 10.0,
+    },
+    "scene_1_to_2_review": {
+        "path": ROOT / "output/review/scene-01-to-02-review-0-23.mp4",
+        "size": (1280, 720), "frames": 690, "duration": 23.0,
+    },
 }
+SCENE2_REFERENCE = ROOT / "assets/reference/scene-02/scene-02-motion-blocking-reference.mp4"
+TERMINAL_REFERENCE = ROOT / "assets/reference/scene-02/scene-01-terminal-reference.png"
 RENDERER = ROOT / "scripts/render_motion_blocking.swift"
 
 
@@ -48,11 +62,11 @@ def has_faststart(path: Path) -> bool:
     return data.find(b"moov") < data.find(b"mdat")
 
 
-def cropdetect(path: Path) -> set[tuple[int, int, int, int]]:
+def cropdetect(path: Path, frame_count: int) -> set[tuple[int, int, int, int]]:
     result = subprocess.run(
         [
             "ffmpeg", "-hide_banner", "-i", str(path), "-vf",
-            "cropdetect=limit=2:round=2:reset=0", "-frames:v", "300",
+            "cropdetect=limit=2:round=2:reset=0", "-frames:v", str(frame_count),
             "-f", "null", "-",
         ],
         check=True,
@@ -77,12 +91,22 @@ def verify() -> dict:
         failures.append("approved Static Sequence SHA-256 mismatch")
 
     beat_map = json.loads((ROOT / "beat-map.json").read_text(encoding="utf-8"))
-    if [item["frame"] for item in beat_map["timeline"]] != [1, 2, 3, 4, 5]:
-        failures.append("Frame order is not 1..5")
-    if [item["beat"] for item in beat_map["timeline"]] != ["Beat 1", "Beat 2", "Beat 3", "Beat 3→4", "Beat 4"]:
+    if [item["frame"] for item in beat_map["timeline"]] != [1, 2, 3, 4, 5, 5]:
+        failures.append("Frame order does not preserve five adopted Frames with the Frame 5 stability sub-beat")
+    if [item["beat"] for item in beat_map["timeline"]] != ["Beat 1", "Beat 2", "Beat 3", "Beat 4", "Beat 4", "Beat 5"]:
         failures.append("Frame/Beat mapping changed")
+    if any(current["end"] != following["start"] for current, following in zip(beat_map["timeline"], beat_map["timeline"][1:])):
+        failures.append("machine-readable Beat timeline overlaps or contains a gap")
     if beat_map["timeline"][-1]["end"] != 10.0:
         failures.append("timeline does not end at 10.0 seconds")
+    if beat_map["timeline"][-1]["start"] != 9.3:
+        failures.append("Beat 5 connection stability does not begin at 9.3 seconds")
+
+    motion_budget = json.loads((ROOT / "motion-budget.json").read_text(encoding="utf-8"))
+    if [item["beat"] for item in motion_budget["beats"]] != [f"Beat {index}" for index in range(1, 6)]:
+        failures.append("motion budget does not contain Beat 1 through Beat 5")
+    if motion_budget["beats"][-1].get("start") != 9.3 or not motion_budget["beats"][-1].get("fully_stable"):
+        failures.append("motion budget does not lock the 9.3 to 10.0 stability interval")
 
     renderer_source = RENDERER.read_text(encoding="utf-8")
     frame_number_crop_count = renderer_source.count("sourceRect: CGRect(x: 68")
@@ -100,8 +124,25 @@ def verify() -> dict:
     if not no_circle_transition_code:
         failures.append("renderer contains circular transition code")
 
+    scene2_semantic_tokens = ["InformationMembrane", "drawRefraction", "ParentLayer", "ChildLayer", "DistantPossibilityLight"]
+    no_scene2_motion_semantics = not any(token in renderer_source for token in scene2_semantic_tokens)
+    if not no_scene2_motion_semantics:
+        failures.append("renderer imports Scene 2-specific Motion semantics")
+
+    layer_budget_managed = all(token in renderer_source for token in ["enum SceneLayer", "struct MotionBudget", "connectionStableStart"])
+    if not layer_budget_managed:
+        failures.append("renderer does not expose Layer and Motion Budget controls")
+
+    scene2_sha = sha256(SCENE2_REFERENCE) if SCENE2_REFERENCE.is_file() else "missing"
+    terminal_reference_sha = sha256(TERMINAL_REFERENCE) if TERMINAL_REFERENCE.is_file() else "missing"
+    if scene2_sha != EXPECTED_SCENE2_SHA:
+        failures.append("Scene 2 read-only reference SHA-256 mismatch")
+    if terminal_reference_sha != EXPECTED_TERMINAL_SHA:
+        failures.append("Scene 1 terminal reference SHA-256 mismatch")
+
     video_evidence: dict[str, dict] = {}
-    for label, path in VIDEOS.items():
+    for label, spec in VIDEO_SPECS.items():
+        path = spec["path"]
         if not path.is_file() or path.stat().st_size == 0:
             failures.append(f"{label} MP4 missing or empty")
             continue
@@ -113,7 +154,7 @@ def verify() -> dict:
             failures.append(f"{label} must have exactly one video stream")
             continue
         stream = video_streams[0]
-        expected_size = (1280, 720) if label == "master" else (960, 540)
+        expected_size = spec["size"]
         if (stream.get("width"), stream.get("height")) != expected_size:
             failures.append(f"{label} dimensions mismatch")
         if stream.get("codec_name") != "h264":
@@ -122,20 +163,20 @@ def verify() -> dict:
             failures.append(f"{label} pixel format is not yuv420p")
         if stream.get("r_frame_rate") != "30/1":
             failures.append(f"{label} frame rate is not 30fps")
-        if stream.get("nb_read_frames") != "300":
-            failures.append(f"{label} does not contain exactly 300 decoded frames")
+        if stream.get("nb_read_frames") != str(spec["frames"]):
+            failures.append(f"{label} does not contain exactly {spec['frames']} decoded frames")
         if audio_streams:
             failures.append(f"{label} unexpectedly contains audio")
         measured_duration = float(metadata["format"]["duration"])
-        if abs(measured_duration - 10.0) > 0.05:
-            failures.append(f"{label} duration is not 10 seconds")
+        if abs(measured_duration - spec["duration"]) > 0.01:
+            failures.append(f"{label} duration is not {spec['duration']:.3f} seconds")
         if not has_faststart(path):
             failures.append(f"{label} lacks faststart")
         try:
             decode_fully(path)
         except subprocess.CalledProcessError:
             failures.append(f"{label} does not fully decode")
-        detected_crops = cropdetect(path)
+        detected_crops = cropdetect(path, spec["frames"])
         expected_crop = expected_size + (0, 0)
         if detected_crops != {expected_crop}:
             failures.append(f"{label} black bar/crop detection mismatch: {sorted(detected_crops)}")
@@ -167,6 +208,13 @@ def verify() -> dict:
         ROOT / "assets/review/comparison-frame-2-to-3-before-after.png",
         ROOT / "assets/review/transition-frame-3-to-4.png",
         ROOT / "assets/review/transition-frame-4-to-5.png",
+        ROOT / "assets/review/scene-01-to-02-transition.png",
+        ROOT / "assets/review/scene-01-to-02-review-contact-sheet.png",
+        ROOT / "assets/review/scene-01-terminal-9.95.png",
+        ROOT / "connection-evidence.json",
+        ROOT / "motion-budget.json",
+        SCENE2_REFERENCE,
+        TERMINAL_REFERENCE,
         *(ROOT / "assets/keyframes").glob("*.png"),
     ]
     if len(list((ROOT / "assets/keyframes").glob("*.png"))) != 5:
@@ -174,6 +222,11 @@ def verify() -> dict:
     for path in required:
         if not path.is_file() or path.stat().st_size == 0:
             failures.append(f"missing review evidence: {path.relative_to(ROOT)}")
+
+    connection_path = ROOT / "connection-evidence.json"
+    connection_evidence = json.loads(connection_path.read_text(encoding="utf-8")) if connection_path.is_file() else {}
+    if connection_evidence.get("status") != "PASS":
+        failures.append("Scene 1 to Scene 2 connection evidence is not PASS")
 
     evidence = {
         "schema_version": 1,
@@ -186,7 +239,17 @@ def verify() -> dict:
             "expected_sha256": EXPECTED_SOURCE_SHA,
             "unchanged": source_sha == EXPECTED_SOURCE_SHA,
         },
+        "scene_2_read_only_reference": {
+            "pr": 191,
+            "commit": "23cc8f2446f77895f926e7e19264f49dfc9012dd",
+            "path": SCENE2_REFERENCE.relative_to(ROOT).as_posix(),
+            "sha256": scene2_sha,
+            "expected_sha256": EXPECTED_SCENE2_SHA,
+            "unchanged": scene2_sha == EXPECTED_SCENE2_SHA,
+        },
         "frame_beat_mapping": beat_map["timeline"],
+        "motion_budget": motion_budget,
+        "connection_evidence": connection_evidence,
         "videos": video_evidence,
         "checks": {
             "frame_beat_order_locked": not any("Frame" in item or "mapping" in item for item in failures),
@@ -204,6 +267,11 @@ def verify() -> dict:
                 and "makeFrame2OriginBridgeMask" in renderer_source
                 and "makeFrame2To3DepthMask" in renderer_source
             ),
+            "five_beat_motion_budget_locked": not any("motion budget" in item or "Beat 5" in item for item in failures),
+            "layer_management_explicit": layer_budget_managed,
+            "scene_2_motion_semantics_absent": no_scene2_motion_semantics,
+            "scene_2_reference_unchanged": scene2_sha == EXPECTED_SCENE2_SHA,
+            "scene_1_to_2_connection_pass": connection_evidence.get("status") == "PASS",
         },
         "failures": failures,
     }

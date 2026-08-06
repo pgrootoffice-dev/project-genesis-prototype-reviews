@@ -9,6 +9,34 @@ let canvasHeight = 720
 let fps = 30
 let duration = 10.0
 
+// Reference-implementation controls carried from PR #191 at the structural
+// level only. These values make the layer order and motion ceiling explicit;
+// they do not import Scene 2's membranes, refraction, focus, family, or question
+// semantics into Scene 1.
+enum SceneLayer: String, CaseIterable {
+    case background = "BG"
+    case terrain = "Terrain"
+    case atmosphere = "Atmosphere"
+    case localEmergence = "Local Emergence"
+    case propagation = "Propagation Paths"
+    case interaction = "Interaction Response"
+    case worldOpening = "World Opening"
+    case transitionMask = "Transition Mask"
+    case grade = "Grade"
+}
+
+struct MotionBudget {
+    static let backgroundDriftPixels: CGFloat = 1.8
+    static let beat1AtmosphereStrength: CGFloat = 1.0
+    static let propagationPathCount = 3
+    static let crossingPathCount = 2
+    static let connectionStableStart = 9.30
+}
+
+let layerOrder = SceneLayer.allCases
+precondition(layerOrder.first == .background && layerOrder.last == .grade)
+precondition(MotionBudget.propagationPathCount == 3 && MotionBudget.crossingPathCount == 2)
+
 guard CommandLine.arguments.count == 3 else {
     fputs("usage: render_motion_blocking.swift SOURCE_PNG OUTPUT_DIR\n", stderr)
     exit(2)
@@ -130,13 +158,13 @@ func drawImage(_ context: CGContext, _ image: CGImage, in rect: CGRect, alpha: C
 
 func drawWorldState(_ context: CGContext, index: Int, time: Double) {
     let image = croppedFrames[index]
-    let heldTime = index == 4 ? min(time, 9.30) : time
+    let heldTime = index == 4 ? min(time, MotionBudget.connectionStableStart) : time
     let breath = CGFloat((sin(heldTime * 0.42 + Double(index) * 0.7) + 1.0) / 2.0)
     let hero = heroRect(for: image)
 
     // A subdued enlargement of the same state supplies the 16:9 extension.
     // The ratio-preserved hero is feathered into it, avoiding bars and seams.
-    let drift = CGFloat(sin(heldTime * 0.38 + Double(index) * 0.6)) * 1.8
+    let drift = CGFloat(sin(heldTime * 0.38 + Double(index) * 0.6)) * MotionBudget.backgroundDriftPixels
     drawImage(context, image, in: aspectFillRect(for: image, horizontalShift: drift), alpha: 0.56)
     context.setFillColor(CGColor(red: 0.010, green: 0.040, blue: 0.095,
                                  alpha: 0.27 + breath * 0.018))
@@ -416,7 +444,7 @@ func drawInteraction(_ context: CGContext, time: Double) {
 }
 
 func drawWorldOpening(_ context: CGContext, time: Double) {
-    let heldTime = min(time, 9.30)
+    let heldTime = min(time, MotionBudget.connectionStableStart)
     let p = eased((heldTime - 7.72) / 1.42)
     let strength = CGFloat(p)
 
@@ -436,7 +464,7 @@ func render(time: Double, context: CGContext) {
 
     if time < 1.60 {
         drawWorldState(context, index: 0, time: time)
-        drawAmbientBreath(context, time: time, strength: 1.0)
+        drawAmbientBreath(context, time: time, strength: MotionBudget.beat1AtmosphereStrength)
         if time >= 1.00 { drawGatheringLight(context, time: time) }
     } else if time < 3.00 {
         drawLayerArrival(context, from: 0, to: 1,

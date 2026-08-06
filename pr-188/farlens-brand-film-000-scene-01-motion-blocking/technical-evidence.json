@@ -9,6 +9,14 @@
     "expected_sha256": "97bfd90afc8e6ceaa6d6bf3e8a26d78b6cf9b9d506240af5fd84fb5b9d290c59",
     "unchanged": true
   },
+  "scene_2_read_only_reference": {
+    "pr": 191,
+    "commit": "23cc8f2446f77895f926e7e19264f49dfc9012dd",
+    "path": "assets/reference/scene-02/scene-02-motion-blocking-reference.mp4",
+    "sha256": "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904",
+    "expected_sha256": "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904",
+    "unchanged": true
+  },
   "frame_beat_mapping": [
     {
       "frame": 1,
@@ -53,11 +61,11 @@
     },
     {
       "frame": 4,
-      "beat": "Beat 3→4",
+      "beat": "Beat 4",
       "start": 5.3,
       "end": 7.6,
-      "meaning": "異なる現象が接続し、相互作用と加速が始まる。",
-      "major_change": "Frame 3の伝播Flowを保持したまま相互接続へ展開し、交差する流れと反応点で加速を提示。",
+      "meaning": "異なる現象が接続し、世界全体へ変化が広がり始める。",
+      "major_change": "Frame 3の伝播Flowを保持したまま相互接続へ展開し、交差する流れと反応点から世界規模への広がりを開始。",
       "layers": [
         "L0 Extended Background",
         "L1 Adopted State 3→4",
@@ -70,9 +78,9 @@
       "frame": 5,
       "beat": "Beat 4",
       "start": 7.6,
-      "end": 10.0,
-      "meaning": "視点が広がり、世界全体が次の時代へ動き始める。",
-      "major_change": "既存の接続を中央から左右へ穏やかに延長し、Frame 5の世界規模へ到達。9.3秒以降は完全安定。",
+      "end": 9.3,
+      "meaning": "世界全体への広がりを完了する。",
+      "major_change": "既存の接続を中央から左右へ穏やかに延長し、9.3秒でBeat 4を完了。",
       "layers": [
         "L0 Extended Background",
         "L1 Adopted State 4→5",
@@ -80,8 +88,123 @@
         "L3 Horizon Light",
         "L4 Outward Global Flows"
       ]
+    },
+    {
+      "frame": 5,
+      "beat": "Beat 5",
+      "start": 9.3,
+      "end": 10.0,
+      "meaning": "Scene 2が自然に始められる、開かれた安定状態。",
+      "major_change": "新しい意味や物体を追加せず、Frame 5の構図・光・地形・接続を完全に保持。",
+      "layers": [
+        "L0 Extended Background",
+        "L1 Adopted State 5",
+        "L3 Horizon Light",
+        "L4 Settled Global Flows",
+        "L6 Connection Stability"
+      ]
     }
   ],
+  "motion_budget": {
+    "schema_version": 1,
+    "scene": "Scene 1｜世界は動き始めている",
+    "principle": "意味を壊さず、必要なだけしっかり動かす",
+    "camera": {
+      "axis": "fixed",
+      "background_drift_max_pixels": 1.8,
+      "pan": false,
+      "orbit": false,
+      "fast_zoom": false
+    },
+    "beats": [
+      {
+        "beat": "Beat 1",
+        "start": 0.0,
+        "end": 1.6,
+        "semantic_motion": "atmosphere_breath",
+        "motion_level": 0.15
+      },
+      {
+        "beat": "Beat 2",
+        "start": 1.6,
+        "end": 3.0,
+        "semantic_motion": "one_local_emergence",
+        "motion_level": 0.45
+      },
+      {
+        "beat": "Beat 3",
+        "start": 3.0,
+        "end": 5.3,
+        "semantic_motion": "three_direction_propagation",
+        "motion_level": 0.75,
+        "persistent_paths": 3
+      },
+      {
+        "beat": "Beat 4",
+        "start": 5.3,
+        "end": 9.3,
+        "semantic_motion": "interaction_then_world_scale_opening",
+        "motion_level": 1.0,
+        "crossing_paths": 2
+      },
+      {
+        "beat": "Beat 5",
+        "start": 9.3,
+        "end": 10.0,
+        "semantic_motion": "scene_02_connection_stability",
+        "motion_level": 0.0,
+        "fully_stable": true
+      }
+    ],
+    "scene_02_semantics_forbidden": [
+      "information_membrane",
+      "refraction",
+      "information_increase",
+      "reduced_legibility",
+      "parent_child",
+      "question"
+    ]
+  },
+  "connection_evidence": {
+    "schema_version": 1,
+    "status": "PASS",
+    "reference_implementation": {
+      "pr": 191,
+      "commit": "23cc8f2446f77895f926e7e19264f49dfc9012dd",
+      "scene_2_master_sha256": "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904",
+      "expected_scene_2_master_sha256": "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904",
+      "read_only": true
+    },
+    "scene_1_terminal": {
+      "captured_at_seconds": 9.95,
+      "sha256": "32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c",
+      "pr191_reference_sha256": "32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c",
+      "expected_sha256": "32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c"
+    },
+    "review_clip": {
+      "path": "output/review/scene-01-to-02-review-0-23.mp4",
+      "sha256": "d9d5eec5fc14a80f45f3c22de57c3d3b3dc8579e8f33f8749aab0731349534dc",
+      "duration": 23.0,
+      "decoded_frame_count": 690,
+      "scene_1_frames": 300,
+      "scene_2_frames": 390,
+      "boundary_frame": 300,
+      "entry_transition_seconds": 0.7,
+      "raw_boundary_ssim_observation": 0.824674,
+      "scene_1_segment_ssim": 0.997277,
+      "scene_2_after_transition_ssim": 0.993159
+    },
+    "checks": {
+      "scene_1_segment_faithful": true,
+      "scene_2_after_transition_faithful": true,
+      "scene_2_reference_sha_unchanged": true,
+      "scene_1_terminal_matches_pr191_reference": true,
+      "review_duration_23_seconds": true,
+      "review_frame_count_690": true,
+      "review_30fps": true,
+      "review_h264_yuv420p": true
+    }
+  },
   "videos": {
     "master": {
       "path": "output/master/scene-01-motion-blocking.mp4",
@@ -130,6 +253,30 @@
         ]
       ],
       "black_bars_detected": false
+    },
+    "scene_1_to_2_review": {
+      "path": "output/review/scene-01-to-02-review-0-23.mp4",
+      "sha256": "d9d5eec5fc14a80f45f3c22de57c3d3b3dc8579e8f33f8749aab0731349534dc",
+      "bytes": 3177870,
+      "duration": 23.0,
+      "width": 1280,
+      "height": 720,
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": "30/1",
+      "decoded_frame_count": 690,
+      "audio": false,
+      "faststart": true,
+      "full_decode": true,
+      "detected_content_crop": [
+        [
+          1280,
+          720,
+          0,
+          0
+        ]
+      ],
+      "black_bars_detected": false
     }
   },
   "checks": {
@@ -143,7 +290,12 @@
     "circular_transition_code_zero": true,
     "all_300_frames_regenerated": true,
     "required_transition_evidence_present": true,
-    "frame_2_to_3_revision_localized": true
+    "frame_2_to_3_revision_localized": true,
+    "five_beat_motion_budget_locked": true,
+    "layer_management_explicit": true,
+    "scene_2_motion_semantics_absent": true,
+    "scene_2_reference_unchanged": true,
+    "scene_1_to_2_connection_pass": true
   },
   "failures": []
 }

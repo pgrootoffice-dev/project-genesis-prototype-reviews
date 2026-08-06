@@ -14,11 +14,14 @@ Status: **WORKING TEST / NON-CANONICAL / PIPELINE STAGE 3**
 - Frame 2→3だけは専用のDepth Arrivalを使い、起点の近景を残したまま奥景→中景→前景へ開く。3本のFlow到達量をReveal範囲に同期し、Frame 3全景の先行表示を防ぐ。
 - Swift/CoreGraphicsで300フレームを決定論的に描画し、既存FFmpegでH.264へ書き出す。
 - カメラは固定。主要変化はFrame内の光、層、構造、相互作用側で起こす。
+- Layer順序とBeat別Motion Budgetをコードと [`motion-budget.json`](./motion-budget.json) の両方で固定する。
+- 9.3〜10.0秒をBeat 5の接続安定区間とし、新しい意味や物体を追加しない。
+- PR #191の採用済みScene 2 MasterをSHA固定の読み取り専用参照として連結し、Scene 2開始後0.7秒だけScene 1終端の環境光を溶かす0〜23秒Review Clipを生成する。
 
 ## Blockingで確認すること
 
-- Frame 1〜5とBeat 1〜4の対応が崩れていないか。
-- Beat 1の静けさからBeat 4の世界規模への始動まで、Motion量が段階的に増えるか。
+- Frame 1〜5とBeat 1〜5の対応が崩れていないか。
+- Beat 1の静けさからBeat 4の世界規模への始動までMotion量が段階的に増え、Beat 5で接続安定へ戻るか。
 - Frame 3が「異なる現象の発生」、Frame 4が「接続と相互作用」に見えるか。
 - ナレーションなしでも「小さな変化 → 伝播 → 相互作用 → 世界全体の始動」が読めるか。
 - 主役交代と10秒のテンポが適切か。
@@ -40,8 +43,9 @@ Blockingでは上記を評価対象にせず、安価で局所修正可能な意
 | 1 | Beat 1 | 0.0–1.6s | 静かな世界。環境光の微弱な呼吸のみ。 |
 | 2 | Beat 2 | 1.6–3.0s | Frame 1内の一点へ光が集まり、局所変化が立ち上がって定着。 |
 | 3 | Beat 3 | 3.0–5.3s | Beat 2の起点と近景を橋として残し、3方向のFlow到達後に奥景→中景→前景が順に立ち上がってFrame 3状態へ到達。 |
-| 4 | Beat 3→4 | 5.3–7.6s | 既存Flowが関係を持ち、交差Flowと反応点で相互作用・加速。 |
-| 5 | Beat 4 | 7.6–10.0s | 既存の接続が世界規模へ広がり、9.3秒以降は静かに安定。 |
+| 4 | Beat 4 | 5.3–7.6s | 既存Flowが関係を持ち、交差Flowと反応点から世界全体への広がりを開始。 |
+| 5 | Beat 4 | 7.6–9.3s | 世界規模への広がりを完了。 |
+| 5 | Beat 5 | 9.3–10.0s | 新しい意味を追加せず、Scene 2接続へ完全安定。 |
 
 機械可読版は [`beat-map.json`](./beat-map.json) にあります。
 
@@ -57,6 +61,7 @@ Blockingでは上記を評価対象にせず、安価で局所修正可能な意
 
 - `output/master/scene-01-motion-blocking.mp4`
 - `output/iphone/scene-01-motion-blocking-iphone.mp4`
+- `output/review/scene-01-to-02-review-0-23.mp4`
 - `assets/keyframes/`
 - `assets/review/storyboard-motion-contact-sheet.png`
 - `assets/review/transition-contact-sheet.png`
@@ -67,6 +72,10 @@ Blockingでは上記を評価対象にせず、安価で局所修正可能な意
 - `assets/review/comparison-frame-2-to-3-before-after.png`（左: commit `97a10ca` / 右: 現行版）
 - `assets/review/transition-frame-3-to-4.png`
 - `assets/review/transition-frame-4-to-5.png`
+- `assets/review/scene-01-to-02-transition.png`
+- `assets/review/scene-01-to-02-review-contact-sheet.png`
+- `connection-evidence.json`
+- `motion-budget.json`
 - `technical-evidence.json`
 - `checksums.sha256`
 
@@ -84,5 +93,7 @@ Expected SHA-256: `97bfd90afc8e6ceaa6d6bf3e8a26d78b6cf9b9d506240af5fd84fb5b9d290
 - 参照設計: Draft PR #186
 - PR #186へ実装commitを追加しない
 - Static Sequence、台本、Beat、Frame構成を変更しない
+- PR #191のScene 2 Motion／Static／Timingを変更しない
+- Scene 1終端で情報膜、屈折、情報増加、見えにくさ、親子、問いを先取りしない
 - 画像生成・画像編集・外部AI動画生成を行わない
 - 本成果物はMotion Blockingであり、本番品質・Canonical・Merge承認を意味しない

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "reference_implementation": {
+    "pr": 191,
+    "commit": "23cc8f2446f77895f926e7e19264f49dfc9012dd",
+    "scene_2_master_sha256": "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904",
+    "expected_scene_2_master_sha256": "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904",
+    "read_only": true
+  },
+  "scene_1_terminal": {
+    "captured_at_seconds": 9.95,
+    "sha256": "32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c",
+    "pr191_reference_sha256": "32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c",
+    "expected_sha256": "32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c"
+  },
+  "review_clip": {
+    "path": "output/review/scene-01-to-02-review-0-23.mp4",
+    "sha256": "d9d5eec5fc14a80f45f3c22de57c3d3b3dc8579e8f33f8749aab0731349534dc",
+    "duration": 23.0,
+    "decoded_frame_count": 690,
+    "scene_1_frames": 300,
+    "scene_2_frames": 390,
+    "boundary_frame": 300,
+    "entry_transition_seconds": 0.7,
+    "raw_boundary_ssim_observation": 0.824674,
+    "scene_1_segment_ssim": 0.997277,
+    "scene_2_after_transition_ssim": 0.993159
+  },
+  "checks": {
+    "scene_1_segment_faithful": true,
+    "scene_2_after_transition_faithful": true,
+    "scene_2_reference_sha_unchanged": true,
+    "scene_1_terminal_matches_pr191_reference": true,
+    "review_duration_23_seconds": true,
+    "review_frame_count_690": true,
+    "review_30fps": true,
+    "review_h264_yuv420p": true
+  }
+}

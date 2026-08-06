@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "scene": "Scene 1｜世界は動き始めている",
+  "principle": "意味を壊さず、必要なだけしっかり動かす",
+  "camera": {
+    "axis": "fixed",
+    "background_drift_max_pixels": 1.8,
+    "pan": false,
+    "orbit": false,
+    "fast_zoom": false
+  },
+  "beats": [
+    {
+      "beat": "Beat 1",
+      "start": 0.0,
+      "end": 1.6,
+      "semantic_motion": "atmosphere_breath",
+      "motion_level": 0.15
+    },
+    {
+      "beat": "Beat 2",
+      "start": 1.6,
+      "end": 3.0,
+      "semantic_motion": "one_local_emergence",
+      "motion_level": 0.45
+    },
+    {
+      "beat": "Beat 3",
+      "start": 3.0,
+      "end": 5.3,
+      "semantic_motion": "three_direction_propagation",
+      "motion_level": 0.75,
+      "persistent_paths": 3
+    },
+    {
+      "beat": "Beat 4",
+      "start": 5.3,
+      "end": 9.3,
+      "semantic_motion": "interaction_then_world_scale_opening",
+      "motion_level": 1.0,
+      "crossing_paths": 2
+    },
+    {
+      "beat": "Beat 5",
+      "start": 9.3,
+      "end": 10.0,
+      "semantic_motion": "scene_02_connection_stability",
+      "motion_level": 0.0,
+      "fully_stable": true
+    }
+  ],
+  "scene_02_semantics_forbidden": [
+    "information_membrane",
+    "refraction",
+    "information_increase",
+    "reduced_legibility",
+    "parent_child",
+    "question"
+  ]
+}

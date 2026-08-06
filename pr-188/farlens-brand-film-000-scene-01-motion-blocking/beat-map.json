@@ -37,21 +37,30 @@
     },
     {
       "frame": 4,
-      "beat": "Beat 3→4",
+      "beat": "Beat 4",
       "start": 5.3,
       "end": 7.6,
-      "meaning": "異なる現象が接続し、相互作用と加速が始まる。",
-      "major_change": "Frame 3の伝播Flowを保持したまま相互接続へ展開し、交差する流れと反応点で加速を提示。",
+      "meaning": "異なる現象が接続し、世界全体へ変化が広がり始める。",
+      "major_change": "Frame 3の伝播Flowを保持したまま相互接続へ展開し、交差する流れと反応点から世界規模への広がりを開始。",
       "layers": ["L0 Extended Background", "L1 Adopted State 3→4", "L2 Organic Arrival Mask", "L4 Persistent Crossing Flows", "L5 Interaction Response"]
     },
     {
       "frame": 5,
       "beat": "Beat 4",
       "start": 7.6,
-      "end": 10.0,
-      "meaning": "視点が広がり、世界全体が次の時代へ動き始める。",
-      "major_change": "既存の接続を中央から左右へ穏やかに延長し、Frame 5の世界規模へ到達。9.3秒以降は完全安定。",
+      "end": 9.3,
+      "meaning": "世界全体への広がりを完了する。",
+      "major_change": "既存の接続を中央から左右へ穏やかに延長し、9.3秒でBeat 4を完了。",
       "layers": ["L0 Extended Background", "L1 Adopted State 4→5", "L2 Organic Arrival Mask", "L3 Horizon Light", "L4 Outward Global Flows"]
+    },
+    {
+      "frame": 5,
+      "beat": "Beat 5",
+      "start": 9.3,
+      "end": 10.0,
+      "meaning": "Scene 2が自然に始められる、開かれた安定状態。",
+      "major_change": "新しい意味や物体を追加せず、Frame 5の構図・光・地形・接続を完全に保持。",
+      "layers": ["L0 Extended Background", "L1 Adopted State 5", "L3 Horizon Light", "L4 Settled Global Flows", "L6 Connection Stability"]
     }
   ]
 }
