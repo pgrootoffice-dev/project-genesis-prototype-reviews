@@ -33,3 +33,11 @@ PR #191のScene 2 Masterは読み取り専用参照としてのみ扱う。Scene
 - Scene 2 Master SHA-256: `3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904`
 - Scene 1 terminal reference SHA-256: `32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c`
 - Scene 2 Static A1〜A5、Renderer、Motion、Timingは変更しない
+
+Compass確認済みの修正前Review Clipを比較専用Baselineとして固定する。
+
+- Workflow Run ID: `31077899888`
+- Artifact ID: `8958248421`
+- Local baseline: `assets/source/revision-02/scene-01-to-02-review-before-layered-transition.mp4`
+- SHA-256: `d9d5eec5fc14a80f45f3c22de57c3d3b3dc8579e8f33f8749aab0731349534dc`
+- 用途: 同時刻の修正前／修正後比較のみ。正式Masterとして扱わない

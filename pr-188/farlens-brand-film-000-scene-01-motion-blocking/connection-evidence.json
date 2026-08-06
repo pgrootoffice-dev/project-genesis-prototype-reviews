@@ -8,6 +8,18 @@
     "expected_scene_2_master_sha256": "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904",
     "read_only": true
   },
+  "immutable_scene_1": {
+    "master_sha256": "f684be2ebcb176f043f419bdfed297bbeb1e4eb7ef68dae98cfbc462197d1b79",
+    "expected_master_sha256": "f684be2ebcb176f043f419bdfed297bbeb1e4eb7ef68dae98cfbc462197d1b79",
+    "iphone_sha256": "2c7dce60db133313a5853ff66b77243879900e188e09d7735aee1ba3b34ef5a5",
+    "expected_iphone_sha256": "2c7dce60db133313a5853ff66b77243879900e188e09d7735aee1ba3b34ef5a5"
+  },
+  "revision_baseline": {
+    "sha256": "d9d5eec5fc14a80f45f3c22de57c3d3b3dc8579e8f33f8749aab0731349534dc",
+    "expected_sha256": "d9d5eec5fc14a80f45f3c22de57c3d3b3dc8579e8f33f8749aab0731349534dc",
+    "workflow_run_id": 31077899888,
+    "artifact_id": 8958248421
+  },
   "scene_1_terminal": {
     "captured_at_seconds": 9.95,
     "sha256": "32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c",
@@ -16,22 +28,208 @@
   },
   "review_clip": {
     "path": "output/review/scene-01-to-02-review-0-23.mp4",
-    "sha256": "d9d5eec5fc14a80f45f3c22de57c3d3b3dc8579e8f33f8749aab0731349534dc",
+    "sha256": "d28e70f5d87e2eef394bc4910990e9b6dd37003edf6685924114fff3c59edbfa",
     "duration": 23.0,
     "decoded_frame_count": 690,
     "scene_1_frames": 300,
     "scene_2_frames": 390,
     "boundary_frame": 300,
-    "entry_transition_seconds": 0.7,
+    "entry_transition_seconds": 1.1,
     "raw_boundary_ssim_observation": 0.824674,
-    "scene_1_segment_ssim": 0.997277,
-    "scene_2_after_transition_ssim": 0.993159
+    "scene_1_segment_ssim": 0.997829,
+    "scene_1_terminal_hold_ssim": 0.999909,
+    "scene_2_after_transition_ssim": 0.994651
+  },
+  "layer_envelopes": {
+    "schema_version": 1,
+    "classification": "REVIEW-ONLY TRANSITION / NON-CANONICAL",
+    "formal_timing": {
+      "scene_1_seconds": 10.0,
+      "scene_2_seconds": 13.0,
+      "review_clip_seconds": 23.0,
+      "scene_2_timeline_mapping": "review 10.0–23.0 = Scene 2 source 0.0–13.0"
+    },
+    "scene_1_terminal_hold": {
+      "review_start": 9.3,
+      "review_end": 10.0,
+      "duration": 0.7,
+      "source": "Scene 1 Master",
+      "semantic_change": false
+    },
+    "transition": {
+      "review_start": 10.0,
+      "review_end": 11.1,
+      "duration": 1.1,
+      "source_scene_2_start": 0.0,
+      "source_scene_2_end": 1.1,
+      "uniform_full_screen_crossfade": false,
+      "baseline_simultaneous_full_frame_switch_contribution": 1.0,
+      "revised_simultaneous_full_frame_switch_contribution": 0.0,
+      "spatial_partition_convergence": {
+        "review_start": 10.76,
+        "review_end": 10.86,
+        "duration": 0.1,
+        "direct_scene_2_settle_start": 10.9,
+        "direct_scene_2_settle_end": 11.1,
+        "partitions": [
+          "upper_field",
+          "lower_right_terrain",
+          "lower_left_mass"
+        ],
+        "purpose": "complete the complementary spatial masks before concat, then hold the read-only Scene 2 source through the end of the 1.1-second connection"
+      }
+    },
+    "layers": [
+      {
+        "id": "warm_center_melt",
+        "order": 1,
+        "review_start": 10.05,
+        "review_end": 10.3,
+        "envelope": "smooth fade-in of a feathered navy radial veil",
+        "spatial_scope": "warm center and halo only",
+        "meaning": "warmth stops acting as the destination and becomes atmosphere"
+      },
+      {
+        "id": "dark_air_horizon",
+        "order": 2,
+        "review_start": 10.22,
+        "review_end": 10.5,
+        "envelope": "feathered alpha arrival",
+        "spatial_scope": "upper field and horizon; Scene 2 source blurred to suppress objects",
+        "meaning": "darkness, air, and horizon connect before objects"
+      },
+      {
+        "id": "terrain",
+        "order": 3,
+        "review_start": 10.42,
+        "review_end": 10.65,
+        "envelope": "lower-right and middle terrain mask",
+        "spatial_scope": "terrain excluding the lower-left recognition zone and upper membranes",
+        "meaning": "the same world's interior terrain becomes readable"
+      },
+      {
+        "id": "lower_left_mass",
+        "order": 4,
+        "review_start": 10.6,
+        "review_end": 10.72,
+        "envelope": "lower-left feathered mask",
+        "spatial_scope": "lower-left terrain and latent two-mass area",
+        "meaning": "the latent masses become recognizable only in the latter half"
+      },
+      {
+        "id": "information_membranes",
+        "order": 5,
+        "review_start": 10.76,
+        "review_end": 10.86,
+        "envelope": "upper-field feathered mask",
+        "spatial_scope": "upper information-membrane field",
+        "meaning": "Scene 2 meaning begins last and never appears on the Scene 1 side"
+      }
+    ]
+  },
+  "rendered_transition_verification": {
+    "method": "decoded framemd5 fingerprints at six ordered transition samples",
+    "frame_indices": [
+      300,
+      306,
+      312,
+      318,
+      326,
+      333
+    ],
+    "actual_framemd5": {
+      "300": "7a454c6ffda50b125d299cdd37bfbf0b",
+      "306": "f6b0664490d7ca929019cc974a1f0e7b",
+      "312": "c380b7b8fa221d84b8a559fdb233c724",
+      "318": "b9f6f18b3852f84caea4478d9ba5aec5",
+      "326": "2dc30c2f4c819914e07c199a83f8f5ef",
+      "333": "5da7ded449880e0bdb2345462211eb9d"
+    },
+    "expected_framemd5": {
+      "300": "7a454c6ffda50b125d299cdd37bfbf0b",
+      "306": "f6b0664490d7ca929019cc974a1f0e7b",
+      "312": "c380b7b8fa221d84b8a559fdb233c724",
+      "318": "b9f6f18b3852f84caea4478d9ba5aec5",
+      "326": "2dc30c2f4c819914e07c199a83f8f5ef",
+      "333": "5da7ded449880e0bdb2345462211eb9d"
+    },
+    "implementation_sha256": "cb39b635ce17177595c80b5054de89d9a7e074e8413d25d93d34f05b14a7b8c9",
+    "implementation_envelopes_actual": {
+      "warm_center_melt": {
+        "start": 0.05,
+        "duration": 0.25
+      },
+      "dark_air_horizon": {
+        "start": 0.22,
+        "duration": 0.28
+      },
+      "terrain": {
+        "start": 0.42,
+        "duration": 0.23
+      },
+      "lower_left_mass": {
+        "start": 0.6,
+        "duration": 0.12
+      },
+      "information_membranes": {
+        "start": 0.76,
+        "duration": 0.1
+      }
+    },
+    "implementation_envelopes_expected_from_design": {
+      "warm_center_melt": {
+        "start": 0.05,
+        "duration": 0.25
+      },
+      "dark_air_horizon": {
+        "start": 0.22,
+        "duration": 0.28
+      },
+      "terrain": {
+        "start": 0.42,
+        "duration": 0.23
+      },
+      "lower_left_mass": {
+        "start": 0.6,
+        "duration": 0.12
+      },
+      "information_membranes": {
+        "start": 0.76,
+        "duration": 0.1
+      }
+    },
+    "implementation_composite_order": [
+      "[cooled][atmo]",
+      "[s1][terrain]",
+      "[s2][leftmass]",
+      "[s3][membranes]"
+    ],
+    "review_frame_332_to_scene_2_frame_32_ssim": 0.995459,
+    "review_frame_333_to_scene_2_frame_33_ssim": 0.995461
   },
   "checks": {
+    "scene_1_master_sha_unchanged": true,
+    "scene_1_iphone_sha_unchanged": true,
     "scene_1_segment_faithful": true,
     "scene_2_after_transition_faithful": true,
     "scene_2_reference_sha_unchanged": true,
+    "reviewed_baseline_sha_locked": true,
     "scene_1_terminal_matches_pr191_reference": true,
+    "scene_1_terminal_hold_present": true,
+    "transition_duration_1_1_seconds": true,
+    "layer_order_locked": true,
+    "warmth_melts_before_scene_2_layers": true,
+    "air_horizon_before_terrain": true,
+    "lower_left_mass_arrives_after_terrain": true,
+    "information_membranes_arrive_last": true,
+    "scene_2_semantics_begin_after_scene_1": true,
+    "uniform_full_screen_blend_reduced": true,
+    "rendered_transition_sample_fingerprints_locked": true,
+    "implementation_envelopes_match_design": true,
+    "implementation_composite_order_matches_design": true,
+    "implementation_uses_spatial_masks_not_xfade": true,
+    "implementation_renders_full_1_1_second_connection": true,
+    "scene_2_entry_seam_matches_reference": true,
     "review_duration_23_seconds": true,
     "review_frame_count_690": true,
     "review_30fps": true,

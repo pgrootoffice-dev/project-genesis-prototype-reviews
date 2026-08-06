@@ -14,6 +14,9 @@ SOURCE = REPO / "docs/farlens/brand-film/assets/scene-01/BRAND_FILM_000_SCENE_01
 EXPECTED_SOURCE_SHA = "97bfd90afc8e6ceaa6d6bf3e8a26d78b6cf9b9d506240af5fd84fb5b9d290c59"
 EXPECTED_SCENE2_SHA = "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904"
 EXPECTED_TERMINAL_SHA = "32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c"
+EXPECTED_MASTER_SHA = "f684be2ebcb176f043f419bdfed297bbeb1e4eb7ef68dae98cfbc462197d1b79"
+EXPECTED_IPHONE_SHA = "2c7dce60db133313a5853ff66b77243879900e188e09d7735aee1ba3b34ef5a5"
+EXPECTED_BASELINE_SHA = "d9d5eec5fc14a80f45f3c22de57c3d3b3dc8579e8f33f8749aab0731349534dc"
 
 VIDEO_SPECS = {
     "master": {
@@ -31,6 +34,7 @@ VIDEO_SPECS = {
 }
 SCENE2_REFERENCE = ROOT / "assets/reference/scene-02/scene-02-motion-blocking-reference.mp4"
 TERMINAL_REFERENCE = ROOT / "assets/reference/scene-02/scene-01-terminal-reference.png"
+CONNECTION_BASELINE = ROOT / "assets/source/revision-02/scene-01-to-02-review-before-layered-transition.mp4"
 RENDERER = ROOT / "scripts/render_motion_blocking.swift"
 
 
@@ -135,10 +139,13 @@ def verify() -> dict:
 
     scene2_sha = sha256(SCENE2_REFERENCE) if SCENE2_REFERENCE.is_file() else "missing"
     terminal_reference_sha = sha256(TERMINAL_REFERENCE) if TERMINAL_REFERENCE.is_file() else "missing"
+    baseline_sha = sha256(CONNECTION_BASELINE) if CONNECTION_BASELINE.is_file() else "missing"
     if scene2_sha != EXPECTED_SCENE2_SHA:
         failures.append("Scene 2 read-only reference SHA-256 mismatch")
     if terminal_reference_sha != EXPECTED_TERMINAL_SHA:
         failures.append("Scene 1 terminal reference SHA-256 mismatch")
+    if baseline_sha != EXPECTED_BASELINE_SHA:
+        failures.append("reviewed Scene 1 to 2 baseline SHA-256 mismatch")
 
     video_evidence: dict[str, dict] = {}
     for label, spec in VIDEO_SPECS.items():
@@ -198,6 +205,13 @@ def verify() -> dict:
             "black_bars_detected": detected_crops != {expected_crop},
         }
 
+    master_sha = video_evidence.get("master", {}).get("sha256", "missing")
+    iphone_sha = video_evidence.get("iphone", {}).get("sha256", "missing")
+    if master_sha != EXPECTED_MASTER_SHA:
+        failures.append("Scene 1 Master SHA-256 changed")
+    if iphone_sha != EXPECTED_IPHONE_SHA:
+        failures.append("Scene 1 iPhone SHA-256 changed")
+
     required = [
         ROOT / "assets/review/storyboard-motion-contact-sheet.png",
         ROOT / "assets/review/transition-contact-sheet.png",
@@ -209,10 +223,15 @@ def verify() -> dict:
         ROOT / "assets/review/transition-frame-3-to-4.png",
         ROOT / "assets/review/transition-frame-4-to-5.png",
         ROOT / "assets/review/scene-01-to-02-transition.png",
+        ROOT / "assets/review/scene-01-to-02-connection-expanded.png",
+        ROOT / "assets/review/scene-01-to-02-before-after.png",
+        ROOT / "assets/review/connection-layer-envelope.svg",
         ROOT / "assets/review/scene-01-to-02-review-contact-sheet.png",
         ROOT / "assets/review/scene-01-terminal-9.95.png",
         ROOT / "connection-evidence.json",
         ROOT / "motion-budget.json",
+        ROOT / "connection-layer-envelopes.json",
+        CONNECTION_BASELINE,
         SCENE2_REFERENCE,
         TERMINAL_REFERENCE,
         *(ROOT / "assets/keyframes").glob("*.png"),
@@ -227,6 +246,35 @@ def verify() -> dict:
     connection_evidence = json.loads(connection_path.read_text(encoding="utf-8")) if connection_path.is_file() else {}
     if connection_evidence.get("status") != "PASS":
         failures.append("Scene 1 to Scene 2 connection evidence is not PASS")
+    required_connection_checks = {
+        "scene_1_master_sha_unchanged",
+        "scene_1_iphone_sha_unchanged",
+        "scene_1_segment_faithful",
+        "scene_2_after_transition_faithful",
+        "scene_2_reference_sha_unchanged",
+        "reviewed_baseline_sha_locked",
+        "scene_1_terminal_hold_present",
+        "transition_duration_1_1_seconds",
+        "layer_order_locked",
+        "warmth_melts_before_scene_2_layers",
+        "air_horizon_before_terrain",
+        "lower_left_mass_arrives_after_terrain",
+        "information_membranes_arrive_last",
+        "scene_2_semantics_begin_after_scene_1",
+        "uniform_full_screen_blend_reduced",
+        "rendered_transition_sample_fingerprints_locked",
+        "implementation_envelopes_match_design",
+        "implementation_composite_order_matches_design",
+        "implementation_uses_spatial_masks_not_xfade",
+        "implementation_renders_full_1_1_second_connection",
+        "scene_2_entry_seam_matches_reference",
+    }
+    connection_checks = connection_evidence.get("checks", {})
+    failed_connection_checks = sorted(
+        check for check in required_connection_checks if connection_checks.get(check) is not True
+    )
+    if failed_connection_checks:
+        failures.append("connection verification failed: " + ", ".join(failed_connection_checks))
 
     evidence = {
         "schema_version": 1,
@@ -246,6 +294,21 @@ def verify() -> dict:
             "sha256": scene2_sha,
             "expected_sha256": EXPECTED_SCENE2_SHA,
             "unchanged": scene2_sha == EXPECTED_SCENE2_SHA,
+        },
+        "immutable_scene_1_outputs": {
+            "master_sha256": master_sha,
+            "expected_master_sha256": EXPECTED_MASTER_SHA,
+            "master_unchanged": master_sha == EXPECTED_MASTER_SHA,
+            "iphone_sha256": iphone_sha,
+            "expected_iphone_sha256": EXPECTED_IPHONE_SHA,
+            "iphone_unchanged": iphone_sha == EXPECTED_IPHONE_SHA,
+        },
+        "reviewed_connection_baseline": {
+            "workflow_run_id": 31077899888,
+            "artifact_id": 8958248421,
+            "sha256": baseline_sha,
+            "expected_sha256": EXPECTED_BASELINE_SHA,
+            "unchanged": baseline_sha == EXPECTED_BASELINE_SHA,
         },
         "frame_beat_mapping": beat_map["timeline"],
         "motion_budget": motion_budget,
@@ -272,6 +335,10 @@ def verify() -> dict:
             "scene_2_motion_semantics_absent": no_scene2_motion_semantics,
             "scene_2_reference_unchanged": scene2_sha == EXPECTED_SCENE2_SHA,
             "scene_1_to_2_connection_pass": connection_evidence.get("status") == "PASS",
+            "scene_1_master_sha_unchanged": master_sha == EXPECTED_MASTER_SHA,
+            "scene_1_iphone_sha_unchanged": iphone_sha == EXPECTED_IPHONE_SHA,
+            "reviewed_connection_baseline_locked": baseline_sha == EXPECTED_BASELINE_SHA,
+            "layered_connection_checks_pass": not failed_connection_checks,
         },
         "failures": failures,
     }

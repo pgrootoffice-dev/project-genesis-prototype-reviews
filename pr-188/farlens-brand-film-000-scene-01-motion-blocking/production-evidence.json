@@ -1,24 +1,180 @@
 {
-    "programs": [
-
-    ],
-    "stream_groups": [
-
-    ],
-    "streams": [
-        {
+  "schema_version": 1,
+  "status": "PASS",
+  "scope": "Review-only Scene 1 to Scene 2 layered connection",
+  "formal_masters_modified": false,
+  "transition": {
+    "review_start": 10.0,
+    "review_end": 11.1,
+    "duration": 1.1,
+    "source_scene_2_start": 0.0,
+    "source_scene_2_end": 1.1,
+    "uniform_full_screen_crossfade": false,
+    "baseline_simultaneous_full_frame_switch_contribution": 1.0,
+    "revised_simultaneous_full_frame_switch_contribution": 0.0,
+    "spatial_partition_convergence": {
+      "review_start": 10.76,
+      "review_end": 10.86,
+      "duration": 0.1,
+      "direct_scene_2_settle_start": 10.9,
+      "direct_scene_2_settle_end": 11.1,
+      "partitions": [
+        "upper_field",
+        "lower_right_terrain",
+        "lower_left_mass"
+      ],
+      "purpose": "complete the complementary spatial masks before concat, then hold the read-only Scene 2 source through the end of the 1.1-second connection"
+    }
+  },
+  "layer_order": [
+    "warm_center_melt",
+    "dark_air_horizon",
+    "terrain",
+    "lower_left_mass",
+    "information_membranes"
+  ],
+  "videos": {
+    "master": {
+      "path": "scene-01-motion-blocking.mp4",
+      "sha256": "f684be2ebcb176f043f419bdfed297bbeb1e4eb7ef68dae98cfbc462197d1b79",
+      "expected_sha256": "f684be2ebcb176f043f419bdfed297bbeb1e4eb7ef68dae98cfbc462197d1b79",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
             "index": 0,
             "codec_name": "h264",
             "codec_type": "video",
             "width": 1280,
             "height": 720,
             "pix_fmt": "yuv420p",
-            "r_frame_rate": "30/1"
+            "r_frame_rate": "30/1",
+            "nb_read_frames": "300"
+          }
+        ],
+        "format": {
+          "duration": "10.000000",
+          "size": "1167276",
+          "bit_rate": "933820"
         }
-    ],
-    "format": {
-        "duration": "10.000000",
-        "size": "1167276",
-        "bit_rate": "933820"
+      }
+    },
+    "iphone": {
+      "path": "scene-01-motion-blocking-iphone.mp4",
+      "sha256": "2c7dce60db133313a5853ff66b77243879900e188e09d7735aee1ba3b34ef5a5",
+      "expected_sha256": "2c7dce60db133313a5853ff66b77243879900e188e09d7735aee1ba3b34ef5a5",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 960,
+            "height": 540,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "nb_read_frames": "300"
+          }
+        ],
+        "format": {
+          "duration": "10.000000",
+          "size": "461154",
+          "bit_rate": "368923"
+        }
+      }
+    },
+    "review": {
+      "path": "scene-01-to-02-review-0-23.mp4",
+      "sha256": "d28e70f5d87e2eef394bc4910990e9b6dd37003edf6685924114fff3c59edbfa",
+      "expected_sha256": "d28e70f5d87e2eef394bc4910990e9b6dd37003edf6685924114fff3c59edbfa",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1280,
+            "height": 720,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "nb_read_frames": "690"
+          }
+        ],
+        "format": {
+          "duration": "23.000000",
+          "size": "3306863",
+          "bit_rate": "1150213"
+        }
+      }
+    },
+    "scene2": {
+      "path": "scene-02-motion-blocking-reference.mp4",
+      "sha256": "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904",
+      "expected_sha256": "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1280,
+            "height": 720,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "nb_read_frames": "390"
+          }
+        ],
+        "format": {
+          "duration": "13.000000",
+          "size": "1830354",
+          "bit_rate": "1126371"
+        }
+      }
+    },
+    "baseline": {
+      "path": "scene-01-to-02-review-before-layered-transition.mp4",
+      "sha256": "d9d5eec5fc14a80f45f3c22de57c3d3b3dc8579e8f33f8749aab0731349534dc",
+      "expected_sha256": "d9d5eec5fc14a80f45f3c22de57c3d3b3dc8579e8f33f8749aab0731349534dc",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1280,
+            "height": 720,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1",
+            "nb_read_frames": "690"
+          }
+        ],
+        "format": {
+          "duration": "23.000000",
+          "size": "3177870",
+          "bit_rate": "1105346"
+        }
+      }
     }
+  },
+  "checks": {
+    "master_sha256_locked": true,
+    "master_video_spec_valid": true,
+    "iphone_sha256_locked": true,
+    "iphone_video_spec_valid": true,
+    "review_sha256_locked": true,
+    "review_video_spec_valid": true,
+    "scene2_sha256_locked": true,
+    "scene2_video_spec_valid": true,
+    "baseline_sha256_locked": true,
+    "baseline_video_spec_valid": true
+  }
 }

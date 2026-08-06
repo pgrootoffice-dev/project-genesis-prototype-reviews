@@ -36,7 +36,7 @@
           "Frame 1→2は一点へのGathering Lightから非円形Maskが左右へ開き、同一世界内で小さな変化が立ち上がる。Frame 2→3は同じ起点と近景を保持し、3方向のFlow到達後に奥景・中景・前景が順に開く。",
           "Frame 2→3の修正前後を同一時刻6点で並べたComparison Sheetにより、変更が2.6〜4.0秒周辺へ局所化されていることを確認できる。",
           "Frame 3の伝播FlowをFrame 4へ保持し、その端点間を横断する2つのFlowと交差反応で接続・相互作用を担当させている。",
-          "Scene 1終端9.95秒はPR #191内のterminal referenceと同一SHA。0〜23秒Reviewは両Sceneの正式Timingを保持し、Scene 2開始後0.7秒だけScene 1環境光を溶かして色差を吸収する。"
+          "Scene 1終端9.95秒はPR #191内のterminal referenceと同一SHA。0〜23秒Reviewは両Sceneの正式Timingを保持し、1.1秒のLayer別Envelopeで暖色、空気・地平、地形、左下量塊、情報膜の順に接続する。"
         ],
         "critical_issues": [
           "独立Layer素材ではなく採用Static Sequence内の5状態を入力としているため、状態間の形状対応はOrganic Arrival Maskと持続FlowによるBlocking表現であり、Final用の精密Morphではない。",
@@ -56,11 +56,14 @@
       "type": "video",
       "path": "prototypes/farlens-brand-film-000-scene-01-motion-blocking/output/review/scene-01-to-02-review-0-23.mp4",
       "title": "Scene 1 → Scene 2 Motion Blocking — 0 to 23 seconds",
-      "description": "Review-only continuous clip. Scene 1 occupies 0–10 seconds; the SHA-locked PR #191 Scene 2 reference occupies 10–23 seconds. Review pacing and the 0.7-second warm residual-light transition without treating this clip as a replacement Scene 2 master.",
+      "description": "Review-only continuous clip. Scene 1 occupies 0–10 seconds; the SHA-locked PR #191 Scene 2 reference occupies 10–23 seconds. Review the 1.1-second ordered layer transition without treating this clip as a replacement Scene 2 master.",
       "context_links": [
         "prototypes/farlens-brand-film-000-scene-01-motion-blocking/connection-evidence.json",
+        "prototypes/farlens-brand-film-000-scene-01-motion-blocking/connection-layer-envelopes.json",
         "prototypes/farlens-brand-film-000-scene-01-motion-blocking/assets/reference/scene-02/REFERENCE_PROVENANCE.md",
-        "prototypes/farlens-brand-film-000-scene-01-motion-blocking/assets/review/scene-01-to-02-transition.png"
+        "prototypes/farlens-brand-film-000-scene-01-motion-blocking/assets/review/scene-01-to-02-transition.png",
+        "prototypes/farlens-brand-film-000-scene-01-motion-blocking/assets/review/scene-01-to-02-before-after.png",
+        "prototypes/farlens-brand-film-000-scene-01-motion-blocking/assets/review/connection-layer-envelope.svg"
       ],
       "review_kind": "content_prototype",
       "medium": "youtube_video",
@@ -77,14 +80,15 @@
       "verdict": {
         "overall": "Ready",
         "confidence": "Medium",
-        "summary": "9.3〜10.0秒のScene 1接続安定後、Scene 2開始から0.7秒だけ広い暖色環境光を弱めながら残し、採用済みScene 2 A1を隠さずに同じ世界の別地点へ移る。",
+        "summary": "9.3〜10.0秒のScene 1接続安定後、1.1秒の空間別Envelopeで暖色を環境へ溶かし、暗部・空気・地平、地形、左下量塊、情報膜の順に同じ世界の内部へ認識を移す。",
         "good_points": [
           "Scene 2参照MasterのSHAを固定し、本体を変更せずReview Clipだけを生成している。",
           "Scene 1終端とPR #191 terminal referenceが同一SHAである。",
-          "690 Frames、23.000秒、30fpsを全編Decodeし、Scene 2の正式Timelineを欠落なく保持している。"
+          "690 Frames、23.000秒、30fpsを全編Decodeし、Scene 2の1.1秒以降を参照Masterと一致させている。",
+          "修正前／修正後の同時刻比較SheetとLayer Envelope図で、均一な全画面クロスフェードの寄与がゼロであることを検証できる。"
         ],
         "critical_issues": [
-          "接続用の暖色環境光はReview ClipだけのBlocking処理で、Final Transitionの確定演出ではない。",
+          "接続用のLayer別EnvelopeはReview ClipだけのBlocking処理で、Final Transitionの確定演出ではない。",
           "音声・Narration・字幕は含まれないため、完成作品としての音画同期は未確認。"
         ],
         "top_points_for_founder": [

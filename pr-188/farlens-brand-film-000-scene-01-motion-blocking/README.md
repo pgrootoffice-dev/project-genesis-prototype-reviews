@@ -16,7 +16,7 @@ Status: **WORKING TEST / NON-CANONICAL / PIPELINE STAGE 3**
 - カメラは固定。主要変化はFrame内の光、層、構造、相互作用側で起こす。
 - Layer順序とBeat別Motion Budgetをコードと [`motion-budget.json`](./motion-budget.json) の両方で固定する。
 - 9.3〜10.0秒をBeat 5の接続安定区間とし、新しい意味や物体を追加しない。
-- PR #191の採用済みScene 2 MasterをSHA固定の読み取り専用参照として連結し、Scene 2開始後0.7秒だけScene 1終端の環境光を溶かす0〜23秒Review Clipを生成する。
+- PR #191の採用済みScene 2 MasterをSHA固定の読み取り専用参照として扱い、正式尺を変えず、10.0〜11.1秒だけ暖色→暗部・空気・地平→地形→左下量塊→情報膜の順で認識を移す0〜23秒Review Clipを生成する。
 
 ## Blockingで確認すること
 
@@ -73,7 +73,11 @@ Blockingでは上記を評価対象にせず、安価で局所修正可能な意
 - `assets/review/transition-frame-3-to-4.png`
 - `assets/review/transition-frame-4-to-5.png`
 - `assets/review/scene-01-to-02-transition.png`
+- `assets/review/scene-01-to-02-connection-expanded.png`
+- `assets/review/scene-01-to-02-before-after.png`
+- `assets/review/connection-layer-envelope.svg`
 - `assets/review/scene-01-to-02-review-contact-sheet.png`
+- `connection-layer-envelopes.json`
 - `connection-evidence.json`
 - `motion-budget.json`
 - `technical-evidence.json`

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "classification": "REVIEW-ONLY TRANSITION / NON-CANONICAL",
+  "formal_timing": {
+    "scene_1_seconds": 10.0,
+    "scene_2_seconds": 13.0,
+    "review_clip_seconds": 23.0,
+    "scene_2_timeline_mapping": "review 10.0–23.0 = Scene 2 source 0.0–13.0"
+  },
+  "scene_1_terminal_hold": {
+    "review_start": 9.3,
+    "review_end": 10.0,
+    "duration": 0.7,
+    "source": "Scene 1 Master",
+    "semantic_change": false
+  },
+  "transition": {
+    "review_start": 10.0,
+    "review_end": 11.1,
+    "duration": 1.1,
+    "source_scene_2_start": 0.0,
+    "source_scene_2_end": 1.1,
+    "uniform_full_screen_crossfade": false,
+    "baseline_simultaneous_full_frame_switch_contribution": 1.0,
+    "revised_simultaneous_full_frame_switch_contribution": 0.0,
+    "spatial_partition_convergence": {
+      "review_start": 10.76,
+      "review_end": 10.86,
+      "duration": 0.1,
+      "direct_scene_2_settle_start": 10.9,
+      "direct_scene_2_settle_end": 11.1,
+      "partitions": ["upper_field", "lower_right_terrain", "lower_left_mass"],
+      "purpose": "complete the complementary spatial masks before concat, then hold the read-only Scene 2 source through the end of the 1.1-second connection"
+    }
+  },
+  "layers": [
+    {
+      "id": "warm_center_melt",
+      "order": 1,
+      "review_start": 10.05,
+      "review_end": 10.3,
+      "envelope": "smooth fade-in of a feathered navy radial veil",
+      "spatial_scope": "warm center and halo only",
+      "meaning": "warmth stops acting as the destination and becomes atmosphere"
+    },
+    {
+      "id": "dark_air_horizon",
+      "order": 2,
+      "review_start": 10.22,
+      "review_end": 10.5,
+      "envelope": "feathered alpha arrival",
+      "spatial_scope": "upper field and horizon; Scene 2 source blurred to suppress objects",
+      "meaning": "darkness, air, and horizon connect before objects"
+    },
+    {
+      "id": "terrain",
+      "order": 3,
+      "review_start": 10.42,
+      "review_end": 10.65,
+      "envelope": "lower-right and middle terrain mask",
+      "spatial_scope": "terrain excluding the lower-left recognition zone and upper membranes",
+      "meaning": "the same world's interior terrain becomes readable"
+    },
+    {
+      "id": "lower_left_mass",
+      "order": 4,
+      "review_start": 10.6,
+      "review_end": 10.72,
+      "envelope": "lower-left feathered mask",
+      "spatial_scope": "lower-left terrain and latent two-mass area",
+      "meaning": "the latent masses become recognizable only in the latter half"
+    },
+    {
+      "id": "information_membranes",
+      "order": 5,
+      "review_start": 10.76,
+      "review_end": 10.86,
+      "envelope": "upper-field feathered mask",
+      "spatial_scope": "upper information-membrane field",
+      "meaning": "Scene 2 meaning begins last and never appears on the Scene 1 side"
+    }
+  ]
+}

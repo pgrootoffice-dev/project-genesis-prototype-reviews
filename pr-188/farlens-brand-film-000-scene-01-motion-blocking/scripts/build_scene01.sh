@@ -7,6 +7,7 @@ repo_root="$(cd "$prototype_dir/../.." && pwd)"
 source_image="$repo_root/docs/farlens/brand-film/assets/scene-01/BRAND_FILM_000_SCENE_01_STATIC_SEQUENCE_WORKING_LOCK.png"
 scene2_reference="$prototype_dir/assets/reference/scene-02/scene-02-motion-blocking-reference.mp4"
 terminal_reference="$prototype_dir/assets/reference/scene-02/scene-01-terminal-reference.png"
+connection_baseline="$prototype_dir/assets/source/revision-02/scene-01-to-02-review-before-layered-transition.mp4"
 render_dir="$(mktemp -d /tmp/farlens-scene01-blocking.XXXXXX)"
 frame_dir="$render_dir/frames"
 mkdir -p "$frame_dir" "$prototype_dir/output/master" "$prototype_dir/output/iphone" \
@@ -23,6 +24,7 @@ actual_source_sha="$(shasum -a 256 "$source_image" | awk '{print $1}')"
 [[ "$actual_source_sha" == "$expected_source_sha" ]]
 [[ "$(shasum -a 256 "$scene2_reference" | awk '{print $1}')" == "3e51b0fbf461d7cfc49c91c05420777f2da1bc843b476a65127483fb50a76904" ]]
 [[ "$(shasum -a 256 "$terminal_reference" | awk '{print $1}')" == "32b9a74ea1ee1a01386671726abb47201bdcbc7c3ff4dd2f59a51cd157258c1c" ]]
+[[ "$(shasum -a 256 "$connection_baseline" | awk '{print $1}')" == "d9d5eec5fc14a80f45f3c22de57c3d3b3dc8579e8f33f8749aab0731349534dc" ]]
 cp "$source_image" "$prototype_dir/assets/source/static-sequence-working-lock.png"
 
 swift -module-cache-path "$render_dir/swift-cache" \
@@ -109,28 +111,58 @@ ffmpeg -loglevel error -y \
   -frames:v 1 "$prototype_dir/assets/review/transition-frame-4-to-5.png"
 
 # Review-only 0–23 second assembly. Scene 1 stays completely stable through
-# 10.0s. From 10.0–10.7s, its terminal environmental light dissolves over the
-# already-adopted Scene 2 timeline; Scene 2 itself is never edited or replaced.
-transitioned_scene2="$render_dir/scene-02-with-read-only-entry-transition.mp4"
+# 10.0s. The first 1.1s of the read-only Scene 2 timeline is reconstructed with
+# separate spatial envelopes: warmth, air/horizon, terrain, lower-left masses,
+# then membranes. Scene 2 source time continues underneath without retiming.
+layered_core="$render_dir/scene-01-to-02-layered-core.mkv"
+layered_transition="$render_dir/scene-01-to-02-layered-transition.mkv"
 ffmpeg -loglevel error -y \
-  -f lavfi -i "color=c=0xEFAE5C:s=1280x720:r=30:d=13,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='clip(72-hypot(X-640,(Y-360)*2.2)/8.2,0,72)',fade=t=out:st=0:d=0.7:alpha=1" \
+  -loop 1 -framerate 30 -t 0.9 -i "$terminal_reference" \
   -i "$scene2_reference" \
-  -filter_complex "[1:v]fps=30,settb=AVTB,setpts=PTS-STARTPTS[s2];[s2][0:v]overlay=shortest=1:format=auto,format=yuv420p[v]" \
-  -map "[v]" -t 13 -r 30 -an -c:v libx264 -preset medium -crf 18 \
-  -pix_fmt yuv420p -movflags +faststart "$transitioned_scene2"
+  -f lavfi -i "color=c=0x081C3D:s=1280x720:r=30:d=1.1,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='clip(105-hypot(X-640,(Y-360)*2.1)/6.8,0,105)',fade=t=in:st=0.05:d=0.25:alpha=1" \
+  -filter_complex "[0:v]scale=1280:720,fps=30,settb=AVTB,setpts=PTS-STARTPTS,format=rgba[terminal];[1:v]trim=duration=0.9,fps=30,settb=AVTB,setpts=PTS-STARTPTS,split=4[s2a][s2t][s2l][s2m];[terminal][2:v]overlay=shortest=1:format=auto[cooled];[s2a]gblur=sigma=18,format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='clip((420-Y)*4.25,0,255)',fade=t=in:st=0.22:d=0.28:alpha=1[atmo];[s2t]format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='clip((Y-340)*6.375,0,255)*clip((X-360)*4.25,0,255)/255',fade=t=in:st=0.42:d=0.23:alpha=1[terrain];[s2l]format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='clip((Y-340)*6.375,0,255)*clip((480-X)*4.25,0,255)/255',fade=t=in:st=0.60:d=0.12:alpha=1[leftmass];[s2m]format=rgba,geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='clip((420-Y)*6.375,0,255)',fade=t=in:st=0.76:d=0.10:alpha=1[membranes];[cooled][atmo]overlay=shortest=1:format=auto[s1];[s1][terrain]overlay=shortest=1:format=auto[s2];[s2][leftmass]overlay=shortest=1:format=auto[s3];[s3][membranes]overlay=shortest=1:format=auto,format=yuv420p[v]" \
+  -map "[v]" -t 0.9 -r 30 -an -c:v ffv1 -level 3 \
+  -pix_fmt yuv420p "$layered_core"
+
+# Keep the complete Review-only connection at 1.1s. After all spatial
+# partitions have converged, preserve 0.2s of the exact Scene 2 source inside
+# the transition segment so the following read-only tail has no image seam.
+ffmpeg -loglevel error -y \
+  -i "$layered_core" -i "$scene2_reference" \
+  -filter_complex "[0:v]trim=start=0:end=0.9,fps=30,settb=AVTB,setpts=PTS-STARTPTS[core];[1:v]trim=start=0.9:end=1.1,fps=30,settb=AVTB,setpts=PTS-STARTPTS[settle];[core][settle]concat=n=2:v=1:a=0,format=yuv420p[v]" \
+  -map "[v]" -t 1.1 -r 30 -an -c:v ffv1 -level 3 \
+  -pix_fmt yuv420p "$layered_transition"
 
 ffmpeg -loglevel error -y \
   -i "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
-  -i "$transitioned_scene2" \
-  -filter_complex "[0:v]fps=30,settb=AVTB,setpts=PTS-STARTPTS[s1];[1:v]fps=30,settb=AVTB,setpts=PTS-STARTPTS[s2];[s1][s2]concat=n=2:v=1:a=0,format=yuv420p[v]" \
+  -i "$layered_transition" \
+  -i "$scene2_reference" \
+  -filter_complex "[0:v]trim=start=0:end=10,fps=30,settb=AVTB,setpts=PTS-STARTPTS[s1];[1:v]trim=start=0:end=1.1,fps=30,settb=AVTB,setpts=PTS-STARTPTS[transition];[2:v]trim=start=1.1:end=13,fps=30,settb=AVTB,setpts=PTS-STARTPTS[s2tail];[s1][transition][s2tail]concat=n=3:v=1:a=0,format=yuv420p[v]" \
   -map "[v]" -t 23 -r 30 -an -c:v libx264 -preset medium -crf 18 \
   -pix_fmt yuv420p -movflags +faststart \
   "$prototype_dir/output/review/scene-01-to-02-review-0-23.mp4"
 
 ffmpeg -loglevel error -y \
   -i "$prototype_dir/output/review/scene-01-to-02-review-0-23.mp4" \
-  -vf "select='eq(n,279)+eq(n,288)+eq(n,297)+eq(n,300)+eq(n,309)+eq(n,321)',setpts=N/FRAME_RATE/TB,scale=400:225,tile=3x2:padding=8:margin=8:color=0x061329" \
+  -vf "select='eq(n,279)+eq(n,291)+eq(n,299)+eq(n,300)+eq(n,306)+eq(n,312)+eq(n,318)+eq(n,324)+eq(n,330)+eq(n,333)',setpts=N/FRAME_RATE/TB,scale=320:180,tile=5x2:padding=8:margin=8:color=0x061329" \
   -frames:v 1 "$prototype_dir/assets/review/scene-01-to-02-transition.png"
+
+ffmpeg -loglevel error -y \
+  -i "$prototype_dir/output/review/scene-01-to-02-review-0-23.mp4" \
+  -vf "select='eq(n,300)+eq(n,306)+eq(n,312)+eq(n,318)+eq(n,326)+eq(n,333)',setpts=N/FRAME_RATE/TB,scale=480:270,tile=3x2:padding=8:margin=8:color=0x061329" \
+  -frames:v 1 "$prototype_dir/assets/review/scene-01-to-02-connection-expanded.png"
+
+baseline_strip="$render_dir/scene-01-to-02-before.png"
+revised_strip="$render_dir/scene-01-to-02-after.png"
+ffmpeg -loglevel error -y -i "$connection_baseline" \
+  -vf "select='eq(n,300)+eq(n,306)+eq(n,312)+eq(n,318)+eq(n,326)+eq(n,333)',setpts=N/FRAME_RATE/TB,scale=240:135,tile=6x1:padding=8:margin=8:color=0x061329" \
+  -frames:v 1 "$baseline_strip"
+ffmpeg -loglevel error -y -i "$prototype_dir/output/review/scene-01-to-02-review-0-23.mp4" \
+  -vf "select='eq(n,300)+eq(n,306)+eq(n,312)+eq(n,318)+eq(n,326)+eq(n,333)',setpts=N/FRAME_RATE/TB,scale=240:135,tile=6x1:padding=8:margin=8:color=0x061329" \
+  -frames:v 1 "$revised_strip"
+ffmpeg -loglevel error -y -i "$baseline_strip" -i "$revised_strip" \
+  -filter_complex "[0:v][1:v]vstack=inputs=2" -frames:v 1 \
+  "$prototype_dir/assets/review/scene-01-to-02-before-after.png"
 
 ffmpeg -loglevel error -y \
   -i "$prototype_dir/output/review/scene-01-to-02-review-0-23.mp4" \
@@ -143,16 +175,24 @@ ffmpeg -loglevel error -y -ss 9.95 \
 
 python3 "$script_dir/build_connection_evidence.py" \
   --scene1 "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
+  --iphone "$prototype_dir/output/iphone/scene-01-motion-blocking-iphone.mp4" \
   --scene2 "$scene2_reference" \
+  --baseline "$connection_baseline" \
   --review "$prototype_dir/output/review/scene-01-to-02-review-0-23.mp4" \
   --terminal "$prototype_dir/assets/review/scene-01-terminal-9.95.png" \
   --terminal-reference "$terminal_reference" \
+  --envelopes "$prototype_dir/connection-layer-envelopes.json" \
+  --implementation "$script_dir/build_scene01.sh" \
   --output "$prototype_dir/connection-evidence.json"
 
-ffprobe -v error -show_entries \
-  format=duration,size,bit_rate:stream=index,codec_name,codec_type,width,height,r_frame_rate,pix_fmt \
-  -of json "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
-  > "$prototype_dir/production-evidence.json"
+python3 "$script_dir/build_production_evidence.py" \
+  --master "$prototype_dir/output/master/scene-01-motion-blocking.mp4" \
+  --iphone "$prototype_dir/output/iphone/scene-01-motion-blocking-iphone.mp4" \
+  --review "$prototype_dir/output/review/scene-01-to-02-review-0-23.mp4" \
+  --scene2 "$scene2_reference" \
+  --baseline "$connection_baseline" \
+  --envelopes "$prototype_dir/connection-layer-envelopes.json" \
+  --output "$prototype_dir/production-evidence.json"
 
 python3 "$script_dir/verify_scene01.py" --write-evidence
 
@@ -165,13 +205,16 @@ python3 "$script_dir/verify_scene01.py" --write-evidence
     assets/keyframes/*.png \
     assets/review/*.jpg \
     assets/review/*.png \
+    assets/review/*.svg \
     assets/source/static-sequence-working-lock.png \
     assets/source/SOURCE_PROVENANCE.md \
+    assets/source/revision-02/scene-01-to-02-review-before-layered-transition.mp4 \
     assets/reference/scene-02/scene-02-motion-blocking-reference.mp4 \
     assets/reference/scene-02/scene-01-terminal-reference.png \
     assets/reference/scene-02/REFERENCE_PROVENANCE.md \
     beat-map.json \
     motion-budget.json \
+    connection-layer-envelopes.json \
     connection-evidence.json \
     technical-evidence.json \
     production-evidence.json \
